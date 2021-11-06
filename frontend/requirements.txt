@@ -1,2 +1,3 @@
 react-router-dom
 styled-components
+react-icons
