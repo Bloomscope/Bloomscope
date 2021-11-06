@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
 Nav,
 NavLink,
 Bars,
 NavMenu,
+NavDrop,
 } from './NavbarElements';
 
 const Navbar = () => {
+	const[NavMobile, SetNavMobile] = useState(0);
 return (
 	<>
 	<Nav>
-		<Bars />
+		<Bars onClick = {() => SetNavMobile(!NavMobile)}/>
+		<NavDrop view = {NavMobile}/>
 		<NavMenu>
 		<NavLink to='/Parent_reg' activeStyle>
 			Parent Registration

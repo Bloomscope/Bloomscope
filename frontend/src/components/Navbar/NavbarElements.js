@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
 background: #f0f0f0;
-height: 60px;
+height: 60px;	
 display: flex;
 justify-content: space-between;
 padding: 0.2rem calc((100vw - 1000px) / 2);
@@ -15,7 +15,6 @@ export const NavLink = styled(Link)`
 color: #808080;
 display: flex;
 align-items: center;
-align-content:right;
 text-decoration: none;
 padding: 0 1rem;
 height: 100%;
@@ -48,4 +47,27 @@ white-space: nowrap;
 	display: none;
 }
 `;
-
+const NavDropContent = styled.div`
+display: ${props => (props.ContentView ? 'flex' : 'none')};
+align-items: center;
+flex-direction: column;
+`
+export const NavDrop = ({view}) => {
+	return(
+		<Nav>
+	<NavDropContent ContentView = {view}>
+		<NavMenu>
+		<NavLink to='/Parent_reg' activeStyle>
+			Parent Registration
+		</NavLink>
+        <NavLink to='/Student_reg' activeStyle>
+			Student Registration
+		</NavLink>
+		<NavLink to='/index' activeStyle>
+			Back to Home
+		</NavLink>
+		</NavMenu>
+	</NavDropContent>
+	</Nav>
+	)
+}
