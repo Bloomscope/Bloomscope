@@ -11,9 +11,9 @@ return (
 	<Router>
 	<Navbar/>	
 	<Routes>
-		<Route path='/' exact component={Home} />
-		<Route path='/Parent_reg' component={Parent_reg} />
-		<Route path='/Student_reg' component={Student_reg} />
+		<Route path='/Parent_reg' element={<Parent_reg/>} />
+		<Route path='/Student_reg' element={<Student_reg/>} />		
+		<Route path='/' exact element={<Home/>} />
 	</Routes>
 	</Router>
 );

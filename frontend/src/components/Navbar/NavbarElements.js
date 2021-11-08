@@ -21,8 +21,13 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
-  cursor: pointer;
+  cursor: pointer;  
+  transition: 0.2s ease-in-out;
   &.active {
+    color: #000000;
+  }
+  &.hover {
+	transition: 0.2s ease-in-out;
     color: #000000;
   }
 `;
@@ -64,13 +69,13 @@ export const NavDrop = ({ view }) => {
   return (
     <ExpandedNav>
       <NavDropContent ContentView={view}>
-          <NavLink to="/Parent_reg" activeStyle>
+          <NavLink to="/Parent_reg">
             Parent Registration
           </NavLink>
-          <NavLink to="/Student_reg" activeStyle>
+          <NavLink to="/Student_reg">
             Student Registration
           </NavLink>
-          <NavLink to="/index" activeStyle>
+          <NavLink to="/">
             Back to Home
           </NavLink>
       </NavDropContent>
