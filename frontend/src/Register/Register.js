@@ -2,17 +2,19 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/index';
-import Parent_reg from './Pages/Parent_reg';
-import Student_reg from './Pages/Student_reg';
+import Registration from './Pages/Registration';
+import Login from './Pages/Login';
+import AdminLogin from './Pages/admin';
 
 function Register() {
 return (
 	<Router>
 	<Navbar/>	
 	<Routes>
-		<Route path='/Parent_reg' element={<Parent_reg/>} />
-		<Route path='/Student_reg' element={<Student_reg/>} />		
-		<Route path='/' exact element={<Home/>} />
+	    <Route path='/' exact element={<Home/>} />
+		<Route path='/Registration' element={<Registration/>} />
+		<Route path='/Login' element={<Login/>} />		
+		<Route path='/admin' exact element={<AdminLogin/>}/>
 	</Routes>
 	</Router>
 );

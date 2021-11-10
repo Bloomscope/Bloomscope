@@ -7,16 +7,16 @@ const Navbar = () => {
     <>
       <Nav>
         <Bars onClick={() => SetNavMobile(!NavMobile)} />
-        <h1>Register</h1>
+        <h1>Home</h1>
         <NavMenu>
-          <NavLink to="/Parent_reg">
-            Parent Registration
+          <NavLink to="/Registration">
+            Register
           </NavLink>
-          <NavLink to="/Student_reg">
-            Student Registration
+          <NavLink to="/Login">
+            Login
           </NavLink>
-          <NavLink to="/">
-            Back to Home
+          <NavLink to="/admin">
+            Admin
           </NavLink>
         </NavMenu>
       </Nav>
