@@ -1,5 +1,5 @@
 import React from 'react';
-// import Navbar from './components/Navbar';
+import Navbar from './Components/Navbar';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Home from './Pages/index';
 // import Parent_reg from './Pages/Parent_reg';
@@ -7,7 +7,9 @@ import React from 'react';
 
 function Admin() {
 return (
-	<h1>hiii</h1>
+<div>
+	<Navbar/>
+	<h1>hiii</h1></div>
 );
 }
 

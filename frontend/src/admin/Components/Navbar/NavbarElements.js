@@ -69,14 +69,14 @@ export const NavDrop = ({ view }) => {
   return (
     <ExpandedNav>
       <NavDropContent ContentView={view}>
-          <NavLink to="/Parent_reg">
-            Parent Registration
+          <NavLink to="/Login">
+            login
           </NavLink>
-          <NavLink to="/Student_reg">
-            Student Registration
+          <NavLink to="/Registration">
+            Register
           </NavLink>
-          <NavLink to="/">
-            Back to Home
+          <NavLink to="/admin">
+            Admin
           </NavLink>
       </NavDropContent>
     </ExpandedNav>
