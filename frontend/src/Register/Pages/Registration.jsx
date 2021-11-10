@@ -1,6 +1,8 @@
 import React from 'react';
 import SignUp_parent from '../components/sign-up/signup_parent';
 import SignUp_student from '../components/sign-up/signup_student';
+import Navbar from '../../Home/components/Navbar'
+
 class Registration extends React.Component{
     constructor(props) {
         super(props);
@@ -27,6 +29,7 @@ class Registration extends React.Component{
     render(){
         return(
             <div>
+            <Navbar/>
             <button onClick={this.handleClick_p}>
                 parent
             </button>
@@ -35,9 +38,7 @@ class Registration extends React.Component{
                 student
             </button>
             {this.state.student? <SignUp_student/> : ''}
-            </div>
-            
-            
+            </div>            
         )
     }
 }
