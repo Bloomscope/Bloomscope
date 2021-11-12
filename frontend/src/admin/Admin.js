@@ -1,17 +1,25 @@
 import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
+// import Announcement from './Pages/announcement/annoucement';
+// import StudentData from './Pages/studentData/studentData';
+// import TestCreation from './Pages/TestCreation/TestCreation';
+import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
-// import Sidebar from './Components/Sidebar';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Home from './Pages/index';
-// import Parent_reg from './Pages/Parent_reg';
-// import Student_reg from './Pages/Student_reg';
+// import s from './admin.scss';
 
 function Admin() {
 return (
-<div>
-	<Navbar/>
-	{/* <Sidebar/> */}
-	<h1>hiii</h1>
+	<div className="layout">
+		<Navbar/>
+		<SideBar/>
+		<div className="content">
+			<h1>Admin</h1>
+		</div>
+        {/* <Routes>
+          <Route path='/admin/studentData' exact element={<StudentData/>} />
+          <Route path='/admin/announcements' exact element={<Announcement/>} />
+          <Route path='/admin/testCreation' exact element={<TestCreation/>} />
+        </Routes> */}
 	</div>
 );
 }

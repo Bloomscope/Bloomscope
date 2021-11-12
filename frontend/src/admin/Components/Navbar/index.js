@@ -7,7 +7,7 @@ const Navbar = () => {
     <>
       <Nav>
         <Bars onClick={() => SetNavMobile(!NavMobile)} />
-        <h1>Home</h1>
+        <h1>Admin</h1>
         <NavMenu>
           <NavLink to="/Logout">
             Logout
