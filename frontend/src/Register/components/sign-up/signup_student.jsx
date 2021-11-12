@@ -1,43 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
 
 import './sign-up.styles.scss';
 
-class SignUp_student extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      firstName:'',
-      middleName:'',
-      lastName: '',
-      dob:'',
-      email: '',
-      contact:'',
-      password: '',
-      confirmPassword: ''
-    };
-  }
-
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({ [name]: value });
-  };
-
-  render() {
-    const { firstName, middleName, lastName, dob, email, contact, password, confirmPassword } = this.state;
+const SignUp_student = ({view}) =>{
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [middleName, setMiddleName] = useState('');
+    const [email, setEmail] = useState('');
+    const [dob, setDob] = useState('');
+    const [contact, setContact] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [lineClicked, setLineClicked] = useState(0);
     return (
-      <div className='sign-up'>
+      <>
+      <div className='sign-up' style={view ? {display:'none'} : {display:'block'}}>
         <h2 className='title'>Register Here</h2>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+        <form className='sign-up-form' onSubmit=''>
           <FormInput
             type='text'
             name='firstName'
             value={firstName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setFirstName(e.target.value)}}
             label='First Name'
             required
           />
@@ -45,7 +32,7 @@ class SignUp_student extends React.Component {
             type='text'
             name='middleName'
             value={middleName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setMiddleName(e.target.value)}}
             label='Middle Name'
             required
           />
@@ -53,23 +40,23 @@ class SignUp_student extends React.Component {
             type='text'
             name='lastName'
             value={lastName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setLastName(e.target.value)}}
             label='Last Name'
             required
           />
-          <FormInput
-            type='date'
+          <FormInput onMouseEnter = {()=>{setLineClicked(1)}} onMouseLeave = {()=>{setLineClicked(0)}}
+            type={lineClicked ? 'date' : 'text'}
             name='dob'
             value={dob}
-            onChange={this.handleChange}
-            label='Date of Birth'
+            onChange={(e)=>{setDob(e.target.value)}}
+            label={lineClicked ? '' : 'Date of Birth'}
             required
           />
           <FormInput
             type='email'
             name='email'
             value={email}
-            onChange={this.handleChange}
+            onChange={(e)=>{setEmail(e.target.value)}}
             label='Email'
             required
           />
@@ -77,7 +64,7 @@ class SignUp_student extends React.Component {
             type='text'
             name='contact'
             value={contact}
-            onChange={this.handleChange}
+            onChange={(e)=>{setContact(e.target.value)}}
             label='Contact no.'
             required
           />
@@ -85,7 +72,7 @@ class SignUp_student extends React.Component {
             type='password'
             name='password'
             value={password}
-            onChange={this.handleChange}
+            onChange={(e)=>{setPassword(e.target.value)}}
             label='Password'
             required
           />
@@ -93,7 +80,7 @@ class SignUp_student extends React.Component {
             type='password'
             name='confirmPassword'
             value={confirmPassword}
-            onChange={this.handleChange}
+            onChange={(e)=>{setConfirmPassword(e.target.value)}}
             label='Confirm Password'
             required
           />
@@ -101,8 +88,9 @@ class SignUp_student extends React.Component {
         <CustomButton type='submit'>PAYMENT</CustomButton>
         </form>
       </div>
+
+  </>
     );
-  }
 }
 
 export default SignUp_student;

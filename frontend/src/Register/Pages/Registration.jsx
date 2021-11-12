@@ -1,46 +1,29 @@
-import React from 'react';
-import SignUp_parent from '../components/sign-up/signup_parent';
-import SignUp_student from '../components/sign-up/signup_student';
-import Navbar from '../../Home/components/Navbar'
+import React, { useState } from "react";
+import SignUp_parent from "../components/sign-up/signup_parent";
+import SignUp_student from "../components/sign-up/signup_student";
+import Navbar from "../../Home/components/Navbar";
+import TabButton from "../components/TabButton/TabButton";
+import { FaUserGraduate, FaUserFriends } from "react-icons/fa";
 
-class Registration extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            parent:false,
-            student:false
-        };
+const Registration = () => {
+  const [OpenTab, SetOpenTab] = useState(true);
 
-        this.handleClick_p = this.handleClick_p.bind(this);
-        this.handleClick_s = this.handleClick_s.bind(this);
-    }
+  return (
+    <>
+      <Navbar />
 
-    handleClick_p() {
-    this.setState(prevState => ({
-      parent: !prevState.parent
-    }));
-    }
-    handleClick_s() {
-    this.setState(prevState => ({
-      student: !prevState.student
-    }));
-    }
-
-    render(){
-        return(
-            <div>
-            <Navbar/>
-            <button onClick={this.handleClick_p}>
-                parent
-            </button>
-            {this.state.parent? <SignUp_parent/> : ''}
-            <button onClick={this.handleClick_s}>
-                student
-            </button>
-            {this.state.student? <SignUp_student/> : ''}
-            </div>            
-        )
-    }
-}
+      <TabButton onClick={() => SetOpenTab(!OpenTab)}>
+        <FaUserGraduate className="FaUserGraduate" />
+        parent
+      </TabButton>
+      <TabButton onClick={() => SetOpenTab(!OpenTab)}>
+        <FaUserFriends className="FaUserGraduate" />
+        student
+      </TabButton>
+      <SignUp_parent view={OpenTab} />
+      <SignUp_student view={OpenTab} />
+    </>
+  );
+};
 
 export default Registration;

@@ -10,12 +10,13 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: "Open Sans Condensed";
   font-weight: bolder;
   border: none;
   cursor: pointer;
 
   &:hover {
+
+  transition: all 0.2s ease-in-out;
     background-color: white;
     color: black;
     border: 1px solid black;

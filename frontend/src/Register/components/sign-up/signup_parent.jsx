@@ -1,42 +1,30 @@
-import React from 'react';
-
+import React, {useState}from 'react';
+ 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
 
 import './sign-up.styles.scss';
 
-class SignUp_parent extends React.Component {
-  constructor() {
-    super();
+const SignUp_parent = ({view}) =>{
 
-    this.state = {
-      firstName:'',
-      middleName:'',
-      lastName: '',
-      email: '',
-      contact:'',
-      password: '',
-      confirmPassword: ''
-    };
-  }
-
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({ [name]: value });
-  };
-
-  render() {
-    const { firstName, middleName, lastName, email, contact, password, confirmPassword } = this.state;
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [middleName, setMiddleName] = useState('');
+    const [email, setEmail] = useState('');
+    const [contact, setContact] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    
     return (
-      <div className='sign-up'>
+      <>
+      <div className='sign-up' style={view ? {display:'block'} : {display:'none'}}>
         <h2 className='title'>Register Here</h2>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+        <form className='sign-up-form'>
           <FormInput
             type='text'
             name='firstName'
             value={firstName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setFirstName(e.target.value)}}
             label='First Name'
             required
           />
@@ -44,7 +32,7 @@ class SignUp_parent extends React.Component {
             type='text'
             name='middleName'
             value={middleName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setMiddleName(e.target.value)}}
             label='Middle Name'
             required
           />
@@ -52,7 +40,7 @@ class SignUp_parent extends React.Component {
             type='text'
             name='lastName'
             value={lastName}
-            onChange={this.handleChange}
+            onChange={(e)=>{setLastName(e.target.value)}}
             label='Last Name'
             required
           />
@@ -61,7 +49,7 @@ class SignUp_parent extends React.Component {
             type='email'
             name='email'
             value={email}
-            onChange={this.handleChange}
+            onChange={(e)=>{setEmail(e.target.value)}}
             label='Email'
             required
           />
@@ -69,7 +57,7 @@ class SignUp_parent extends React.Component {
             type='text'
             name='contact'
             value={contact}
-            onChange={this.handleChange}
+            onChange={(e)=>{setContact(e.target.value)}}
             label='Contact no.'
             required
           />
@@ -77,7 +65,7 @@ class SignUp_parent extends React.Component {
             type='password'
             name='password'
             value={password}
-            onChange={this.handleChange}
+            onChange={(e)=>{setPassword(e.target.value)}}
             label='Password'
             required
           />
@@ -85,7 +73,7 @@ class SignUp_parent extends React.Component {
             type='password'
             name='confirmPassword'
             value={confirmPassword}
-            onChange={this.handleChange}
+            onChange={(e)=>{setConfirmPassword(e.target.value)}}
             label='Confirm Password'
             required
           />
@@ -93,8 +81,8 @@ class SignUp_parent extends React.Component {
           <CustomButton type='submit'>PAYMENT</CustomButton>
         </form>
       </div>
+      </>
     );
-  }
 }
 
 export default SignUp_parent;
