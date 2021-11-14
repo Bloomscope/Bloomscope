@@ -7,10 +7,12 @@ function StudentData() {
   return (
     <div className='StudentData'>
       <Navbar />
-      <Sidebar/>
-		  <main className="content">
-        <h1>StudentData</h1>
-      </main>
+      <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
+		<Sidebar/>
+		</div>
+		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+			<h1>Student Data</h1>
+		</div>
     </div>
   );
 }

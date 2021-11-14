@@ -22,4 +22,10 @@ export const SidebarData = [
     icon: <HiIcons.HiOutlineSpeakerphone />,
     cName: 'nav-text'
 },
+{
+  title: 'Mass Registration',
+  path: '/admin/massregistration',
+  icon: <BsIcons.BsFillPeopleFill />,
+  cName: 'nav-text'
+},
 ];

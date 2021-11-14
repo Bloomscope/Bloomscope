@@ -8,6 +8,7 @@ import AdminLogin from './Register/Pages/admin';
 
 import Announcement from './admin/Pages/announcement/annoucement';
 import StudentData from './admin/Pages/studentData/studentData';
+import MassRegistration from './admin/Pages/massreg/massreg';
 import TestCreation from './admin/Pages/TestCreation/TestCreation';
 
 function App() {
@@ -23,6 +24,7 @@ return (
 		<Route path='/admin/studentData' exact element={<StudentData/>} />
         <Route path='/admin/announcements' exact element={<Announcement/>} />
         <Route path='/admin/testCreation' exact element={<TestCreation/>} />
+        <Route path='/admin/massregistration' exact element={<MassRegistration/>} />
 	</Routes>
 	</Router>
 );

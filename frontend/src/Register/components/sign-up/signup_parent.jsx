@@ -18,7 +18,7 @@ const SignUp_parent = ({view}) =>{
     return (
       <>
       <div className='sign-up' style={view ? {display:'block'} : {display:'none'}}>
-        <h2 className='title'>Register Here</h2>
+        <h2 className='title'>Parent Registration</h2>
         <form className='sign-up-form'>
           <FormInput
             type='text'

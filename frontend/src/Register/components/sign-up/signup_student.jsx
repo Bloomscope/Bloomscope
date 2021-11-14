@@ -18,7 +18,7 @@ const SignUp_student = ({view}) =>{
     return (
       <>
       <div className='sign-up' style={view ? {display:'none'} : {display:'block'}}>
-        <h2 className='title'>Register Here</h2>
+        <h2 className='title'>Student Registration</h2>
         <form className='sign-up-form' onSubmit=''>
           <FormInput
             type='text'

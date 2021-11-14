@@ -7,10 +7,12 @@ function TestCreation() {
   return (
     <div className='TestCreation'>
       <Navbar />
-      <Sidebar/>
-		  <main className="content">
-        <h1>TestCreation</h1>
-      </main>
+      <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
+        <Sidebar/>
+      </div>
+      <div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+        <h1>Test Creation</h1>
+      </div>
     </div>
   );
 }

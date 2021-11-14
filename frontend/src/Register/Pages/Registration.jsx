@@ -20,6 +20,7 @@ const Registration = () => {
         <FaUserFriends className="FaUserGraduate" />
         student
       </TabButton>
+      
       <SignUp_parent view={OpenTab} />
       <SignUp_student view={OpenTab} />
     </>

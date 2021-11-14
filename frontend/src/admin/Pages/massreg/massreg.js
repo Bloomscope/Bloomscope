@@ -3,7 +3,7 @@ import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 
-function Announcement() {
+function MassRegistration() {
   return (
     <div>
       <Navbar />
@@ -11,10 +11,10 @@ function Announcement() {
 		<Sidebar/>
 		</div>
 		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
-			<h1>Announcements</h1>
+			<h1>Mass Registration</h1>
 		</div>
     </div>
   );
 }
 
-export default Announcement;
+export default MassRegistration;

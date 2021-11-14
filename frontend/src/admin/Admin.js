@@ -9,10 +9,13 @@ import Navbar from './Components/Navbar';
 
 function Admin() {
 return (
-	<div className="layout">
+	
+	<div className="layout" >
 		<Navbar/>
+		<div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
 		<SideBar/>
-		<div className="content">
+		</div>
+		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
 			<h1>Admin</h1>
 		</div>
         {/* <Routes>
