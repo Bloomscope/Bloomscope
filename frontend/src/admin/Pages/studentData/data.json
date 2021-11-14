@@ -28,20 +28,11 @@
     },
     {
         "id": 4,
-        "firstname": "Name4",
-        "lastname": "lastName4",
+        "firstname": "Name",
+        "lastname": "lastName",
         "phone": "+91 123456987",
         "email": "defvadwu@gmail.com",
         "subscribedOn": "14/10/2021",
         "organisation": "Organisation4"
-    },
-    {
-        "id": 5,
-        "firstname": "Name5",
-        "lastname": "lastName5",
-        "phone": "+91 123456987",
-        "email": "ewdefvu@gmail.com",
-        "subscribedOn": "17/12/2021",
-        "organisation": "self"
     }
 ]
