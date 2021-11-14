@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles.scss';
 import { Input } from 'semantic-ui-react';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 
+
+
 function Announcement() {
+  const [title, settitle] = useState('');
+  const [post, setpost] = useState('');
   return (
+    <>
     <div>
       <Navbar />
       <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
@@ -18,11 +23,11 @@ function Announcement() {
       <form>
       <label>
       Title : <br/>
-      <Input type="text" name="title" style={{ width: "800px" }}/>
+      <Input type="text" name="title" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{ width: "800px" }}/>
       </label><br/>
       <label>
       Post : <br/>
-      <Input type="text" name="post" style={{ width: "800px" }}/>
+      <Input type="text" name="post" value={post} onChange={(e)=>{setpost(e.target.value)}} style={{ width: "800px" }}/>
       </label>
       <CustomButton type='submit' style={{float:"right"}}>POST</CustomButton>
       </form>
@@ -32,6 +37,7 @@ function Announcement() {
       </div>
 		</div>
     </div>
+    </>
   );
 }
 
