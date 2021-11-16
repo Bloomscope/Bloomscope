@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './styles.scss';
-import { Input } from 'semantic-ui-react';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';

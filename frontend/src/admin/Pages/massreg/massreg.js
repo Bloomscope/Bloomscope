@@ -8,7 +8,8 @@ import DataTable from 'react-data-table-component';
 function MassRegistration() {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
- 
+  const [msg,updatedmsg] = useState('');
+
 
   const processData = dataString => {
     const dataStringLines = dataString.split(/\r\n|\n/);
@@ -57,7 +58,13 @@ function MassRegistration() {
       const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
       processData(data);
     };
-    reader.readAsBinaryString(file);
+    try{
+      reader.readAsBinaryString(file);
+    }
+    catch(e){
+      console.log(e)
+    }
+    
   }
   return (
     <div>
@@ -72,10 +79,11 @@ function MassRegistration() {
             type="file"
             accept=".csv,.xlsx,.xls"
             onChange={handleFileUpload}
+            //onClick = {(e)=>{updatedmsg('Uploading')}}
           />
           Custom Upload
       </label>
-      
+      <span>{msg}</span>
       <DataTable
         pagination
         highlightOnHover
