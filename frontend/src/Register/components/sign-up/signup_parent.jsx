@@ -12,8 +12,13 @@ const SignUp_parent = ({view}) =>{
     const [middleName, setMiddleName] = useState('');
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
+    const [dob, setDob] = useState('');
+    const [childName, setchildName] = useState('');
     const [password, setPassword] = useState('');
+    const [scontact, setSContact]=useState('');
+    const [semail, setSEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [lineClicked, setLineClicked] = useState(0);
     
     return (
       <>
@@ -59,6 +64,40 @@ const SignUp_parent = ({view}) =>{
             value={contact}
             onChange={(e)=>{setContact(e.target.value)}}
             label='Contact no.'
+            required
+          />
+          <FormInput
+            type='text'
+            name='childName'
+            value={childName}
+            onChange={(e)=>{setchildName(e.target.value)}}
+            label='Child Name'
+            required
+          />
+          
+      
+          <FormInput onMouseEnter = {()=>{setLineClicked(1)}} onMouseLeave = {()=>{setLineClicked(0)}}
+            type={lineClicked ? 'date' : 'text'}
+            name='dob'
+            value={dob}
+            onChange={(e)=>{setDob(e.target.value)}}
+            label={lineClicked ? '' : 'Child Date of Birth'}
+            required
+          />
+          <FormInput
+            type='email'
+            name='semail'
+            value={semail}
+            onChange={(e)=>{setSEmail(e.target.value)}}
+            label='Child Email'
+            required
+          />
+          <FormInput
+            type='text'
+            name='scontact'
+            value={scontact}
+            onChange={(e)=>{setSContact(e.target.value)}}
+            label='Child Contact no.'
             required
           />
           <FormInput
