@@ -79,7 +79,7 @@ function MassRegistration() {
             type="file"
             accept=".csv,.xlsx,.xls"
             onChange={handleFileUpload}
-            //onClick = {(e)=>{updatedmsg('Uploading')}}
+            // onClick = {(e)=>{updatedmsg('Uploading')}}
           />
           Custom Upload
       </label>

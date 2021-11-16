@@ -4,45 +4,9 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar';
 import Popup from 'reactjs-popup';
 import data from './data.json';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function StudentData() {
-
-  const dataa = [
-    {
-      name: 'P1',
-      t1: 40,
-      t2: 24,
-    },
-    {
-      name: 'P2',
-      t1: 30,
-      t2: 13,
-    },
-    {
-      name: 'P3',
-      t1: 20,
-      t2: 28,
-    },
-    {
-      name: 'P4',
-      t1: 27,
-      t2: 39,
-    },
-    {
-      name: 'P5',
-      t1: 18,
-      t2: 48,
-    },
-    {
-      name: 'P6',
-      t1: 23,
-      t2: 38,
-    },
-  ];
-
   const [suggestion, setsuggestion] = useState('');
   const [searchTerm,setSearchTerm] = useState('')
 
@@ -88,7 +52,7 @@ function StudentData() {
                           <BarChart
                             width={500}
                             height={200}
-                            data={dataa}
+                            data={val.test}
                             margin={{
                               top: 5,
                               right: 30,
@@ -103,6 +67,8 @@ function StudentData() {
                             <Legend />
                             <Bar dataKey="t1" fill="#8884d8" />
                             <Bar dataKey="t2" fill="#82ca9d" />
+                            <Bar dataKey="t3" fill="#00000f" />
+                            <Bar dataKey="t4" fill="#00f000" />
                           </BarChart>
                         </ResponsiveContainer>
                         <form>
