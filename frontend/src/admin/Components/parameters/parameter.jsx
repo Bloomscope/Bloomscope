@@ -1,5 +1,4 @@
 import React, {useState}from 'react';
-import FormInput from '../../../Register/components/form-input/form-input.component';
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 
 const Parameter = ({view}) =>{

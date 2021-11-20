@@ -1,0 +1,40 @@
+.sidebar {
+  position: relative;
+  // flex-grow: 1;
+  // 20px for footer height
+  // padding: 25px $content-padding ($content-padding + 20px);
+  background-color: #f0f0f0;
+  margin-left: 5%;
+  margin-top: 8%;
+  padding-left: 8%;
+  // width: 20%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 2%;
+  box-shadow: 2px #999;
+  height: 700px;
+  width: 300px;
+  // @media (max-width: breakpoint-max(sm)) {
+  //   padding: 20px 15px;
+  // }
+}
+
+.icon {
+  padding: 5px;
+  size: 50px;
+  color: black;
+}
+
+.element {
+  position: relative;
+  flex-grow: 1;
+  // 20px for footer height
+  // padding: 25px $content-padding ($content-padding + 20px);
+  padding-left: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0px;
+  // @media (max-width: breakpoint-max(sm)) {
+  //   padding: 20px 15px;
+  // }
+}

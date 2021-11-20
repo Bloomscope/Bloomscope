@@ -7,7 +7,7 @@ import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
 // import s from './admin.scss';
 
-function Admin() {
+function Student() {
 return (
 	
 	<div className="layout" >
@@ -16,10 +16,10 @@ return (
 		<SideBar/>
 		</div>
 		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
-			<h1>Admin</h1>
+			<h1>Student</h1>
 		</div>
 	</div>
 );
 }
 
-export default Admin;
+export default Student;
