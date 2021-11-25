@@ -8,7 +8,7 @@ function Dashboard() {
     <>
       <div>
         <Navbar />
-        <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
+      <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
       <Sidebar/>
       </div>
       <div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
