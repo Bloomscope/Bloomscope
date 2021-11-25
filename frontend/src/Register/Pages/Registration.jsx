@@ -6,23 +6,24 @@ import TabButton from "../components/TabButton/TabButton";
 import { FaUserGraduate, FaUserFriends } from "react-icons/fa";
 
 const Registration = () => {
-  const [OpenTab, SetOpenTab] = useState(true);
+  const [OpenTab_Parent, SetOpenTab_Parent] = useState(true);
+  const [OpenTab_Student, SetOpenTab_Student] = useState(false);
 
   return (
     <>
       <Navbar />
 
-      <TabButton onClick={() => SetOpenTab(!OpenTab)}>
+      <TabButton onClick={() => {SetOpenTab_Parent(true);SetOpenTab_Student(false)}}>
         <FaUserGraduate className="FaUserGraduate" />
         parent
       </TabButton>
-      <TabButton onClick={() => SetOpenTab(!OpenTab)}>
+      <TabButton onClick={() => {SetOpenTab_Student(true);SetOpenTab_Parent(false)}}>
         <FaUserFriends className="FaUserGraduate" />
         student
       </TabButton>
       
-      <SignUp_parent view={OpenTab} />
-      <SignUp_student view={OpenTab} />
+      <SignUp_parent view={OpenTab_Parent} />
+      <SignUp_student view={OpenTab_Student} />
     </>
   );
 };

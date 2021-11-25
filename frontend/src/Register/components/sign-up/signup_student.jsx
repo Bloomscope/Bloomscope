@@ -17,7 +17,7 @@ const SignUp_student = ({view}) =>{
     const [lineClicked, setLineClicked] = useState(0);
     return (
       <>
-      <div className='sign-up' style={view ? {display:'none'} : {display:'block'}}>
+      <div className='sign-up' style={view ? {display:'block'} : {display:'none'}}>
         <h2 className='title'>Student Registration</h2>
         <form className='sign-up-form' onSubmit=''>
           <FormInput
