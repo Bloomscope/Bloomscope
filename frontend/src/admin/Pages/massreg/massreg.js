@@ -4,6 +4,15 @@ import Sidebar from '../../Components/Sidebar';
 import Navbar from '../../Components/Navbar';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
+import styled from "styled-components";
+
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 function MassRegistration() {
   const [columns, setColumns] = useState([]);
@@ -67,12 +76,13 @@ function MassRegistration() {
     
   }
   return (
-    <div>
+    <>
       <Navbar />
-      <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
-		<Sidebar/>
-		</div>
-		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
+          <Sidebar />
+        </div>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
 			<h1>Mass Registration</h1>
       <label class="custom-file-upload">
           <input
@@ -91,7 +101,8 @@ function MassRegistration() {
         data={data}
       />
 		</div>
-    </div>
+    </Holder>
+    </>
   );
 }
 

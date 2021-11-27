@@ -7,7 +7,7 @@ function Sidebar() {
   // const [sidebar, setSidebar] = useState(true);
 
   return (
-    <div className= "sidebar" style = {{backgroundColor: "#ffffff",paddingLeft: "12%",paddingTop:"8%"}}>
+    <div className= "sidebar" style = {{backgroundColor: "#ffffff",paddingLeft: "12%",paddingTop:"8%",boxShadow:"3px 3px 6px 5px #ccc"}}>
         <nav >
             {SidebarData.map((item, index) => {
               return (

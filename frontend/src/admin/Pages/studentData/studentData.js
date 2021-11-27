@@ -5,18 +5,29 @@ import Navbar from '../../Components/Navbar';
 import Popup from 'reactjs-popup';
 import data from './data.json';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import styled from "styled-components";
+
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 
 function StudentData() {
   const [suggestion, setsuggestion] = useState('');
   const [searchTerm,setSearchTerm] = useState('')
 
   return (
-    <div className='StudentData'>
+    <>
       <Navbar />
-      <div style = {{width:'25%', position:'fixed',zIndex:'1'}}>
-        <Sidebar/>
-      </div>
-		  <div style = {{paddingLeft:'30%', paddingTop: '2%',paddingRight: '4%'}}>
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
+          <Sidebar />
+        </div>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
         <div>
           <h1><b>Student Data</b></h1>
 
@@ -88,7 +99,8 @@ function StudentData() {
           </div>
         </div>
 		  </div>
-    </div>
+      </Holder>
+    </>
   );
 }
 

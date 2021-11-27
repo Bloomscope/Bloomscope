@@ -4,19 +4,27 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 import data from './announcements.json'
+import styled from "styled-components";
 
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 function Announcement() {
   const [title, settitle] = useState('');
   const [post, setpost] = useState('');
   return (
     <>
-      <div>
-        <Navbar />
-        <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
-      <Sidebar/>
-      </div>
-      <div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+      <Navbar />
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
+          <Sidebar />
+        </div>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
         <h1>Announcements</h1>
         <div class="post">
           <form>
@@ -42,7 +50,7 @@ function Announcement() {
             </div>
         </div>
       </div>
-      </div>
+      </Holder>
     </>
   );
 }

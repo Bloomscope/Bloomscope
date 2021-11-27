@@ -7,6 +7,16 @@ import Navbar from '../../Components/Navbar'
 import Parameter from '../../Components/parameters/parameter';
 import TabButton from '../../../Register/components/TabButton/TabButton';
 import {FaPlus} from "react-icons/fa";
+import styled from "styled-components";
+
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 
 function TestCreation() {
   const [openbutton, setopenbutton]=useState(false);
@@ -16,12 +26,13 @@ function TestCreation() {
   ];
   const defaultOption = options[0]
   return (
-    <div className='TestCreation'>
+    <>
       <Navbar />
-      <div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
-        <Sidebar/>
-      </div>
-      <div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
+          <Sidebar />
+        </div>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
         <h1>Test Creation</h1>
         <div class="box1">
           <span>Start Day Number
@@ -39,7 +50,7 @@ function TestCreation() {
           </div>
         </div>
       </div>
-    </div>
+    </Holder></>
   );
 }
 
