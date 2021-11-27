@@ -21,7 +21,7 @@ function Dashboard() {
           <Sidebar />
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
-          <h1>Dashboard</h1>
+          <h1>Dashboard temp</h1>
         </div>
         </Holder>
     </>
