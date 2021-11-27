@@ -23,7 +23,7 @@ function Suggestions() {
         </div>
         <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
         <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Suggestions</h1>
-        <div class='log'>
+        <div style = {{width:'60%'}} class='log'>
           <h2>Suggestions for you</h2>
             <div>
             {data.map((item,i)=>(
