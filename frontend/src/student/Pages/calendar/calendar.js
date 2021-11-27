@@ -27,15 +27,15 @@ function MyCalendar() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" , width:"1000px"}}>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" , width:"800px"}}>
           <h1>Calendar</h1>
-          <Calendar
+          <div style={{ backgroundColor:"white"}}><Calendar
             localizer={localizer}
             events={events}
             startAccessor="start"
             endAccessor="end"
             style={{ height: 500 }}
-          />
+          /></div>
         </div>
       </Holder>
     </>

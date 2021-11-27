@@ -32,7 +32,7 @@ function Helpline() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem"}}>
       <ContactInfo/>        
       </div>
       </Holder>
