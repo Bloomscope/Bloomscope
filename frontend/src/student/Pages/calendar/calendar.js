@@ -7,7 +7,7 @@ import styled from "styled-components";
 import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment)
 
@@ -27,15 +27,15 @@ function MyCalendar() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" , width:"800px"}}>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" , width:"60vw"}}>
           <h1>Calendar</h1>
-          <div style={{ backgroundColor:"white"}}><Calendar
+          <Calendar
             localizer={localizer}
             events={events}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 500 }}
-          /></div>
+            style={{ height: "70vh", backgroundColor:"white", padding:"2%" }}
+          />
         </div>
       </Holder>
     </>
