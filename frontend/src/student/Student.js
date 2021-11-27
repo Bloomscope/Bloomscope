@@ -6,19 +6,30 @@ import React from 'react';
 import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
 // import s from './admin.scss';
+import styled from "styled-components";
+
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+
 
 function Student() {
 return (
-	
-	<div className="layout" >
-		<Navbar/>
-		<div style = {{width:'25%', position:'fixed',zIndex:'1',overflow:'auto'}}>
-		<SideBar/>
-		</div>
-		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
+<>
+      <Navbar />
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
+          <SideBar />
+        </div>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
 			<h1>Student</h1>
 		</div>
-	</div>
+	</Holder></>
 );
 }
 
