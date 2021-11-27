@@ -18,6 +18,11 @@ return (
 		<div style = {{paddingLeft:'30%', paddingTop: '2%'}}>
 			<h1>Admin</h1>
 		</div>
+        {/* <Routes>
+          <Route path='/admin/studentData' exact element={<StudentData/>} />
+          <Route path='/admin/announcements' exact element={<Announcement/>} />
+          <Route path='/admin/testCreation' exact element={<TestCreation/>} />
+        </Routes> */}
 	</div>
 );
 }

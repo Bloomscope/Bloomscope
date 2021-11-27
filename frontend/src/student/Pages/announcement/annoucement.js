@@ -3,24 +3,26 @@ import "./styles.scss";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
 import data from "./announcements.json";
+import styled from "styled-components";
+
+const Holder = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 function Announcement() {
   return (
     <>
-      <div>
-        <Navbar />
-        <div
-          style={{
-            width: "25%",
-            position: "fixed",
-            zIndex: "1",
-            overflow: "auto",
-          }}
-        >
+      <Navbar />
+      <Holder>
+        <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "30%", paddingTop: "2%" }}>
-          <h1 style = {{width:'80%',borderBottom : '5px solid black', borderWidth: "0px 0px 5px 0px"}}>Announcements</h1>
+        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+          <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Announcements</h1>
           <div class="log">
             <h2>Logs</h2>
             <div>
@@ -34,7 +36,7 @@ function Announcement() {
             </div>
           </div>
         </div>
-      </div>
+        </Holder>
     </>
   );
 }
