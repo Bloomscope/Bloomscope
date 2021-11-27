@@ -18,9 +18,8 @@ const Parameter = ({view}) =>{
                     type='text'
                     name='parameterName'
                     value={parameterName}
-                    onChange = {(e)=>{setparameterName(e.target.value)}}
-                    
-                    required
+                    // onChange = {(e)=>{setparameterName(e.target.value)}}
+                    // required
                 />
              </label>
              <label> Number of Questions:
@@ -28,9 +27,8 @@ const Parameter = ({view}) =>{
                     type='text'
                     name='questions'
                     value={questions}
-                    onChange={(e)=>{setquestions(e.target.value)}}
-                    
-                    required
+                    // onChange={(e)=>{setquestions(e.target.value)}}
+                    // required
                 />
              </label>
                 

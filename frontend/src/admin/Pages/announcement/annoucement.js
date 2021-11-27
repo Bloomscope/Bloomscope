@@ -24,27 +24,31 @@ function Announcement() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Announcements</h1>
-        <div class="post">
+        <div style = {{float:"left",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+          <div>
+            By clicking on "Read", you (and editors of the Channel) will find all the users (participants and editors) who have read the announcement. The number next to "Read" indicates the number of users who have read the announcement. For a user to read an announcement, they must click on "Yes, I have read this".
+          </div>
+          <br/>
           <form>
-            <label class="input-text">
+            <label class="input-text" style={{fontWeight:"bold"}}>
               Title : <br/>
               <input type="text" name="title" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{height:"30px" }}/>
             </label><br/>
-            <label class="input-text">
+            <label class="input-text" style={{fontWeight:"bold"}}>
               Post : <br/>
-              <input type="text" name="post" value={post} onChange={(e)=>{setpost(e.target.value)}} style={{ height:"150px"}}/>
+              <input type="text" name="post" value={post} onChange={(e)=>{setpost(e.target.value)}} style={{ height:"30px"}}/>
             </label>
             <CustomButton type='submit' style={{float:"right"}}>POST</CustomButton>
           </form>
         </div>
-        <div class='log'>
-          <h2>Logs</h2>
-            <div>
+        <div style = {{float:"right",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+          <b>Announcements log:</b>
+            <div style={{overflowY:"scroll",height:"58vh"}}>
             {data.map((item,i)=>(
               <span key={i}>
-              <p class="logs"><b>{item.title}</b>: {item.post}</p>
+              <p><b>{item.title}</b>: ({item.time}) <br/>{item.post}</p>
               </span>
             ))}
             </div>
