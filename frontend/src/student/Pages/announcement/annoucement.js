@@ -21,20 +21,15 @@ function Announcement() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
           <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Announcements</h1>
-          <div style = {{width:'60%'}} class='log'>
-            <h2>Logs</h2>
-            <div>
-              {data.map((item, i) => (
-                <span key={i}>
-                  <p class="logs">
-                    <b>{item.title}</b>: {item.post}
-                  </p>
-                </span>
-              ))}
+          <div style={{ paddingRight: "4rem",height:"70vh",overflowY:"scroll"}}>
+            {data.map((item,i)=>(
+              <span key={i}>
+              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: <br/>{item.post}</p>
+              </span>
+            ))}
             </div>
-          </div>
         </div>
         </Holder>
     </>

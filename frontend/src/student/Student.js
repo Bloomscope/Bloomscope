@@ -26,7 +26,7 @@ return (
         <div style={{ padding: "0 0.5rem" }}>
           <SideBar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
 			<h1>Student</h1>
 		</div>
 	</Holder></>

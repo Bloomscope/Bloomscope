@@ -27,19 +27,19 @@ function StudentData() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"70vw" }}>
         <div>
           <h1><b>Student Data</b></h1>
-
+          <div style={{ backgroundColor:"white", padding:"0.8rem 2rem" }}>
           <div className = 'row'>
                 <div className = 'col1'><h3>Name</h3></div>
                 <div className = 'col2'><h3>Organisation</h3></div>
                 <div className = 'col3'><h3>Registered on</h3></div>
-                <div className = 'col4'><input type="text" placeholder="Seach Name" onChange={e=>setSearchTerm(e.target.value)} /></div>
+                <div className = 'col4'><input style={{backgroundColor:"#ffffff"}} type="text" placeholder="Seach Name" onChange={e=>setSearchTerm(e.target.value)} /></div>
           </div>
           <hr/>
 
-          <div style = {{overflowY:'scroll', height:'400px'}}>
+          <div style = {{overflowY:'scroll', height:'55vh'}}>
           {data.filter((val)=>{
             if(searchTerm == ""){
               return val
@@ -96,7 +96,7 @@ function StudentData() {
               </div>
             );
           })}
-          </div>
+          </div></div>
         </div>
 		  </div>
       </Holder>

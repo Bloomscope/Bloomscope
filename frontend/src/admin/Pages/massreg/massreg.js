@@ -82,8 +82,9 @@ function MassRegistration() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
 			<h1>Mass Registration</h1>
+      <div style={{ backgroundColor:"white",padding: "1rem 1rem" , width:"70vw", height:"65vh" }}>
       <label class="custom-file-upload">
           <input
             type="file"
@@ -94,13 +95,13 @@ function MassRegistration() {
           Custom Upload
       </label>
       <span>{msg}</span>
-      <DataTable
+      <div style={{width:"70vw", height:"60vh",overflowY:"scroll"}}><DataTable
         pagination
         highlightOnHover
         columns={columns}
         data={data}
-      />
-		</div>
+      /></div>
+		</div></div>
     </Holder>
     </>
   );

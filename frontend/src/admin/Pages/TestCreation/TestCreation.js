@@ -32,7 +32,7 @@ function TestCreation() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" }}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
         <h1>Test Creation</h1>
         <div class="box1">
           <span>Start Day Number

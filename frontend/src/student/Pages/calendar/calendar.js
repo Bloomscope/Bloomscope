@@ -27,7 +27,7 @@ function MyCalendar() {
         <div style={{ padding: "0 0.5rem" }}>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "5rem", paddingTop: "1rem" , width:"60vw"}}>
+        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" , width:"60vw"}}>
           <h1>Calendar</h1>
           <Calendar
             localizer={localizer}
