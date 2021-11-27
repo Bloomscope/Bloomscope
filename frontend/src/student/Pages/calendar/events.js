@@ -18,7 +18,7 @@ export default [
     },
   
     {
-      'title': 'DTS ENDS',
+      'title': 'Test 1',
       'start': new Date(2021, 10, 6, 0, 0, 0),
       'end': new Date(2021, 10, 13, 0, 0, 0)
     },

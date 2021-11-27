@@ -7,11 +7,11 @@ function Sidebar() {
   // const [sidebar, setSidebar] = useState(true);
 
   return (
-    <div className= "sidebar">
+    <div className= "sidebar" style = {{backgroundColor: "#ffffff",paddingLeft: "12%",paddingTop:"8%"}}>
         <nav >
             {SidebarData.map((item, index) => {
               return (
-                <div className= "element">
+                <div className= "element" >
                   <Link to={item.path}>
                     <div><div style= {{color:'black',fontSize:'20px',display:'inline-block', paddingRight: '4%'}}>{item.icon}</div>
                     <div style= {{color:'black',fontSize:'18px',display:'inline-block'}}>{item.title}</div></div>
