@@ -2,24 +2,25 @@ import React from 'react';
 import * as HiIcons from 'react-icons/hi';
 import * as FiIcons from 'react-icons/fi';
 import * as BsIcons from 'react-icons/bs';
+import * as IoIcons from 'react-icons/im'
 	
 export const SidebarData = [
   {
     title: 'Dashboard',
     path: '/student/dashboard',
-    icon: <FiIcons.FiDatabase />,
+    icon: <IoIcons.ImHome3/>,
     cName: 'nav-text'
   },
   {
     title: 'Calendar',
     path: '/student/calendar',
-    icon: <BsIcons.BsFillPenFill />,
+    icon: <BsIcons.BsFillCalendarEventFill/>,
     cName: 'nav-text'
   },
   {
     title: 'Suggestions',
     path: '/student/suggestions',
-    icon: <BsIcons.BsFillPeopleFill />,
+    icon: <BsIcons.BsFillPenFill />,
     cName: 'nav-text'
   },
   {
