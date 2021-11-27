@@ -5,7 +5,7 @@ import Navbar from '../../Home/components/Navbar'
 
 const AdminLogin = () => {
     return (
-        <div>
+        <div style = {{backgroundColor:"white", height:"100vh"}}>
         <Navbar/>
         <SignIn/>
         </div>

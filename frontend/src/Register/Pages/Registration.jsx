@@ -10,9 +10,9 @@ const Registration = () => {
   const [OpenTab_Student, SetOpenTab_Student] = useState(false);
 
   return (
-    <>
+    <div style = {{backgroundColor:"white", height:"100%"}}>
       <Navbar />
-
+      <div style={{paddingTop:"1rem"}}>
       <TabButton onClick={() => {SetOpenTab_Parent(true);SetOpenTab_Student(false)}}>
         <FaUserGraduate className="FaUserGraduate" />
         parent
@@ -21,10 +21,10 @@ const Registration = () => {
         <FaUserFriends className="FaUserGraduate" />
         student
       </TabButton>
-      
+      </div>
       <SignUp_parent view={OpenTab_Parent} />
       <SignUp_student view={OpenTab_Student} />
-    </>
+    </div>
   );
 };
 
