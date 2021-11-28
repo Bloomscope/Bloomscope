@@ -26,7 +26,7 @@ function Suggestions() {
             <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
             {data.map((item,i)=>(
               <span key={i}>
-              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.time}) <br/>{item.post}</p>
+              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}>{item.time}: <br/>{item.post}</p>
               </span>
             ))}
             </div>

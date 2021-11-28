@@ -7,38 +7,31 @@
         "email": "abcyz@gmail.com",
         "subscribedOn": "12/11/2021",
         "organisation": "self",
-        "test": [
+        "test": {
+          "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+          "result": [
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64,
-                "t3": 24
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84,
-                "t3": 24
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66,
-                "t3": 24
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44,
-                "t3": 24
-              },
-              {
-                  "name": "P5",
-                  "t1": 20,
-                  "t2": 50,
-                  "t3": 24
-                }
-            
+              "label": "Test1",
+              "backgroundColor": "#0090f8",
+              "data": [56, 23, 55, 56, 57, 50]
+            },
+            {
+              "label": "Test2",
+              "backgroundColor": "#33a6f9",
+              "data": [22, 17, 32, 47, 62, 48]
+            },
+            {
+              "label": "Test3",
+              "backgroundColor": "#66bcfb",
+              "data": [46, 73, 25, 76, 27, 55]
+            },
+            {
+              "label": "Test4",
+              "backgroundColor": "#8ccdfc",
+              "data": [26, 40, 80, 50, 62, 58]
+            }
           ]
+      }
     },
     {
         "id": 2,
@@ -48,182 +41,132 @@
         "email": "defvu@gmail.com",
         "subscribedOn": "14/2/2021",
         "organisation": "Organisation2",
-        "test": [
+        "test": {
+          "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+          "result": [
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
+              "label": "Test1",
+              "backgroundColor": "#0090f8",
+              "data": [56, 23, 55, 56, 57, 50]
+            },
+            {
+              "label": "Test2",
+              "backgroundColor": "#33a6f9",
+              "data": [22, 17, 32, 47, 62, 48]
+            },
+            {
+              "label": "Test3",
+              "backgroundColor": "#66bcfb",
+              "data": [46, 73, 25, 76, 27, 55]
+            },
+            {
+              "label": "Test4",
+              "backgroundColor": "#8ccdfc",
+              "data": [26, 40, 80, 50, 62, 58]
+            }
           ]
+      }
     },
     {
         "id": 3,
-        "firstname": "Name31",
-        "lastname": "lastName3",
+        "firstname": "Name13",
+        "lastname": "lastName13",
         "phone": "+91 123456987",
-        "email": "defvdau@gmail.com",
-        "subscribedOn": "02/11/2021",
-        "organisation": "Organisation3",
-        "test": [
+        "email": "de132fvu@gmail.com",
+        "subscribedOn": "14/3/2021",
+        "organisation": "Organisation13",
+        "test": {
+          "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+          "result": [
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
-          ]
-    },
-    {
-        "id": 3,
-        "firstname": "Name32",
-        "lastname": "lastName3",
-        "phone": "+91 123456987",
-        "email": "defvdau@gmail.com",
-        "subscribedOn": "02/11/2021",
-        "organisation": "Organisation3",
-        "test": [
+              "label": "Test1",
+              "backgroundColor": "#0090f8",
+              "data": [56, 23, 55, 56, 57, 50]
+            },
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
-          ]
-    },
-    {
-        "id": 3,
-        "firstname": "Name3",
-        "lastname": "lastName3",
-        "phone": "+91 123456987",
-        "email": "defvdau@gmail.com",
-        "subscribedOn": "02/11/2021",
-        "organisation": "Organisation3",
-        "test": [
+              "label": "Test2",
+              "backgroundColor": "#33a6f9",
+              "data": [22, 17, 32, 47, 62, 48]
+            },
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
-          ]
-    },
-    {
-        "id": 3,
-        "firstname": "Name3",
-        "lastname": "lastName3",
-        "phone": "+91 123456987",
-        "email": "defvdau@gmail.com",
-        "subscribedOn": "02/11/2021",
-        "organisation": "Organisation3",
-        "test": [
+              "label": "Test3",
+              "backgroundColor": "#66bcfb",
+              "data": [46, 73, 25, 76, 27, 55]
+            },
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
+              "label": "Test4",
+              "backgroundColor": "#8ccdfc",
+              "data": [26, 40, 80, 50, 62, 58]
+            }
           ]
+      }
     },
     {
         "id": 4,
-        "firstname": "Name",
-        "lastname": "lastName",
+        "firstname": "Name23",
+        "lastname": "lastName23",
         "phone": "+91 123456987",
-        "email": "defvadwu@gmail.com",
-        "subscribedOn": "14/10/2021",
-        "organisation": "Organisation4",
-        "test": [
+        "email": "abcdefvu@gmail.com",
+        "subscribedOn": "15/2/2021",
+        "organisation": "Organisation23",
+        "test": {
+          "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+          "result": [
             {
-                "name": "P1",
-                "t1": 40,
-                "t2": 64
-              },
-              {
-                "name": "P2",
-                "t1": 40,
-                "t2": 84
-              },
-              {
-                "name": "P3",
-                "t1": 40,
-                "t2": 66
-              },{
-                "name": "P4",
-                "t1": 40,
-                "t2": 44
-              }
-            
+              "label": "Test1",
+              "backgroundColor": "#0090f8",
+              "data": [56, 23, 55, 56, 57, 50]
+            },
+            {
+              "label": "Test2",
+              "backgroundColor": "#33a6f9",
+              "data": [22, 17, 32, 47, 62, 48]
+            },
+            {
+              "label": "Test3",
+              "backgroundColor": "#66bcfb",
+              "data": [46, 73, 25, 76, 27, 55]
+            },
+            {
+              "label": "Test4",
+              "backgroundColor": "#8ccdfc",
+              "data": [26, 40, 80, 50, 62, 58]
+            }
           ]
+      }
+    },
+    {
+        "id": 2,
+        "firstname": "Name42",
+        "lastname": "lastName42",
+        "phone": "+91 123456987",
+        "email": "defvu43@gmail.com",
+        "subscribedOn": "04/12/2021",
+        "organisation": "Organisation42",
+        "test": {
+          "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+          "result": [
+            {
+              "label": "Test1",
+              "backgroundColor": "#0090f8",
+              "data": [56, 23, 55, 56, 57, 50]
+            },
+            {
+              "label": "Test2",
+              "backgroundColor": "#33a6f9",
+              "data": [22, 17, 32, 47, 62, 48]
+            },
+            {
+              "label": "Test3",
+              "backgroundColor": "#66bcfb",
+              "data": [46, 73, 25, 76, 27, 55]
+            },
+            {
+              "label": "Test4",
+              "backgroundColor": "#8ccdfc",
+              "data": [26, 40, 80, 50, 62, 58]
+            }
+          ]
+      }
     }
 ]

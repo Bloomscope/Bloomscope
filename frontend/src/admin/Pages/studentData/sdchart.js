@@ -56,7 +56,7 @@ const MyChart = () => {
 
   return (
     <>
-      <Bar data={data} style={{width:"20vw"}} options={options} />
+      <Bar data={data} style={{width:"60vw"}} options={options} />
     </>
   );
 };

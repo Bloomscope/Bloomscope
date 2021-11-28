@@ -1,10 +1,67 @@
 [
     {
-        "title": "Time",
-        "post": "Submit before 12pm"
+        "title": "First Announcement",
+        "time": "01/11/2021",
+        "post": "Welcome to Bloomscope! We have here a platform for you to grow and learn on every step you take with us. We wish you a happy journey with us!"
+    },
+    {
+        "title": "Test1 assigned",
+        "time": "03/11/2021",
+        "post": "All the test 1 questions were randomly assigned. Make sure to mark 1 of the 4 options you think is the right one. Try avoinding guessing."
+    },
+    {
+        "title": "Guest Lecture",
+        "time": "04/11/2021",
+        "post": "We are delighted to announce the new speaker in our guest lecture series. It will be held on 14th November, 2021. We would love if you could attend the lecture by Prof XYZ from ABC. You can find the link to join on our website."
+    },
+    {
+        "title": "Queries during a test",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries whilst your exam is going on, you can immediately contact 1234567890 or send a mail at abc@gmail.com."
+    },
+    {
+        "title": "Guest Lecture",
+        "time": "18/11/2021",
+        "post": "We are delighted to announce the new speaker in our guest lecture series. It will be held on 24th November, 2021. We would love if you could attend the lecture by Prof XYZ from ABC. You can find the link to join on our website."
+    },
+    {
+        "title": "Guest Lecture",
+        "time": "22/11/2021",
+        "post": "We are delighted to announce the new speaker in our guest lecture series. It will be held on 30th November, 2021. We would love if you could attend the lecture by Prof XYZ from ABC. You can find the link to join on our website."
     },
     {
         "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "title": "Doubts",
+        "time": "12/11/2021",
         "post": "Incase of doubts/qeuries contact 1234567890."
     }
 ]

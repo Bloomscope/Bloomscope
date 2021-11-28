@@ -1,10 +1,42 @@
 [
     {
-        "title": "Time",
-        "post": "Submit before 12pm"
+        "time": "01/11/2021",
+        "post": "Attention is one of the major components of memory. In order for information to move from your short-term memory into your long-term memory, you need to actively attend to this information. Try to study in a place free of distractions such as television, music, and other diversions."
     },
     {
-        "title": "Doubts",
+        "time": "03/11/2021",
+        "post": "Mnemonic devices are a technique often used by students to aid in recall. A mnemonic is simply a way to remember information. For example, you might associate a term you need to remember with a common item that you are very familiar with. The best mnemonics are those that utilize positive imagery, humor, or novelty."
+    },
+    {
+        "time": "04/11/2021",
+        "post": "Studying materials over a number of sessions gives you the time you need to adequately process information. Research has continuously shown that students who study regularly remember the material far better than those who do all of their studying in one marathon session"
+    },
+    {
+        "time": "12/11/2021",
+        "post": "In order to recall information, you need to encode what you are studying into long-term memory. One of the most effective encoding techniques is known as elaborative rehearsal. An example of this technique would be to read the definition of a key term, study the definition of that term, and then read a more detailed description of what that term means. After repeating this process a few times, you'll probably notice that recalling the information is much easier."
+    },
+    {
+        "time": "18/11/2021",
+        "post": "We are delighted to announce the new speaker in our guest lecture series. It will be held on 24th November, 2021. We would love if you could attend the lecture by Prof XYZ from ABC. You can find the link to join on our website."
+    },
+    {
+        "time": "22/11/2021",
+        "post": "We are delighted to announce the new speaker in our guest lecture series. It will be held on 30th November, 2021. We would love if you could attend the lecture by Prof XYZ from ABC. You can find the link to join on our website."
+    },
+    {
+        "time": "30/11/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "time": "12/12/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "time": "15/12/2021",
+        "post": "Incase of doubts/qeuries contact 1234567890."
+    },
+    {
+        "time": "17/12/2021",
         "post": "Incase of doubts/qeuries contact 1234567890."
     }
 ]

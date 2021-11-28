@@ -3,9 +3,42 @@ import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar';
 import Popup from 'reactjs-popup';
-import data from './data.json';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import styled from "styled-components";
+import data from './data.json';
+import Chart from 'chart.js/auto'
+import { Bar } from "react-chartjs-2";
+
+
+// const CHART_COLORS = [
+//     "#0090f8",
+//     "#33a6f9",
+//     "#66bcfb",
+//     "#8ccdfc",
+//     "#b2defd",
+//     "#d9eefe"
+//     // "#fde76e",
+//     // "#fced86",
+//     // "#ffffb7",
+//     // "#fefeeb"
+//   ];
+
+  const options = {
+    type: 'bar',
+    legend: {
+      position: "top",
+      labels: {
+        generateLabels: function(chart) {
+          return Chart.defaults.global.legend.labels.generateLabels
+            .apply(this, [chart])
+            .filter(function(item, i) {
+              return i > 4;
+            });
+        },
+        boxWidth: 8,
+        usePointStyle: true
+      }
+    }
+  };
 
 const Holder = styled.div`
   display: flex;
@@ -59,29 +92,12 @@ function StudentData() {
                         Id: {val.id}<br/>
                         Student name: {val.firstname} {val.lastname} <br/>
                         Contact: {val.phone}/{val.email}<hr/>
-                        <ResponsiveContainer width="100%" height="60%">
-                          <BarChart
-                            width={500}
-                            height={200}
-                            data={val.test}
-                            margin={{
-                              top: 5,
-                              right: 30,
-                              left: 20,
-                              bottom: 5,
-                            }}
-                          >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="t1" fill="#8884d8" />
-                            <Bar dataKey="t2" fill="#82ca9d" />
-                            <Bar dataKey="t3" fill="#00000f" />
-                            <Bar dataKey="t4" fill="#00f000" />
-                          </BarChart>
-                        </ResponsiveContainer>
+                        <Bar data={{
+                                      labels: ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+                                      datasets: [val.test.result].flat()
+                                  }} 
+                        style={{width:"20vw"}} 
+                        options={options} />
                         <form>
                           <label class="input-text">
                             Send Suggestion : <br/>

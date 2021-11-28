@@ -1,26 +1,26 @@
 [
     {
         "name": "Test1",
-        "from": "12",
-        "to": "15",
+        "from": "1",
+        "to": "7",
         "duration": "3"
     },
     {
         "name": "Test2",
-        "from": "12",
+        "from": "10",
         "to": "15",
-        "duration": "3"
+        "duration": "1.5"
     },
     {
         "name": "Test3",
-        "from": "12",
-        "to": "15",
+        "from": "20",
+        "to": "30",
         "duration": "3"
     },
     {
         "name": "Test4",
-        "from": "11",
-        "to": "15",
-        "duration": "3"
+        "from": "35",
+        "to": "45",
+        "duration": "5"
     }
 ]
