@@ -7,31 +7,31 @@ import * as IoIcons from 'react-icons/im'
 export const SidebarData = [
   {
     title: 'Dashboard',
-    path: '/student/dashboard',
+    path: '/parent/dashboard',
     icon: <IoIcons.ImHome3/>,
     cName: 'nav-text'
   },
   {
     title: 'Calendar',
-    path: '/student/calendar',
+    path: '/parent/calendar',
     icon: <BsIcons.BsFillCalendarEventFill/>,
     cName: 'nav-text'
   },
   {
     title: 'Suggestions',
-    path: '/student/suggestions',
+    path: '/parent/suggestions',
     icon: <BsIcons.BsFillPenFill />,
     cName: 'nav-text'
   },
   {
     title: 'Announcements',
-    path: '/student/announcements',
+    path: '/parent/announcements',
     icon: <BsIcons.BsFillPeopleFill />,
     cName: 'nav-text'
   },
   {
     title: 'Helpline',
-    path: '/student/helpline',
+    path: '/parent/helpline',
     icon: <HiIcons.HiOutlineSpeakerphone />,
     cName: 'nav-text'
 },

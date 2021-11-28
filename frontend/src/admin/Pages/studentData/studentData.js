@@ -96,15 +96,16 @@ function StudentData() {
                                       labels: ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
                                       datasets: [val.test.result].flat()
                                   }} 
-                        style={{width:"20vw"}} 
+                        style={{width:"20vw",height:"45vh"}} 
                         options={options} />
+                        <br/>
                         <form>
                           <label class="input-text">
                             Send Suggestion : <br/>
                             <input type="text" name="post" value={suggestion} onChange={(e)=>{setsuggestion(e.target.value)}} style={{ height:"30px"}}/>
                           </label>
                           <button className='custom-button' type='submit' style={{float:"right"}}>Send</button>
-                        </form>
+                        </form><br/>
                       </div>
                   </Popup>
                 </div>
