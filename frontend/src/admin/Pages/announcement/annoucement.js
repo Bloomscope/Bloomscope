@@ -28,7 +28,7 @@ function Announcement() {
         <h1>Announcements</h1>
         <div style = {{float:"left",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
           <div>
-            By clicking on "Read", you (and editors of the Channel) will find all the users (participants and editors) who have read the announcement. The number next to "Read" indicates the number of users who have read the announcement. For a user to read an announcement, they must click on "Yes, I have read this".
+          You can post announcements to your class on the class stream. Announcements are posts with no assignments. You can use them to give notices or reminders to your students. Announcements appear in chronological order. The date and time are automatically noted so to post an announcement, enter the title and the content of your announcement. 
           </div>
           <br/>
           <form>
