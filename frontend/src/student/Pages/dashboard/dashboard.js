@@ -55,7 +55,7 @@ function Dashboard() {
                             7. Make sure to manage your time and not miss out on questions<br/>
                             8. Keep the number of questions in mind<br/><br/>
                           </div>
-                          <button className='custom-button'> Start </button>
+                          <button className='custom-button' to ='/student/test'> Start </button>
                         </div>
                     </Popup>
                 </div>
