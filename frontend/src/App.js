@@ -10,6 +10,7 @@ import Announcement from './admin/Pages/announcement/annoucement';
 import StudentData from './admin/Pages/studentData/studentData';
 import MassRegistration from './admin/Pages/massreg/massreg';
 import TestCreation from './admin/Pages/TestCreation/TestCreation';
+import Token from './admin/Pages/Token/token';
 
 import Student from './student/Student';
 import SAnnouncement from './student/Pages/announcement/annoucement';
@@ -40,6 +41,7 @@ return (
         <Route path='/admin/announcements' exact element={<Announcement/>} />
         <Route path='/admin/testCreation' exact element={<TestCreation/>} />
         <Route path='/admin/massregistration' exact element={<MassRegistration/>} />
+        <Route path='/admin/token' exact element={<Token/>} />
 		
 		<Route path='/student' exact element={<Student/>}/>
 		<Route path='/student/dashboard' exact element={<Dashboard/>} />

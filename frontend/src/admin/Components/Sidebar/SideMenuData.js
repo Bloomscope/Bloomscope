@@ -11,7 +11,7 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'TestCreation',
+    title: 'Test Creation',
     path: '/admin/testCreation',
     icon: <BsIcons.BsFillPenFill />,
     cName: 'nav-text'
@@ -21,6 +21,12 @@ export const SidebarData = [
     path: '/admin/announcements',
     icon: <HiIcons.HiOutlineSpeakerphone />,
     cName: 'nav-text'
+},
+{
+  title: 'Token Verification',
+  path: '/admin/token',
+  icon: <HiIcons.HiOutlineCheck />,
+  cName: 'nav-text'
 },
 {
   title: 'Mass Registration',
