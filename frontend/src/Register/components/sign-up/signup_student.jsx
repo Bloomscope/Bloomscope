@@ -1,33 +1,41 @@
 import React, {useState} from 'react';
-
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
 import './sign-up.styles.scss';
+import { useNavigate  } from "react-router";
+
+// const Login = (props) => { 
+//   const handleLogin = async (userDetail) => {
+//    const success = await userLogin(userDetail);
+//    if(success) props.history.push('/parentRegistration');
+//   }
+// }
+  
 
 const SignUp_student = () =>{
-
-  const onSubmitClick = (e)=>{
-    // e.preventDefault()
-    // console.log("You pressed login")
-    // let opts = {
-    //   'username': username,
-    //   'password': password
-    // }
-    // console.log(opts)
-    // fetch('/api/login', {
-    //   method: 'post',
-    //   body: JSON.stringify(opts)
-    // }).then(r => r.json())
-    //   .then(token => {
-    //     if (token.access_token){
-    //       console.log(token)          
-    //     }
-    //     else {
-    //       console.log("Please type in correct username/password")
-    //     }
-    //   })
-    
-  }
+    const nav = useNavigate();
+    const onSubmitClick = (e)=>{
+      // e.preventDefault()
+      // console.log("You pressed login")
+      // let opts = {
+      //   'username': username,
+      //   'password': password
+      // }
+      // console.log(opts)
+      // fetch('/api/login', {
+      //   method: 'post',
+      //   body: JSON.stringify(opts)
+      // }).then(r => r.json())
+      //   .then(token => {
+      //     if (token.access_token){
+      //       console.log(token)          
+      //     }
+      //     else {
+      //       console.log("Please type in correct username/password")
+      //     }
+      //   })
+      nav('/parentRegistration');
+    }
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -42,7 +50,7 @@ const SignUp_student = () =>{
       <>
       <div className='sign-up' >
         <h2 className='title'>Student Registration</h2>
-        <form className='sign-up-form' onSubmit=''>
+        <form className='sign-up-form' onSubmit='required()'>
           <FormInput
             type='text'
             name='firstName'
