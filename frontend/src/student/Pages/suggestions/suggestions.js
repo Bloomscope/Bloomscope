@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
@@ -12,6 +12,7 @@ const Holder = styled.div`
     flex-direction: column;
   }
 `;
+
 
 function Suggestions() {
   return (

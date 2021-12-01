@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home/index';
-import Registration from './Register/Pages/Registration';
+import StudentRegistration from './Register/Pages/studentRegistration';
+import ParentRegistration from './Register/Pages/parentRegistration';
 import Login from './Register/Pages/Login';
 import AdminLogin from './Register/Pages/admin';
 
@@ -32,7 +33,8 @@ return (
 	<Router>
 	<Routes>
 	    <Route path='/' exact element={<Home/>} />	
-		<Route path='/Registration' element={<Registration/>} />
+		<Route path='/studentRegistration' element={<StudentRegistration/>} />
+		<Route path='/parentRegistration' element={<ParentRegistration/>} />
 		<Route path='/Login' element={<Login/>} />		
 		<Route path='/adminLogin' exact element={<AdminLogin/>}/>
 

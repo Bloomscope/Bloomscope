@@ -10,7 +10,7 @@ const Navbar = () => {
         <img src={logo} alt="Logo" />
         
         <NavMenu>
-          <NavLink to="/Registration">
+          <NavLink to="/studentRegistration">
             Register
           </NavLink>
           <NavLink to="/Login">

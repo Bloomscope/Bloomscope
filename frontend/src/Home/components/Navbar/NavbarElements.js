@@ -73,7 +73,7 @@ export const NavDrop = ({ view }) => {
           <NavLink to="/Login">
             login
           </NavLink>
-          <NavLink to="/Registration">
+          <NavLink to="/studentRegistration">
             Register
           </NavLink>
           <NavLink to="/admin">

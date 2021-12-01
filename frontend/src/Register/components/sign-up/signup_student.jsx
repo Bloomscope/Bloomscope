@@ -2,10 +2,31 @@ import React, {useState} from 'react';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
-
 import './sign-up.styles.scss';
 
-const SignUp_student = ({view}) =>{
+const SignUp_student = () =>{
+  const onSubmitClick = (e)=>{
+    // e.preventDefault()
+    // console.log("You pressed login")
+    // let opts = {
+    //   'username': username,
+    //   'password': password
+    // }
+    // console.log(opts)
+    // fetch('/api/login', {
+    //   method: 'post',
+    //   body: JSON.stringify(opts)
+    // }).then(r => r.json())
+    //   .then(token => {
+    //     if (token.access_token){
+    //       console.log(token)          
+    //     }
+    //     else {
+    //       console.log("Please type in correct username/password")
+    //     }
+    //   })
+  }
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
@@ -17,7 +38,7 @@ const SignUp_student = ({view}) =>{
     const [lineClicked, setLineClicked] = useState(0);
     return (
       <>
-      <div className='sign-up' style={view ? {display:'block'} : {display:'none'}}>
+      <div className='sign-up' >
         <h2 className='title'>Student Registration</h2>
         <form className='sign-up-form' onSubmit=''>
           <FormInput
@@ -84,8 +105,8 @@ const SignUp_student = ({view}) =>{
             label='Confirm Password'
             required
           />
-          <CustomButton type='submit'>SIGN UP</CustomButton>
-        <CustomButton type='submit'>PAYMENT</CustomButton>
+          <CustomButton onClick={onSubmitClick} type='submit'>SIGN UP</CustomButton>
+        {/* <CustomButton type='submit'>PAYMENT</CustomButton> */}
         </form>
       </div>
 
