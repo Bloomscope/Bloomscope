@@ -18,7 +18,7 @@ import Dashboard from './student/Pages/dashboard/dashboard';
 import Suggestions from './student/Pages/suggestions/suggestions';
 import Helpline from './student/Pages/helpline/helpline';
 import Calendar from './student/Pages/calendar/calendar';
-import Test from './student/Pages/test/test';
+import Quiz from './student/Pages/Quiz/Quiz';
 
 import Parent from './parent/Parent';
 import PAnnouncement from './parent/Pages/announcement/annoucement';
@@ -48,7 +48,7 @@ return (
         <Route path='/student/announcements' exact element={<SAnnouncement/>} />
         <Route path='/student/suggestions' exact element={<Suggestions/>} />
         <Route path='/student/helpline' exact element={<Helpline/>} />
-        <Route path='/student/test' exact element={<Test/>} />
+        <Route path='/student/Quiz' exact element={<Quiz/>} />
         <Route path='/student/calendar' exact element={<Calendar/>} />
 	
 		<Route path='/parent' exact element={<Parent/>}/>
