@@ -13,30 +13,6 @@ import { useNavigate  } from "react-router";
   
 
 const SignUp_student = () =>{
-    const nav = useNavigate();
-    const onSubmitClick = (e)=>{
-      // e.preventDefault()
-      // console.log("You pressed login")
-      // let opts = {
-      //   'username': username,
-      //   'password': password
-      // }
-      // console.log(opts)
-      // fetch('/api/login', {
-      //   method: 'post',
-      //   body: JSON.stringify(opts)
-      // }).then(r => r.json())
-      //   .then(token => {
-      //     if (token.access_token){
-      //       console.log(token)          
-      //     }
-      //     else {
-      //       console.log("Please type in correct username/password")
-      //     }
-      //   })
-      nav('/parentRegistration');
-    }
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
@@ -46,6 +22,35 @@ const SignUp_student = () =>{
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [lineClicked, setLineClicked] = useState(0);
+    
+    const nav = useNavigate();
+    const onSubmitClick = (e)=>{
+      e.preventDefault()
+      console.log("You pressed button")
+      let opts = {
+        'fname': firstName,
+        'mname': middleName,
+        'lname': lastName,
+        'dob': dob,
+        'email': email,
+        'phone': contact,
+        'password': password,
+        'user_type_id': '1' //check later
+      }
+      console.log(opts)
+      fetch('api/register_user', {
+        method: 'post',
+        body: JSON.stringify(opts)
+      }).then(r => r.json())
+        .then(r => {
+          console.log(r)
+          if(r.status == 'success'){
+            nav('/parentRegistration', {state: r});
+          }
+        })
+        .catch(error => console.log(error))
+    }
+   
     return (
       <>
       <div className='sign-up' >

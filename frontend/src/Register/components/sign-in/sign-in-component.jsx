@@ -1,43 +1,75 @@
-import  React from 'react';
+import  React, {useState} from 'react';
 import CustomButton from '../custom-button/custom-button-component';
 import FormInput from '../form-input/form-input.component'
 import './sign-in-styles.scss';
+import { useNavigate  } from "react-router";
 
+// const Login = (props) => { 
+//   const handleLogin = async (userDetail) => {
+//    const success = await userLogin(userDetail);
+//    if(success) props.history.push('/parentRegistration');
+//   }
+// }
+  
 
-class SignIn extends React.Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            email: '',
-            password:''
-        }
+const SignIn = () =>{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    const nav = useNavigate();
+    const onSubmitClick = (e)=>{
+      e.preventDefault()
+      console.log("You pressed button")
+      let opts = {
+        'email': email,
+        'password': password,
+      }
+      console.log(opts)
+      fetch('api/login', {
+        method: 'post',
+        body: JSON.stringify(opts)
+      }).then(r => r.json())
+        .then(token => {
+            if (token.access_token){
+                console.log(token) 
+                if(token.type == 1)
+                    nav('/student', {state: token});
+                else if(token.type == 2)
+                    nav('/parent', {state: token});         
+            }
+            else {
+                console.log("Please type in correct username/password")
+            }
+        })
+        .catch(error => console.log(error))
     }
-
-    handleSubmit=event=>{
-        event.preventDefault();
-        this.setState=({email:'', password:''});
-    }
-
-    handleChange=event =>{
-        const {value,name}= event.target;
-
-        this.setState=({[name]:value});
-    }
-    render(){
-        return(
-            <div className= "sign-in">
-                <h2>Log-In</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <FormInput name="email" type="email" label="Email" handleChange={this.handleChange} value={this.state.email}  required/>
-                    <FormInput name="password" type="password" label="Password" handleChange={this.handleChange} value={this.state.password}  required/>
-                    
-                    <div className='buttons'>
-                        <CustomButton type='submit'> Sign in </CustomButton>
-                    </div>
-                </form>
+   
+    return (
+        <div className= "sign-in">
+        <h2>Log-In</h2>
+        <form>
+        <FormInput
+            type='email'
+            name='email'
+            value={email}
+            onChange={(e)=>{setEmail(e.target.value)}}
+            label='Email'
+            required
+          />
+          <FormInput
+            type='password'
+            name='password'
+            value={password}
+            onChange={(e)=>{setPassword(e.target.value)}}
+            label='Password'
+            required
+          />
+            <div className='buttons'>
+                <CustomButton onClick= {onSubmitClick} type='submit'> Sign in </CustomButton>
             </div>
-        );
-    }
+        </form>
+    </div>
+    );
 }
+
 export default SignIn;
