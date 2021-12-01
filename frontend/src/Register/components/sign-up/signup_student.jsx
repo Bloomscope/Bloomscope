@@ -5,6 +5,7 @@ import CustomButton from '../custom-button/custom-button-component';
 import './sign-up.styles.scss';
 
 const SignUp_student = () =>{
+
   const onSubmitClick = (e)=>{
     // e.preventDefault()
     // console.log("You pressed login")
@@ -25,6 +26,7 @@ const SignUp_student = () =>{
     //       console.log("Please type in correct username/password")
     //     }
     //   })
+    
   }
 
     const [firstName, setFirstName] = useState('');
