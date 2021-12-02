@@ -3,7 +3,7 @@ import CustomButton from '../custom-button/custom-button-component';
 import FormInput from '../form-input/form-input.component'
 import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
-
+// import {login, useAuth, logout} from "../../../auth"
 // const Login = (props) => { 
 //   const handleLogin = async (userDetail) => {
 //    const success = await userLogin(userDetail);
@@ -31,6 +31,7 @@ const SignIn = () =>{
       }).then(r => r.json())
         .then(token => {
             if (token.access_token){
+              // login(token)
                 console.log(token) 
                 if(token.type == 1)
                     nav('/student', {state: token});
@@ -43,7 +44,7 @@ const SignIn = () =>{
         })
         .catch(error => console.log(error))
     }
-   
+    // const [logged] = useAuth();
     return (
         <div className= "sign-in">
         <h2>Log-In</h2>
