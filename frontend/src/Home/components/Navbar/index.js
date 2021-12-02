@@ -13,8 +13,11 @@ const Navbar = () => {
           <NavLink to="/studentRegistration">
             Register
           </NavLink>
-          <NavLink to="/Login">
-            Login
+          <NavLink to="/studentSignIn">
+            Student
+          </NavLink>
+          <NavLink to="/parentSignIn">
+            Parent
           </NavLink>
           <NavLink to="/adminLogin">
             Admin

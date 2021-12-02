@@ -41,7 +41,7 @@ const AdminLogin = () => {
         <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
-                <h2>Log-In</h2>
+                <h2>Admin Log-In</h2>
                 <form>
                 <FormInput
                     type='email'

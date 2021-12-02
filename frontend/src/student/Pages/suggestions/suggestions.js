@@ -4,6 +4,8 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import data from './suggestions.json'
 import styled from "styled-components";
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import {login, useAuth, logout} from "../../../auth"
 
 const Holder = styled.div`
   display: flex;
@@ -15,8 +17,10 @@ const Holder = styled.div`
 
 
 function Suggestions() {
+  const [logged] = useAuth();
   return (
     <>
+    {logged?<>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -34,6 +38,10 @@ function Suggestions() {
       </div>
       </Holder>
     </>
+      :
+      <>
+      <NotLoggedIn/>
+      </>}</>
   );
 }
 

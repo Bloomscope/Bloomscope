@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home/index';
 import StudentRegistration from './Register/Pages/studentRegistration';
 import ParentRegistration from './Register/Pages/parentRegistration';
-import Login from './Register/Pages/Login';
+import StudentSignIn from './Register/Pages/StudentSignIn';
+import ParentSignIn from './Register/Pages/ParentSignIn';
+import Logout from './Register/Pages/logout';
 import AdminLogin from './Register/Pages/admin';
 
 import Admin from './admin/Admin';
@@ -33,11 +35,13 @@ return (
 	<Router>
 	<Routes>
 	    <Route path='/' exact element={<Home/>} />	
+	    <Route path='/logout' exact element={<Logout/>} />	
 		<Route path='/studentRegistration' element={<StudentRegistration/>} />
 		<Route path='/parentRegistration' element={<ParentRegistration/>} />
-		<Route path='/Login' element={<Login/>} />		
+		<Route path='/studentSignIn' element={<StudentSignIn/>} />		
+		<Route path='/parentSignIn' element={<ParentSignIn/>} />		
 		<Route path='/adminLogin' exact element={<AdminLogin/>}/>
-
+		
 		<Route path='/admin' exact element={<Admin/>}/>
 		<Route path='/admin/studentData' exact element={<StudentData/>} />
         <Route path='/admin/announcements' exact element={<Announcement/>} />

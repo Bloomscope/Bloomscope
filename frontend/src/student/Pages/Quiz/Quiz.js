@@ -5,6 +5,8 @@ import Navbar from "../../Components/Navbar";
 import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
 import Result from './pages/Result/Result';
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import {login, useAuth, logout} from "../../../auth"
 
 function Quiz() {
   const quizDataInitialFormatted = {
@@ -87,8 +89,10 @@ function Quiz() {
     setCurrentPage(1);
   };
 
+  const [logged] = useAuth();
   return (
     <>
+    {logged?<>
     <Navbar />
     <div className={styles.quiz}>
       {isStartPage && (
@@ -127,7 +131,12 @@ function Quiz() {
         </div>
       )}
     </div>
+    
     </>
+      :
+      <>
+      <NotLoggedIn/>
+      </>}</>
   );
 }
 

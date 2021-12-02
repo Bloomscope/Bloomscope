@@ -1,19 +1,13 @@
 import  React, {useState} from 'react';
-import CustomButton from '../custom-button/custom-button-component';
-import FormInput from '../form-input/form-input.component'
+import CustomButton from '../components/custom-button/custom-button-component';
+import FormInput from '../components/form-input/form-input.component'
 import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
-import {login, useAuth, logout} from "../../../auth"
+import Navbar from '../../Home/components/Navbar'
+import {login, useAuth, logout} from "../../auth"
 import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
-// const Login = (props) => { 
-//   const handleLogin = async (userDetail) => {
-//    const success = await userLogin(userDetail);
-//    if(success) props.history.push('/parentRegistration');
-//   }
-// }
-  
 
-const SignIn = () =>{
+const ParentSignIn = () =>{
   const [logged] = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,8 +44,10 @@ const SignIn = () =>{
     return (
       <>
         {!logged? 
+            <div style = {{backgroundColor:"white", height:"100vh"}}>
+            <Navbar/>
             <div className= "sign-in">
-              <h2>Log-In</h2>
+              <h2>Parent Log-In</h2>
               <form>
               <FormInput
                   type='email'
@@ -74,13 +70,14 @@ const SignIn = () =>{
                   </div>
               </form>
           </div>
+          </div>
           :
           <>
-          <Navigate  to = "/student" />
+          <Navigate  to = "/parent" />
           </>
       }
       </>
     );
 }
 
-export default SignIn;
+export default ParentSignIn;

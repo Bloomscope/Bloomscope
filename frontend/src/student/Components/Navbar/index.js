@@ -11,7 +11,7 @@ const Navbar = () => {
         {/* <Bars onClick={() => SetNavMobile(!NavMobile)} /> */}
         <img src={logo} alt="Logo" />
         <NavMenu>
-          <NavLink onClick={() => logout()}>
+          <NavLink onClick={() => logout()} to = "/logout">
             Logout
           </NavLink>
         </NavMenu>

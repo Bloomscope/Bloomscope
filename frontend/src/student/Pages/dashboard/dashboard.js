@@ -3,6 +3,9 @@ import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import Chart from './dchart'
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import {login, useAuth, logout} from "../../../auth"
+import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
 import styled from "styled-components";
 import Popup from 'reactjs-popup';
 
@@ -15,8 +18,10 @@ const Holder = styled.div`
 `;
 
 function Dashboard() {
+  const [logged] = useAuth();
   return (
     <>
+      {logged?<>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -117,7 +122,9 @@ function Dashboard() {
           </div>
         </div>
         </Holder>
-    </>
+    </>:<>
+          <NotLoggedIn/>
+          </>}</>
   );
 }
 
