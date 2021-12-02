@@ -6,7 +6,7 @@ import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
 import Result from './pages/Result/Result';
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login, useAuth, logout} from "../../../auth"
+import {login, useAuth, logout, getSessionState} from "../../../auth"
 
 function Quiz() {
   const quizDataInitialFormatted = {
@@ -88,11 +88,12 @@ function Quiz() {
     setQuizData(quizDataInitialFormatted);
     setCurrentPage(1);
   };
+  const access = getSessionState();
 
   const [logged] = useAuth();
   return (
     <>
-    {logged?<>
+    {logged&&access.type==1?<>
     <Navbar />
     <div className={styles.quiz}>
       {isStartPage && (

@@ -5,6 +5,8 @@ import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 import data from './announcements.json'
 import styled from "styled-components";
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
   display: flex;
@@ -15,10 +17,13 @@ const Holder = styled.div`
 `;
 
 function Announcement() {
+	const [logged] = useAuth();
+	const access = getSessionState();
   const [title, settitle] = useState('');
   const [post, setpost] = useState('');
   return (
-    <>
+    <>{logged&&access.type==3?
+      <>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -55,7 +60,11 @@ function Announcement() {
         </div>
       </div>
       </Holder>
-    </>
+      </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

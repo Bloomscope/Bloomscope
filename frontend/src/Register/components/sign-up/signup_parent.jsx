@@ -45,7 +45,7 @@ const SignUp_parent = () =>{
           console.log(r)
           if(r.status == 'success'){
             //payment gateway
-            nav('/login');
+            nav('/signIn');
           }
         })
         .catch(error => console.log(error))

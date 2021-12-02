@@ -6,6 +6,8 @@ import React from 'react';
 import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
 // import s from './admin.scss';
+import {login, useAuth, logout,getSessionState} from "../auth"
+import NotLoggedIn from "../Register/Pages/notLoggedIn.jsx"
 import styled from "styled-components";
 
 const Holder = styled.div`
@@ -19,9 +21,12 @@ const Holder = styled.div`
 
 
 function Admin() {
+	const [logged] = useAuth();
+	const access = getSessionState();
 return (
 	
-	<>
+	<>{logged&&access.type==3?
+    <>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -36,6 +41,10 @@ return (
           <Route path='/admin/testCreation' exact element={<TestCreation/>} />
         </Routes> */}
 	</Holder></>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
 );
 }
 

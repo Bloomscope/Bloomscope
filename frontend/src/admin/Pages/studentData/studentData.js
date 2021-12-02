@@ -7,6 +7,8 @@ import styled from "styled-components";
 import data from './data.json';
 import Chart from 'chart.js/auto'
 import { Bar } from "react-chartjs-2";
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 
 // const CHART_COLORS = [
@@ -50,11 +52,14 @@ const Holder = styled.div`
 
 
 function StudentData() {
+	const [logged] = useAuth();
+	const access = getSessionState();
   const [suggestion, setsuggestion] = useState('');
   const [searchTerm,setSearchTerm] = useState('')
 
   return (
-    <>
+    <>{logged&&access.type==3?
+      <>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -117,7 +122,11 @@ function StudentData() {
         </div>
 		  </div>
       </Holder>
-    </>
+      </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

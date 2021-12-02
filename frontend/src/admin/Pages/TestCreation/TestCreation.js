@@ -9,6 +9,8 @@ import TabButton from '../../../Register/components/TabButton/TabButton';
 import {FaPlus} from "react-icons/fa";
 import styled from "styled-components";
 import data from './tests.json'
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
   display: flex;
@@ -22,8 +24,11 @@ const Holder = styled.div`
 function TestCreation() {
   const [openbutton, setopenbutton]=useState(false);
 
+	const [logged] = useAuth();
+	const access = getSessionState();
   return (
-    <>
+    <>{logged&&access.type==3?
+      <>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -71,6 +76,10 @@ function TestCreation() {
         </div>
       </div>
     </Holder></>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

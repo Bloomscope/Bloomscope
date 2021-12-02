@@ -4,10 +4,11 @@ import FormInput from '../components/form-input/form-input.component'
 import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
 import Navbar from '../../Home/components/Navbar'
-import {login, useAuth, logout} from "../../auth"
+import {login, useAuth, logout,getSessionState} from "../../auth"
 import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
+import NotLoggedIn from "./notLoggedIn.jsx"
 
-const ParentSignIn = () =>{
+const SignIn = () =>{
   const [logged] = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,13 +42,14 @@ const ParentSignIn = () =>{
         .catch(error => console.log(error))
     }
     // const [logged] = useAuth();
+	const access = getSessionState();
     return (
       <>
         {!logged? 
             <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
-              <h2>Parent Log-In</h2>
+              <h2>Log-In</h2>
               <form>
               <FormInput
                   type='email'
@@ -71,13 +73,16 @@ const ParentSignIn = () =>{
               </form>
           </div>
           </div>
-          :
+          :(access.type==2)?
           <>
-          <Navigate  to = "/parent" />
-          </>
+          <Navigate  to = "/parent/dashboard" />
+          </>:(access.type==1)?
+          <>
+          <Navigate  to = "/student/dashboard" />
+          </>:<><NotLoggedIn/></>
       }
       </>
     );
 }
 
-export default ParentSignIn;
+export default SignIn;

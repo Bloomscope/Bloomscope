@@ -8,7 +8,7 @@ import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment';
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login, useAuth, logout} from "../../../auth"
+import {login, useAuth, logout,getSessionState} from "../../../auth"
 // import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment)
@@ -23,9 +23,10 @@ const Holder = styled.div`
 
 function MyCalendar() {
   const [logged] = useAuth();
+  const access = getSessionState();
   return (
     <>
-    {logged?<>
+    {logged&&access.type==1?<>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>

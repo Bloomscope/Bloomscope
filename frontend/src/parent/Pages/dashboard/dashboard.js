@@ -5,6 +5,8 @@ import Navbar from '../../Components/Navbar'
 import Chart from './dchart'
 import styled from "styled-components";
 import Popup from 'reactjs-popup';
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
   display: flex;
@@ -15,8 +17,11 @@ const Holder = styled.div`
 `;
 
 function Dashboard() {
+	const [logged] = useAuth();
+	const access = getSessionState();
   return (
-    <>
+    <>{logged&&access.type==2?
+      <>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -118,7 +123,11 @@ function Dashboard() {
           </div>
         </div>
         </Holder>
-    </>
+        </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

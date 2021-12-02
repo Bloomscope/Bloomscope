@@ -3,7 +3,7 @@ import "./styles.scss";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
 import data from "./announcements.json";
-import {login, useAuth, logout} from "../../../auth"
+import {login, useAuth, logout,getSessionState} from "../../../auth"
 import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
 import styled from "styled-components";
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
@@ -18,8 +18,9 @@ const Holder = styled.div`
 
 function Announcement() {
   const [logged] = useAuth();
+  const access = getSessionState();
   return (
-    <>{logged?<>
+    <>{logged&&access.type==1?<>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>

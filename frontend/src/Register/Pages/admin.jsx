@@ -5,6 +5,8 @@ import FormInput from '../components/form-input/form-input.component'
 import Navbar from '../../Home/components/Navbar'
 // import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
+import {login, useAuth, logout} from "../../auth"
+import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
 // import {login} from "../../auth"
 
 const AdminLogin = () => {
@@ -20,13 +22,13 @@ const AdminLogin = () => {
         'password': password,
       }
       console.log(opts)
-      fetch('api/login', {
+      fetch('api/admin_login', {
         method: 'post',
         body: JSON.stringify(opts)
       }).then(r => r.json())
         .then(token => {
             if (token.access_token){
-            //   login(token)
+              login(token)
                 console.log(token) 
                 nav('/admin', {state: token});         
             }
@@ -36,8 +38,11 @@ const AdminLogin = () => {
         })
         .catch(error => console.log(error))
     }
+    const [logged] = useAuth();
 
     return (
+        <>
+        {!logged? 
         <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
@@ -65,6 +70,12 @@ const AdminLogin = () => {
                 </form>
             </div>
         </div>
+          :
+          <>
+          <Navigate  to = "/admin/StudentData" />
+          </>
+      }
+      </>
     )
 }
 export default AdminLogin;

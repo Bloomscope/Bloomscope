@@ -4,6 +4,8 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import * as BiIcons from 'react-icons/bi';
 import styled from "styled-components";
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
   display: flex;
@@ -27,8 +29,11 @@ const ContactInfo = () => {
 }
 
 function Helpline() {
+	const [logged] = useAuth();
+	const access = getSessionState();
   return (
-    <>
+    <>{logged&&access.type==2?
+      <>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -38,7 +43,11 @@ function Helpline() {
       <ContactInfo/>        
       </div>
       </Holder>
-    </>
+      </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

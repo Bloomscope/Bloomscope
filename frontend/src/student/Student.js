@@ -5,7 +5,7 @@ import React from 'react';
 // import TestCreation from './Pages/TestCreation/TestCreation';
 import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
-import {login, useAuth, logout} from "../auth"
+import {login, useAuth, logout, getSession, getSessionState} from "../auth"
 import NotLoggedIn from "../Register/Pages/notLoggedIn.jsx"
 import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
 // import s from './admin.scss';
@@ -20,11 +20,27 @@ const Holder = styled.div`
 `;
 
 function Student() {
+//   useEffect(()=>{
+//   fetch('/api/',{
+//     'methods':'GET',
+//     headers : {
+//       'Content-Type':'application/json'
+//     }
+//   })
+//   .then(response => response.json())
+//   .then(response => setArticles(response))
+//   .catch(error => console.log(error))
   
   const [logged] = useAuth();
+  
+  const access = getSessionState();
+
+  const onSubmitClick = (e)=>{
+      console.log("controller unmatched: ", access.type);
+  }
   return (
   <>
-      {logged?
+      {logged&&access.type==1?
           <>
               <Navbar />
               <Holder>
@@ -35,6 +51,8 @@ function Student() {
                       <h1>Student</h1>
                     </div>
               </Holder>
+              <button onClick={onSubmitClick} type='submit'>SIGN UP</button>
+              {/* {access} */}
           </>
           :
           <>

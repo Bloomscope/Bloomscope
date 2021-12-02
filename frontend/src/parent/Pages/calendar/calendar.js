@@ -6,6 +6,8 @@ import Navbar from "../../Components/Navbar";
 import styled from "styled-components";
 import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import moment from 'moment';
 // import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -20,7 +22,10 @@ const Holder = styled.div`
 `;
 
 function MyCalendar() {
+	const [logged] = useAuth();
+	const access = getSessionState();
   return (
+    <>{logged&&access.type==2?
     <>
       <Navbar />
       <Holder>
@@ -38,7 +43,11 @@ function MyCalendar() {
           />
         </div>
       </Holder>
-    </>
+      </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

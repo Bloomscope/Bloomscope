@@ -5,6 +5,8 @@ import Navbar from '../../Components/Navbar';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
 import styled from "styled-components";
+import {login, useAuth, logout,getSessionState} from "../../../auth"
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
   display: flex;
@@ -75,8 +77,11 @@ function MassRegistration() {
     }
     
   }
+	const [logged] = useAuth();
+	const access = getSessionState();
   return (
-    <>
+    <>{logged&&access.type==3?
+      <>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -104,6 +109,10 @@ function MassRegistration() {
 		</div></div>
     </Holder>
     </>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 

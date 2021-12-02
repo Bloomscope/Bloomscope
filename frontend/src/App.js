@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home/index';
 import StudentRegistration from './Register/Pages/studentRegistration';
 import ParentRegistration from './Register/Pages/parentRegistration';
-import StudentSignIn from './Register/Pages/StudentSignIn';
-import ParentSignIn from './Register/Pages/ParentSignIn';
+import SignIn from './Register/Pages/SignIn';
 import Logout from './Register/Pages/logout';
 import AdminLogin from './Register/Pages/admin';
 
@@ -38,18 +37,17 @@ return (
 	    <Route path='/logout' exact element={<Logout/>} />	
 		<Route path='/studentRegistration' element={<StudentRegistration/>} />
 		<Route path='/parentRegistration' element={<ParentRegistration/>} />
-		<Route path='/studentSignIn' element={<StudentSignIn/>} />		
-		<Route path='/parentSignIn' element={<ParentSignIn/>} />		
+		<Route path='/signIn' element={<SignIn/>} />		
 		<Route path='/adminLogin' exact element={<AdminLogin/>}/>
 		
-		<Route path='/admin' exact element={<Admin/>}/>
+		{/* <Route path='/admin' exact element={<Admin/>}/> */}
 		<Route path='/admin/studentData' exact element={<StudentData/>} />
         <Route path='/admin/announcements' exact element={<Announcement/>} />
         <Route path='/admin/testCreation' exact element={<TestCreation/>} />
         <Route path='/admin/massregistration' exact element={<MassRegistration/>} />
         <Route path='/admin/token' exact element={<Token/>} />
 		
-		<Route path='/student' exact element={<Student/>}/>
+		{/* <Route path='/student' exact element={<Student/>}/> */}
 		<Route path='/student/dashboard' exact element={<Dashboard/>} />
         <Route path='/student/announcements' exact element={<SAnnouncement/>} />
         <Route path='/student/suggestions' exact element={<Suggestions/>} />
@@ -57,7 +55,7 @@ return (
         <Route path='/student/Quiz' exact element={<Quiz/>} />
         <Route path='/student/calendar' exact element={<Calendar/>} />
 	
-		<Route path='/parent' exact element={<Parent/>}/>
+		{/* <Route path='/parent' exact element={<Parent/>}/> */}
 		<Route path='/parent/dashboard' exact element={<PDashboard/>} />
         <Route path='/parent/announcements' exact element={<PAnnouncement/>} />
         <Route path='/parent/suggestions' exact element={<PSuggestions/>} />

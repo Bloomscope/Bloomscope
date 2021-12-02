@@ -13,6 +13,7 @@ import { useNavigate  } from "react-router";
   
 
 const SignUp_student = () =>{
+    
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
@@ -35,7 +36,7 @@ const SignUp_student = () =>{
         'email': email,
         'phone': contact,
         'password': password,
-        'user_type_id': '1' //check later
+        'user_type_id': 1 //check later
       }
       console.log(opts)
       fetch('api/register_user', {

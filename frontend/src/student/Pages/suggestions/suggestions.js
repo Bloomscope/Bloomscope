@@ -5,7 +5,7 @@ import Navbar from '../../Components/Navbar'
 import data from './suggestions.json'
 import styled from "styled-components";
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login, useAuth, logout} from "../../../auth"
+import {login, useAuth, logout, getSessionState} from "../../../auth"
 
 const Holder = styled.div`
   display: flex;
@@ -17,10 +17,11 @@ const Holder = styled.div`
 
 
 function Suggestions() {
+  const access = getSessionState();
   const [logged] = useAuth();
   return (
     <>
-    {logged?<>
+    {logged&&access.type==1?<>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>

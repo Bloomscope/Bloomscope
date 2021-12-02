@@ -5,14 +5,15 @@ import React from 'react';
 // import TestCreation from './Pages/TestCreation/TestCreation';
 import SideBar from './Components/Sidebar';
 import Navbar from './Components/Navbar';
-import {login, useAuth, logout} from "../auth"
-import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
+import {login, useAuth, logout,getSessionState} from "../auth"
+import NotLoggedIn from "../Register/Pages/notLoggedIn.jsx"
 // import s from './admin.scss';
 
 function Parent() {
 	const [logged] = useAuth();
+	const access = getSessionState();
 return (
-	<>{logged?
+	<>{logged&&access.type==2?
 		<>
 	<div className="layout" >
 		<Navbar/>
@@ -25,9 +26,7 @@ return (
 	</div></>
 	:
 	<>
-	<h1>not logged in <Link to = "/">
-	  Home page
-	</Link></h1>
+    <NotLoggedIn/>
 	</>}</>
 );
 }
