@@ -10,20 +10,6 @@ import { Bar } from "react-chartjs-2";
 import {login, useAuth, logout,getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
-
-// const CHART_COLORS = [
-//     "#0090f8",
-//     "#33a6f9",
-//     "#66bcfb",
-//     "#8ccdfc",
-//     "#b2defd",
-//     "#d9eefe"
-//     // "#fde76e",
-//     // "#fced86",
-//     // "#ffffb7",
-//     // "#fefeeb"
-//   ];
-
   const options = {
     type: 'bar',
     legend: {
@@ -50,7 +36,6 @@ const Holder = styled.div`
   }
 `;
 
-
 function StudentData() {
 	const [logged] = useAuth();
 	const access = getSessionState();
@@ -58,7 +43,8 @@ function StudentData() {
   const [searchTerm,setSearchTerm] = useState('')
 
   return (
-    <>{logged&&access.type==3?
+    <>{logged&&access.type==3
+      ?
       <>
       <Navbar />
       <Holder>

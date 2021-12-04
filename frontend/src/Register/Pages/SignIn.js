@@ -31,9 +31,9 @@ const SignIn = () =>{
             if (token.access_token){
                 console.log(token) 
                 if(token.type == 1)
-                    nav('/student', {state: token});
+                    nav('/student/dashboard', {state: token});
                 else if(token.type == 2)
-                    nav('/parent', {state: token});         
+                    nav('/parent/dashboard', {state: token});         
             }
             else {
                 console.log("Please type in correct username/password")
@@ -45,7 +45,7 @@ const SignIn = () =>{
 	const access = getSessionState();
     return (
       <>
-        {!logged? 
+        {(!logged||access.type==3)? 
             <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">

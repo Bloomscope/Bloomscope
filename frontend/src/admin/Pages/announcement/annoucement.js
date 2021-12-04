@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 import data from './announcements.json'
 import styled from "styled-components";
-import {login, useAuth, logout,getSessionState} from "../../../auth"
+import {login, useAuth, authFetch, logout,getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
@@ -17,10 +17,50 @@ const Holder = styled.div`
 `;
 
 function Announcement() {
+
 	const [logged] = useAuth();
 	const access = getSessionState();
   const [title, settitle] = useState('');
-  const [post, setpost] = useState('');
+  const [content, setcontent] = useState('');
+  const [announcements, setannouncements] = useState([]);
+  
+  useEffect(()=>{
+    // console.log("here")
+    // let opts = {
+    //   'count': 10
+    // }
+    authFetch('/api/get_announcements',{
+      'methods':'GET',
+      // body: JSON.stringify(opts),
+    })
+    .then(r => r.json())
+    .then((r) => {
+      // console.log(r)
+      setannouncements(r.announcements);
+    })
+    .catch(error => console.log(error))})
+
+  const onSubmitClick = (e)=>{
+    e.preventDefault()
+    console.log("You pressed button")
+    let opts = {
+      'title': title,
+      'content': content,
+    }
+    console.log(opts)
+    authFetch('/api/create_announcement', {
+      method: 'post',
+      body: JSON.stringify(opts),
+    }).then(r => r.json())
+      .then(r => {
+        if(r.status == 'success')
+        console.log(r.announcement_id)
+        else
+        console.log(r)
+        // setannouncements(announcements)
+      })
+      .catch(error => console.log(error))
+  }
   return (
     <>{logged&&access.type==3?
       <>
@@ -43,17 +83,17 @@ function Announcement() {
             </label><br/>
             <label class="input-text" style={{fontWeight:"bold"}}>
               Post : <br/>
-              <input type="text" name="post" value={post} onChange={(e)=>{setpost(e.target.value)}} style={{ height:"30px"}}/>
+              <input type="text" name="content" value={content} onChange={(e)=>{setcontent(e.target.value)}} style={{ height:"30px"}}/>
             </label>
-            <CustomButton type='submit' style={{float:"right"}}>POST</CustomButton>
+            <CustomButton type='submit' onClick={onSubmitClick} style={{float:"right"}}>POST</CustomButton>
           </form>
         </div>
         <div style = {{float:"right",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
           <b>Announcements log:</b>
             <div style={{overflowY:"scroll",height:"58vh"}}>
-            {data.map((item,i)=>(
+            {announcements.map((item,i)=>(
               <span key={i}>
-              <p><b>{item.title}</b>: ({item.time}) <br/>{item.post}</p>
+              <p><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p>
               </span>
             ))}
             </div>

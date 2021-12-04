@@ -5,7 +5,7 @@ import FormInput from '../components/form-input/form-input.component'
 import Navbar from '../../Home/components/Navbar'
 // import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
-import {login, useAuth, logout} from "../../auth"
+import {login, useAuth, logout,getSessionState} from "../../auth"
 import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
 // import {login} from "../../auth"
 
@@ -13,6 +13,8 @@ const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
+    const [logged] = useAuth();
+
     const nav = useNavigate();
     const onSubmitClick = (e)=>{
       e.preventDefault()
@@ -30,7 +32,7 @@ const AdminLogin = () => {
             if (token.access_token){
               login(token)
                 console.log(token) 
-                nav('/admin', {state: token});         
+                nav('/admin/StudentData', {state: token});         
             }
             else {
                 console.log("Please type in correct username/password")
@@ -38,11 +40,10 @@ const AdminLogin = () => {
         })
         .catch(error => console.log(error))
     }
-    const [logged] = useAuth();
-
+	const access = getSessionState();
     return (
         <>
-        {!logged? 
+        {(!logged||access.type!=3)? 
         <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
