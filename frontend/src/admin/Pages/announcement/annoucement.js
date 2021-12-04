@@ -36,6 +36,7 @@ function Announcement() {
     .then(r => r.json())
     .then((r) => {
       // console.log(r)
+      if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })
     .catch(error => console.log(error))})
@@ -93,7 +94,8 @@ function Announcement() {
             <div style={{overflowY:"scroll",height:"58vh"}}>
             {announcements.map((item,i)=>(
               <span key={i}>
-              <p><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p>
+              <p><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p> 
+              {/* //change time */}
               </span>
             ))}
             </div>
