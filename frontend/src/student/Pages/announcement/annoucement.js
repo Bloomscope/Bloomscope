@@ -22,8 +22,7 @@ function Announcement() {
   const [announcements, setannouncements] = useState([]);
   
   useEffect(()=>{
-    authFetch('/api/get_announcements', //need to change link
-    {
+    authFetch('/api/user_get_announcements',{
       'methods':'GET',
     })
     .then(r => r.json())
@@ -46,7 +45,7 @@ function Announcement() {
             <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
             {announcements.map((item,i)=>(
               <span key={i}>
-              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.time}) <br/>{item.content}</p>
+              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p>
               </span>
             ))}
             </div>
