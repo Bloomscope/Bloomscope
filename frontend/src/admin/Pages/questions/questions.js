@@ -30,6 +30,24 @@ function AddQuestions() {
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Add Questions</h1>
         <div style = {{float:"left",width:"67vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        {/* <form>
+              <div style={{width:"45%",float:"left"}}>
+             <label> Test Name: 
+               <input type='text' />
+              </label></div>
+              <div style={{width:"45%",float:"right"}}>
+              <label> Duration (in hours): 
+               <input type='text' />
+              </label></div>
+              <div style={{width:"45%",float:"left"}}>
+             <label> Start Day Number: 
+               <input type='text' />
+              </label></div>
+              <div style={{width:"45%",float:"right"}}>
+              <label> End Day Number: 
+               <input type='text' />
+              </label></div>
+          </form> */}
          </div>
       </div>
       </Holder>
