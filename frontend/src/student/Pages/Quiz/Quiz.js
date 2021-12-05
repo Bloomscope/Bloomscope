@@ -3,7 +3,7 @@ import styles from './Quiz.module.scss';
 import quizDataInitial from './assets/quiz-data';
 import Navbar from "../../Components/Navbar";
 import Start from './pages/Start/Start';
-import Question from './pages/Question/Question';
+import Question from './pages/Question/Question' ;
 import Result from './pages/Result/Result';
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import {login, useAuth, logout, getSessionState} from "../../../auth"
