@@ -6,9 +6,32 @@ import { useNavigate  } from "react-router";
 import Navbar from '../../Home/components/Navbar'
 import {login, useAuth, logout,getSessionState} from "../../auth"
 import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
-import NotLoggedIn from "./notLoggedIn.jsx"
+import NotLoggedIn from "./notLoggedIn.jsx";
+import styled from "styled-components";
 
-const SignIn = () =>{
+const LoginMsg = styled.div`
+  align-items: center;
+  flex-direction: column;
+  color: #cc0033;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: 1px 1px rgba(250,250,250,.3);
+`;
+
+const ErrorCont = styled.div`
+display: ${(props) => (props.ContentView ? "flex" : "none")};
+background-color: #fce4e4;
+border: 1px solid #fcc2c3;
+float: center;
+width: 15rem;
+padding: 20px 30px;
+margin-left: 2.5rem;
+`;
+
+const SignIn = () =>{  
+  const [authMsg, SetAuthMsg] = useState(0);
   const [logged] = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,10 +56,14 @@ const SignIn = () =>{
                 if(token.type == 1)
                     nav('/student/dashboard', {state: token});
                 else if(token.type == 2)
-                    nav('/parent/dashboard', {state: token});         
+                    nav('/parent/dashboard', {state: token});  
+                else if (token.access_token === "Null") {
+                     SetAuthMsg(1);
+                }       
             }
             else {
-                console.log("Please type in correct username/password")
+                console.log("Please type in correct username/password");
+                SetAuthMsg(1);
             }
         })
         .catch(error => console.log(error))
@@ -45,7 +72,7 @@ const SignIn = () =>{
 	const access = getSessionState();
     return (
       <>
-        {(!logged||access.type==3)? 
+        {(logged||access.type==3)? 
             <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
@@ -72,6 +99,9 @@ const SignIn = () =>{
                   </div>
               </form>
           </div>
+          <ErrorCont ContentView={authMsg}>
+          <LoginMsg>Please enter valid credentials</LoginMsg>
+          </ErrorCont>
           </div>
           :(access.type==2)?
           <>
