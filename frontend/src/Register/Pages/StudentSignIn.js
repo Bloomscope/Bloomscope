@@ -2,19 +2,21 @@ import  React, {useState} from 'react';
 import CustomButton from '../components/custom-button/custom-button-component';
 import FormInput from '../components/form-input/form-input.component'
 import './sign-in-styles.scss';
+import styled from "styled-components";
 import { useNavigate  } from "react-router";
 import Navbar from '../../Home/components/Navbar'
 import {login, useAuth, logout} from "../../auth"
 import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
-// const Login = (props) => { 
-//   const handleLogin = async (userDetail) => {
-//    const success = await userLogin(userDetail);
-//    if(success) props.history.push('/parentRegistration');
-//   }
-// }
+
+const loginMsg = styled.div`
+  font-size:2rem;
+  border: 1rem solid yellow;
+  display: ${(props) => (props.ContentView ? "none" : "flex")};
+`;
   
 
 const StudentSignIn = () =>{
+  const[authMsg, SetAuthMsg] = useState();
   const [logged] = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -42,12 +44,12 @@ const StudentSignIn = () =>{
                     nav('/parent', {state: token});         
             }
             else {
-                console.log("Please type in correct username/password")
+                console.log("Please type in correct username/password");
+                SetAuthMsg(1);
             }
         })
         .catch(error => console.log(error))
     }
-    // const [logged] = useAuth();
     return (
       <>
         {!logged? 
@@ -76,6 +78,7 @@ const StudentSignIn = () =>{
                       <CustomButton onClick= {onSubmitClick} type='submit'> Sign in </CustomButton>
                   </div>
               </form>
+              <loginMsg ContentView={authMsg}>Enter valid credentials</loginMsg>
           </div>
           </div>
           :

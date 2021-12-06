@@ -38,7 +38,7 @@ function Result({
         <img
           alt="Result"
           src={require(`../../assets/images/results/${chosenResult.img ||
-            'default/default.jpg'}`)}
+            'default/default.jpg'}`).default}
           className={styles['result-img']}
         />
       </div>

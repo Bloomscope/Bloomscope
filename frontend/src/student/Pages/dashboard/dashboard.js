@@ -8,6 +8,7 @@ import {login, useAuth, logout,getSessionState} from "../../../auth"
 import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
 import styled from "styled-components";
 import Popup from 'reactjs-popup';
+import { useHistory } from 'react-router-dom';
 
 const Holder = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ function Dashboard() {
                             7. Make sure to manage your time and not miss out on questions<br/>
                             8. Keep the number of questions in mind<br/><br/>
                           </div>
-                          <button className='custom-button' to ='/student/test'> Start </button>
+                          <Link className='custom-button' to = '/student/Quiz'> Start </Link>
                         </div>
                     </Popup>
                 </div>
