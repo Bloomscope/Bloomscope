@@ -69,6 +69,8 @@ function AddQuestions() {
     setquestionType('')
     setcontent('')
     setcontentType('')
+    setparameter('')
+    setexplanation('')
   }
   console.log(list)
   console.log(optionName)
@@ -76,7 +78,7 @@ function AddQuestions() {
 	const [logged] = useAuth();
 	const access = getSessionState();
   return (
-    // <>{logged&&access.type==3?
+    <>{logged&&access.type==3?
       <>
       <Navbar />
       <Holder>
@@ -85,8 +87,8 @@ function AddQuestions() {
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Add Questions</h1>
-        <div style = {{float:"left",width:"67vw",height:"75vh",backgroundColor:"white", padding:"1.8rem"}}>
-         <div style={{width:"50%", float:"left"}}>
+        <div style = {{float:"left",width:"42vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+         <div style={{overflowY:"scroll",height:"58vh"}}>
           <form onSubmit="">  
           <label class="input-text" style={{fontWeight:"bold"}}>
               Question: <br/> 
@@ -132,9 +134,14 @@ function AddQuestions() {
                 style={{width:"500px"}}
                 onChange = {(e)=>{setcontent(e.target.value)}}
              />
-             </label> 
+             </label> <br/>
                 
-            <CustomButton type="submit" onClick={handleChange}>Add</CustomButton>
+            <CustomButton 
+            type="submit" 
+            onClick={handleChange}
+            style={{margin:"20px 0px 20px -4px"}}>
+            Add
+            </CustomButton>
              </form>
                 
             </div>
@@ -165,29 +172,37 @@ function AddQuestions() {
             /></label><br/>
           </form>
           </div>
-          <div style={{width:"50%", float:"left"}}>
-            <span>Question: {question}</span><br/>
-            <span>Question Type: {questionType}</span><br/>
-            <span>
+          </div>
+          <div style = {{float:"right",width:"50vh",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "20px"}}>
+          <div class="question" style={{overflowY:"scroll", overflowX:"inherit",height:"58vh"}}>
+            <span><b>Question:</b> {question}</span><br/>
+            <span><b>Question Type:</b> {questionType}</span><br/>
+            <span><b> Options: </b><br/>
             {list.map((item,i)=>(
               <span key={i}>
               <span>{item.opt}: {item.value}</span><br/>
               </span>
             ))}
             </span><br/>
-            <span>Answer: {answer}</span><br/>
-            <span>Explanation: {explanation}</span><br/>
-            <span>Parameter: {parameter}</span><br/>
-            <CustomButton type="submit" onClick={handleSubmit}>ADD QUESTION</CustomButton>
+            <span><b>Answer:</b> {answer}</span><br/>
+            <span><b>Explanation:</b> {explanation}</span><br/>
+            <span><b>Parameter:</b> {parameter}</span><br/>
+            <CustomButton 
+            type="submit" 
+            onClick={handleSubmit} 
+            style={{margin:"30px 0px 0px -4px"}}>
+            ADD QUESTION
+            </CustomButton>
+          </div>
           </div>
         </div>
-      </div>
+     
       </Holder>
     </>
-	// :
-	// <>
-  //   <NotLoggedIn/>
-	// </>}</>
+	:
+	<>
+    <NotLoggedIn/>
+	</>}</>
   );
 }
 
