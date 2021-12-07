@@ -82,7 +82,6 @@ function AddQuestions() {
     }).then(r => r.json())
       .then(r => {
         console.log(r)
-        // setannouncements(announcements)
       })
       .catch(error => console.log(error))
     //send data to the db
@@ -98,32 +97,31 @@ function AddQuestions() {
   }
 
   const handleFileUpload = e => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      console.log("uploaded")
-      authFetch('/api/add_questions', {
-        method: 'post',
-        body: file,
-      }).then(r => r.json())
-        .then(r => {
-          console.log(r)
-          // setannouncements(announcements)
-        })
-        .catch(error => console.log(error))
-    };
-    try{
-      reader.readAsBinaryString(file);
-    }
-    catch(e){
-      console.log(e)
-    }
+    // const file = e.target.files[0];
+    // const reader = new FileReader();
+    // reader.onload = (evt) => {
+    //   console.log("uploaded")
+    //   authFetch('/api/add_questions', {
+    //     method: 'post',
+    //     body: file,
+    //   }).then(r => r.json())
+    //     .then(r => {
+    //       console.log(r)
+    //       // setannouncements(announcements)
+    //     })
+    //     .catch(error => console.log(error))
+    // };
+    // try{
+    //   reader.readAsBinaryString(file);
+    // }
+    // catch(e){
+    //   console.log(e)
+    // }
   }
 
   console.log(list)
 	const [logged] = useAuth();
 	const access = getSessionState();
-
   return (
     <>{logged&&access.type==3?
       <>
@@ -147,7 +145,7 @@ function AddQuestions() {
                 style={{width:"90%"}}
               /><br/>
             </label>
-            <label style={{fontWeight:"bold"}}> Question Type Type: <br/>
+            <label style={{fontWeight:"bold"}}> Question Type: <br/>
              <select  value={questionType} onChange={handleSelect2}>
                 <option value="str">String</option>
                 <option value="url">Url</option>
@@ -251,14 +249,14 @@ function AddQuestions() {
             </CustomButton><br/><br/>
             
 
-            <label class="custom-file-upload">
+            {/* <label class="custom-file-upload">
                   <input
                     type="file"
                     accept=".json"
                     onClick={handleFileUpload}
                     style={{margin:"30px 0px 0px -4px"}}/>
                   Custom Upload
-              </label>
+              </label> */}
           </div>
           </div>
         </div>
