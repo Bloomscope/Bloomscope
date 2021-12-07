@@ -50,13 +50,16 @@ const SignIn = () =>{
         body: JSON.stringify(opts)
       }).then(r => r.json())
         .then(token => {
-          login(token);
             if (token.access_token){
                 console.log(token) 
-                if(token.type == 1)
-                    nav('/student/dashboard', {state: token});
-                else if(token.type == 2)
-                    nav('/parent/dashboard', {state: token});  
+                if(token.type == 1){
+                  login(token);
+                  nav('/student/dashboard', {state: token});
+                }
+                else if(token.type == 2){
+                  login(token);
+                  nav('/parent/dashboard', {state: token});  
+                }
                 else if (token.access_token === "Null") {
                      SetAuthMsg(1);
                 }       
@@ -72,7 +75,7 @@ const SignIn = () =>{
 	const access = getSessionState();
     return (
       <>
-        {(logged||access.type==3)? 
+        {(!logged||access.type==3)? 
             <div style = {{backgroundColor:"white", height:"100vh"}}>
             <Navbar/>
             <div className= "sign-in">
