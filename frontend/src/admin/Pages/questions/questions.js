@@ -68,6 +68,7 @@ function AddQuestions() {
     console.log("You pressed button")
     let opts = {
       'question': question,
+      'question_type': questionType,
       'options': list,
       'ans': answer,
       'explanation': explanation,
@@ -97,34 +98,29 @@ function AddQuestions() {
   }
 
   const handleFileUpload = e => {
-    // const file = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.onload = (evt) => {
-    //   const bstr = evt.target.result;
-    //   console.log(bstr)
-    //   // e.preventDefault()
-    // console.log("You pressed button")
-    // authFetch('/api/add_questions', {
-    //   method: 'post',
-    //   body: file,
-    // }).then(r => r.json())
-    //   .then(r => {
-    //     console.log(r)
-    //     // setannouncements(announcements)
-    //   })
-    //   .catch(error => console.log(error))
-    // };
-    // try{
-    //   reader.readAsBinaryString(file);
-    // }
-    // catch(e){
-    //   console.log(e)
-    // } 
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      console.log("uploaded")
+      authFetch('/api/add_questions', {
+        method: 'post',
+        body: file,
+      }).then(r => r.json())
+        .then(r => {
+          console.log(r)
+          // setannouncements(announcements)
+        })
+        .catch(error => console.log(error))
+    };
+    try{
+      reader.readAsBinaryString(file);
+    }
+    catch(e){
+      console.log(e)
+    }
   }
 
   console.log(list)
-  console.log(optionName)
-  console.log(contentType)
 	const [logged] = useAuth();
 	const access = getSessionState();
 
@@ -153,7 +149,7 @@ function AddQuestions() {
             </label>
             <label style={{fontWeight:"bold"}}> Question Type Type: <br/>
              <select  value={questionType} onChange={handleSelect2}>
-                <option value="string">String</option>
+                <option value="str">String</option>
                 <option value="url">Url</option>
             </select><br/>
              </label> 
@@ -172,7 +168,7 @@ function AddQuestions() {
              
              <label style={{fontWeight:"bold"}}> Content Type: <br/>
              <select  value={contentType} onChange={handleSelect}>
-                <option value="string">String</option>
+                <option value="str">String</option>
                 <option value="url">Url</option>
             </select><br/>
              </label> 
@@ -253,15 +249,16 @@ function AddQuestions() {
             style={{margin:"30px 0px 0px -4px"}}>
             ADD QUESTION
             </CustomButton><br/><br/>
+            
+
             <label class="custom-file-upload">
-          <input
-            type="file"
-            accept=".json"
-            onChange={handleFileUpload}
-            // onClick = {(e)=>{updatedmsg('Uploading')}}
-          />
-          Custom Upload
-      </label>
+                  <input
+                    type="file"
+                    accept=".json"
+                    onClick={handleFileUpload}
+                    style={{margin:"30px 0px 0px -4px"}}/>
+                  Custom Upload
+              </label>
           </div>
           </div>
         </div>
