@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./styles.scss";
 import Sidebar from "../../Components/Sidebar";
@@ -6,9 +6,9 @@ import Navbar from "../../Components/Navbar";
 import styled from "styled-components";
 import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
-import {login, useAuth, logout,getSessionState} from "../../../auth"
-import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import moment from 'moment';
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import {login,authFetch, useAuth, logout,getSessionState} from "../../../auth"
 // import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment)
@@ -22,11 +22,41 @@ const Holder = styled.div`
 `;
 
 function MyCalendar() {
-	const [logged] = useAuth();
-	const access = getSessionState();
+  const [logged] = useAuth();
+  const access = getSessionState();
+  const [schedule, setschedule] = useState([]);
+
+  const makelist = (a)=>{
+    var list = []
+    var newList = []
+    for (var i = 0; i < a.length; i++) {
+      let opts = {
+        'title': a[i]['test_id'],
+        'start': new Date( a[i]['starts_on']),
+        'end':  new Date(a[i]['ends_on']),
+      }
+      newList = list.concat(opts)
+  }
+    setschedule(newList);
+  }
+
+  useEffect(()=>{
+    authFetch('/api/get_tests',{
+      'methods':'GET',
+    })
+    .then(r => r.json())
+    .then((r) => {
+      console.log(r)
+      console.log(access)
+      if(r.data)
+      makelist(r.data)
+    })
+    .catch(error => console.log(error))}, [])
+
+
   return (
-    <>{logged&&access.type==2?
     <>
+    {logged&&access.type==2?<>
       <Navbar />
       <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -36,18 +66,18 @@ function MyCalendar() {
           <h1>Calendar</h1>
           <Calendar
             localizer={localizer}
-            events={events}
+            events={schedule}
             startAccessor="start"
             endAccessor="end"
             style={{ height: "70vh", backgroundColor:"white", padding:"2%" }}
           />
         </div>
-      </Holder>
-      </>
-	:
-	<>
-    <NotLoggedIn/>
-	</>}</>
+      </Holder></>
+      :
+      <>
+      <NotLoggedIn/>
+      </>}
+    </>
   );
 }
 

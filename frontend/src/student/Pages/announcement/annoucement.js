@@ -27,7 +27,7 @@ function Announcement() {
     })
     .then(r => r.json())
     .then((r) => {
-      console.log(r)
+      // console.log(r)
       if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })

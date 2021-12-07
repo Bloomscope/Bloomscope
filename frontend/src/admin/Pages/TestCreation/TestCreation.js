@@ -35,7 +35,8 @@ function TestCreation() {
   const[start, setstart] = useState('');
   const[end, setend] = useState('');
   const[duration, setduration] = useState('');
-
+  // const[tests, settests] = useState([]);
+  
   const handleChange = e =>{
     e.preventDefault()
     setparameterNo(e.target.value)
@@ -52,33 +53,32 @@ function TestCreation() {
   }
 
   const handleSubmit = (e) => {
-    // e.preventDefault()
-    // console.log("You pressed button")
-    // let opts = {
-    //   'name': testname,
-    //   'parameters': list,
-    //   'conducted_on': start,
-    //   'ends_on': end,
-    //   'durations': duration,
-    //   // 'param_id': parameter,
-    // }
-    // console.log(opts)
-    // authFetch('/api/schedule_test', {
-    //   method: 'post',
-    //   body: JSON.stringify(opts),
-    // }).then(r => r.json())
-    //   .then(r => {
-    //     console.log(r)
-    //   })
-    //   .catch(error => console.log(error))
+    e.preventDefault()
+    console.log("You pressed button")
+    let opts = {
+      'test_name': testname,
+      'parameters': list,
+      'conducted_on': start,
+      'ends_after': end,
+      'duration': duration,
+    }
+    console.log(opts)
+    authFetch('/api/schedule_test', {
+      method: 'post',
+      body: JSON.stringify(opts),
+    }).then(r => r.json())
+      .then(r => {
+        console.log(r)
+      })
+      .catch(error => console.log(error))
     
-    // setList([])
-    // setparameterNo('')
-    // setqParameter('')
-    // settestname('')
-    // setstart('')
-    // setend('')
-    // setduration('')
+    setList([])
+    setparameterNo('')
+    setqParameter('')
+    settestname('')
+    setstart('')
+    setend('')
+    setduration('')
   }
 
   return (
@@ -92,7 +92,9 @@ function TestCreation() {
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2rem" }}>
         <h1>Test Creation</h1>
         <div style={{padding:"1.8rem",width:"30vw",height:"60vh",backgroundColor:"white",float:'left'}}>
-        <div style={{overflowY:"scroll",height:"60vh"}}>
+        {/* <div style={{overflowY:"scroll",height:"60vh"}}>
+         */}
+         <div>
           <form onSubmit="">  
           <div style={{width:"47%",float:'left'}}>
           <label class="input-text" style={{fontWeight:"bold"}}>
@@ -173,41 +175,31 @@ function TestCreation() {
             Add
             </CustomButton>
              </form>
-
-             <div>
-              <span><b>Test Name:</b> {testname}</span><br/>
-                <span><b>Duration:</b> {duration}</span><br/>
-              <span><b>Starts on:</b> {start}</span><br/>
-                <span><b>Ends on:</b> {end}</span><br/>
-                <span><b> Parameters: </b><br/>
-                {list.map((item,i)=>(
-                  <span key={i}>
-                  <span>{item.id}: {item.que}</span><br/>
-                  </span>
-                ))}
-                </span>
             </div>
+          </form></div>
 
-            </div>
+          
+        </div>
+        <div style = {{float:"right",width:"30vw",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "2vw"}}>
+          <div>
+          <span><b>Test Name:</b> {testname}</span><br/>
+            <span><b>Duration:</b> {duration}</span><br/>
+          <span><b>Starts on:</b> {start}</span><br/>
+            <span><b>Ends on:</b> {end}</span><br/>
+            <span><b> Parameters: </b><br/>
+            {list.map((item,i)=>(
+              <span key={i}>
+              <span>{item.id}: {item.que}</span><br/>
+              </span>
+            ))}
+            </span>
+          </div>
             <CustomButton 
             type="submit" 
             onClick={handleSubmit} 
             style={{margin:"30px 0px 0px -4px"}}>
             ADD QUESTION
             </CustomButton>
-          </form></div>
-
-          
-        </div>
-        <div style = {{float:"right",width:"30vw",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "2vw"}}>
-          <b>Tests' log:</b>
-            <div style={{overflowY:"scroll",height:"58vh"}}>
-            {data.map((item,i)=>(
-              <span key={i}>
-              <p><b>{item.name}</b>: <br/>From Day number {item.from} to {item.to} for {item.duration} hours</p>
-              </span>
-            ))}
-            </div>
         </div>
       </div>
     </Holder></>
