@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Result.module.scss';
-
 import Button from '../../common/Button/Button';
-
 import iconRight from '../../assets/images/arrow-return.svg';
+import { useNavigate  } from "react-router";
 
 function Result({
   quizTitle,
@@ -25,7 +24,7 @@ function Result({
     }
     return false;
   });
-
+  const nav = useNavigate();
   return (
     <div className={styles.result}>
       <div className={styles['result-header']}>
@@ -51,8 +50,8 @@ function Result({
 
       <div className={styles['restart-button-container']}>
         <Button
-          text="Restart"
-          onButtonClick={onClickRestart}
+          text="Back to Dashboard"
+          onButtonClick={() => nav('/student/dashboard')}
           inlineStyle={{
             fontSize: '11px',
             lineHeight: '13px',
