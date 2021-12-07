@@ -2,8 +2,8 @@ const quizData = {
   title: 'Quiz title',
   description:
     'Lorem ipsum dolor sit amet,',
-  img: 'start-example.jpg',
-  questions: [
+
+    img: 'https://www.crossfitamatak.com/wp-content/uploads/option-1.png',  questions: [
     {
       id: 1,
       text: '600 - 544:',
@@ -59,7 +59,7 @@ const quizData = {
     {
       id: 3,
       text: 'A, B, C or D?',
-      img: 'question-example.jpg',
+      img: 'https://www.crossfitamatak.com/wp-content/uploads/option-1.png',
       alternatives: [
         {
           id: 1,

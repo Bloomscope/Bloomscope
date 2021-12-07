@@ -132,7 +132,7 @@ function AddQuestions() {
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Add Questions</h1>
-        <div style = {{float:"left",width:"36vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div style = {{ float:"left",width:"36vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
          <div style={{overflowY:"scroll",height:"58vh"}}>
           <form onSubmit="">  
           <label class="input-text" style={{fontWeight:"bold"}}>

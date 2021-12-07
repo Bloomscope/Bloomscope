@@ -24,7 +24,8 @@ function Question({
       {question.img && (
         <img
           alt="Current question"
-          src={require(`../../assets/images/questions/${question.img}`).default}
+          // src={require(`../../assets/images/questions/${question.img}`).default}
+          src={question.img}
           className={styles['question-img']}
         />
       )}

@@ -10,7 +10,8 @@ function Start({ title, description, img = '', onClickStart }) {
       {img && (
         <img
           alt="Quiz start"
-          src={require(`../../assets/images/start/${img}`).default}
+          // src={require(`../../assets/images/start/${img}`).default}
+          src = {img}
           className={styles['header-img']}
         />
       )}
