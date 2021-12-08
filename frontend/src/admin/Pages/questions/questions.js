@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
@@ -30,6 +30,14 @@ function AddQuestions() {
   const[explanation, setexplanation] = useState('');
   const[parameter, setparameter] = useState('');
   const[marks, setmarks] = useState('');
+  const [file, setFile] = useState(''); // storing the uploaded file    
+  // storing the recived file from backend
+  const [data, getFile] = useState({ name: "", path: "" });  
+  const [columns, setColumns] = useState([]);
+  // const [data, setData] = useState([]);
+  const [msg,updatedmsg] = useState('');   
+  const [progress, setProgess] = useState(0); // progess bar
+  const el = useRef(); // accesing input element
   
  
   const handleChange = e =>{
@@ -97,6 +105,22 @@ function AddQuestions() {
   }
 
   const handleFileUpload = e => {
+    const file = e.target.files[0]; // accesing file
+    console.log(file);
+    setFile(file);
+
+    const formData = new FormData();        
+    formData.append('file', file);
+
+    authFetch('/api/add_questions',{
+          method:'post',
+          body: formData,
+        })
+        .then(r => r.json())
+        .then((r) => {
+          console.log(r)
+        })
+        .catch(error => console.log(error))
     // const file = e.target.files[0];
     // const reader = new FileReader();
     // reader.onload = (evt) => {
@@ -118,8 +142,6 @@ function AddQuestions() {
     //   console.log(e)
     // }
   }
-
-  console.log(list)
 	const [logged] = useAuth();
 	const access = getSessionState();
   return (
@@ -249,14 +271,14 @@ function AddQuestions() {
             </CustomButton><br/><br/>
             
 
-            {/* <label class="custom-file-upload">
+            <label class="custom-file-upload">
                   <input
                     type="file"
                     accept=".json"
                     onClick={handleFileUpload}
                     style={{margin:"30px 0px 0px -4px"}}/>
                   Custom Upload
-              </label> */}
+              </label>
           </div>
           </div>
         </div>

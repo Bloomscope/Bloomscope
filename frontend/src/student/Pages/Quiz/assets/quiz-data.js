@@ -1,9 +1,7 @@
 const quizData = {
   title: 'Quiz title',
   description:
-    'Lorem ipsum dolor sit amet,',
-
-    img: 'https://www.crossfitamatak.com/wp-content/uploads/option-1.png',  questions: [
+    'Lorem ipsum dolor sit amet,',  questions: [
     {
       id: 1,
       text: '600 - 544:',
@@ -41,8 +39,8 @@ const quizData = {
         },
         {
           id: 2,
-          text: '4230',
-          isCorrect: true,
+          text: '4250',
+          isCorrect: false,
         },
         {
           id: 3,
@@ -64,7 +62,7 @@ const quizData = {
         {
           id: 1,
           text: 'A',
-          isCorrect: false,
+          isCorrect: true,
         },
         {
           id: 2,
@@ -74,7 +72,7 @@ const quizData = {
         {
           id: 3,
           text: 'C',
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: 4,
@@ -86,7 +84,7 @@ const quizData = {
     {
       id: 4,
       text: 'Lorem or Ipsum?',
-      img: 'question-example.jpg',
+      img: 'https://www.multimediaxp.com/images/article_190508124638.1557333998.jpg',
       alternatives: [
         {
           id: 1,

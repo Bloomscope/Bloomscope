@@ -28,16 +28,17 @@ function MyCalendar() {
 
   const makelist = (a)=>{
     var list = []
-    var newList = []
     for (var i = 0; i < a.length; i++) {
       let opts = {
-        'title': a[i]['test_id'],
+        'title': a[i]['name'],
         'start': new Date( a[i]['starts_on']),
         'end':  new Date(a[i]['ends_on']),
       }
-      newList = list.concat(opts)
+      console.log(opts)
+      list.push(opts)
   }
-    setschedule(newList);
+  console.log(list)
+    setschedule(list);
   }
 
   useEffect(()=>{
@@ -51,7 +52,6 @@ function MyCalendar() {
       makelist(r.data)
     })
     .catch(error => console.log(error))}, [])
-
 
   return (
     <>

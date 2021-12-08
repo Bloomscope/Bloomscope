@@ -47,7 +47,7 @@ const SignUp_student = () =>{
           console.log(r)
           if(r.status == 'success'){
             nav('/parentRegistration', {state: r});
-          }
+          } 
         })
         .catch(error => console.log(error))
     }

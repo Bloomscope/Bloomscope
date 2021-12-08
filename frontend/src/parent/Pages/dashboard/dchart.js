@@ -6,9 +6,9 @@ import datas from "./data.json"
 const MyChart = () => {
   const CHART_COLORS = [
     "#0090f8",
-    "#33a6f9",
+    // "#33a6f9",
     "#66bcfb",
-    "#8ccdfc",
+    // "#8ccdfc",
     "#b2defd",
     "#d9eefe"
     // "#fde76e",
@@ -32,7 +32,7 @@ const MyChart = () => {
   const dt = newdataset.flat();
 
   const data = {
-    labels: ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+    labels: ["Parameter 1", "Parameter 2", "Parameter 3"],
     datasets: dt
   };
 

@@ -25,13 +25,8 @@ function Announcement() {
   const [announcements, setannouncements] = useState([]);
   
   useEffect(()=>{
-    // console.log("here")
-    // let opts = {
-    //   'count': 10
-    // }
     authFetch('/api/get_announcements',{
       'methods':'GET',
-      // body: JSON.stringify(opts),
     })
     .then(r => r.json())
     .then((r) => {
