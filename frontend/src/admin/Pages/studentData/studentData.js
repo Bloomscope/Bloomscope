@@ -4,7 +4,7 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar';
 import Popup from 'reactjs-popup';
 import styled from "styled-components";
-import data from './data.json';
+import datas from './data.json';
 import Chart from 'chart.js/auto'
 import { Bar } from "react-chartjs-2";
 import {login, useAuth,authFetch, logout,getSessionState} from "../../../auth"
@@ -45,8 +45,38 @@ function StudentData() {
   const [searchTerm,setSearchTerm] = useState('')
   const [title,settitle] = useState('')
   const [slist, setslist] = useState([]);
-
   
+    const CHART_COLORS = [
+      "#0090f8",
+      // "#33a6f9",
+      "#66bcfb",
+      // "#8ccdfc",
+      "#b2defd",
+      "#d9eefe"
+      // "#fde76e",
+      // "#fced86",
+      // "#ffffb7",
+      // "#fefeeb"
+    ];
+
+  const alltests = datas.result.map(
+    (i, index) => {
+      return {
+        label: i.label,
+        backgroundColor: CHART_COLORS[index],
+        data: i.data,
+      };
+    }
+  );
+
+
+  const newdataset = [alltests];
+  const dt = newdataset.flat();
+
+  const data = {
+    labels: ["Parameter 1", "Parameter 2", "Parameter 3"],
+    datasets: dt
+  };
   
   useEffect(()=>{
     authFetch('/api/get_users',{
@@ -62,7 +92,6 @@ function StudentData() {
 
 
     const func = (id)=>{
-      
     // e.preventDefault();
     // e.stopPropagation();
       console.log("You pressed button")
@@ -109,8 +138,6 @@ function StudentData() {
           <hr/>
 
           <div style = {{overflowY:'scroll', height:'55vh'}}>
-          {data.map((val,id)=>{
-            return (<>
           {slist.filter((val)=>{
             if(searchTerm == ""){
               return val
@@ -130,12 +157,9 @@ function StudentData() {
                         Id: {val.id}<br/>
                         Student name: {val.fname} {val.mname} {val.lname} <br/>
                         Contact: {val.phone}/{val.email}<hr/>
-                        <Bar data={{
-                                      labels: ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
-                                      datasets: [data.test.result].flat()
-                                  }} 
+                        <Bar data={data} 
                         style={{width:"20vw",height:"45vh"}} 
-                        options={options} />
+                        options={options} /> 
                         <br/>
                         <form>
                           <label class="input-text">
@@ -147,14 +171,14 @@ function StudentData() {
                             <input type="text" name="post" value={suggestion} onChange={(e)=>{setsuggestion(e.target.value)}} style={{ height:"30px"}}/>
                           </label>
                           <button onClick={()=>func(val.id)} className='custom-button' type='button' style={{float:"right"}}>Send</button>
-                        </form><br/>
+                        </form><br/><br/><br/>
                       </div>
                   </Popup>
                 </div>
                 <br/>
               </div>
             );
-          })}</>)})}
+          })}
           </div></div>
         </div>
 		  </div>

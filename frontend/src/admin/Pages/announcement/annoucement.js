@@ -56,6 +56,8 @@ function Announcement() {
         // setannouncements(announcements)
       })
       .catch(error => console.log(error))
+      settitle('')
+      setcontent('')
   }
   return (
     <>{logged&&access.type==3?
