@@ -144,7 +144,7 @@ function MassRegistration() {
           />
           Custom Upload
       </label><br/>
-      <div>{msg}</div>
+      <div class="message">{msg}</div>
       {/* <div style={{width:"70vw", height:"60vh",overflowY:"scroll"}}><DataTable
         pagination
         highlightOnHover

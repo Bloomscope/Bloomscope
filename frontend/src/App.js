@@ -14,6 +14,7 @@ import MassRegistration from './admin/Pages/massreg/massreg';
 import TestCreation from './admin/Pages/TestCreation/TestCreation';
 import Token from './admin/Pages/Token/token';
 import AddQuestions from './admin/Pages/questions/questions';
+import ADashboard from './admin/Pages/dashboard/dashboard';
 
 // import Student from './student/Student';
 import SAnnouncement from './student/Pages/announcement/annoucement';
@@ -29,6 +30,8 @@ import PDashboard from './parent/Pages/dashboard/dashboard';
 import PSuggestions from './parent/Pages/suggestions/suggestions';
 import PHelpline from './parent/Pages/helpline/helpline';
 import PCalendar from './parent/Pages/calendar/calendar';
+
+import DownloadButton from './temp/downloadbutton/downloadbutton';
 
 function App() {
 return (
@@ -48,6 +51,7 @@ return (
         <Route path='/admin/massregistration' exact element={<MassRegistration/>} />
         <Route path='/admin/token' exact element={<Token/>} />
         <Route path='/admin/addquestions' exact element={<AddQuestions/>} />
+		<Route path='/admin/dashboard' exact element={<ADashboard/>} />
 		
 		{/* <Route path='/student' exact element={<Student/>}/> */}
 		<Route path='/student/dashboard' exact element={<Dashboard/>} />
@@ -63,6 +67,10 @@ return (
         <Route path='/parent/suggestions' exact element={<PSuggestions/>} />
         <Route path='/parent/helpline' exact element={<PHelpline/>} />
         <Route path='/parent/calendar' exact element={<PCalendar/>} />
+
+		<Route path='/download' exact element={<DownloadButton/>} />
+
+		
 	</Routes>
 	</Router>
 );

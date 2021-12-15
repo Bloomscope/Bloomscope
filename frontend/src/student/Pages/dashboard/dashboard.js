@@ -58,8 +58,8 @@ function Dashboard() {
     })
     .catch(error => console.log(error))}, [])
   return (
-    <>
-      {logged&&access.type==1?<>
+     <>
+     {logged&&access.type==1?<>
         <Navbar />
         <Holder>
         <div style={{ padding: "0 0.5rem" }}>
@@ -208,9 +208,10 @@ function Dashboard() {
           </div>
         </div>
         </Holder>
-    </>:<>
-          <NotLoggedIn/>
-          </>}</>
+     </>:<>
+        <NotLoggedIn/>
+           </>}
+   </>
   );
 }
 

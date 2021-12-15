@@ -19,6 +19,14 @@
   font-weight: 400;
 }
 
+.message {
+  height: 50px;
+  width: fit-content;
+  padding: 10px;
+  border: 2px black;
+  border-radius: 10px;
+}
+
 input[type="file"] {
   display: none;
 }
