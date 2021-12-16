@@ -73,7 +73,7 @@ const AdminLogin = () => {
         </div>
           :
           <>
-          <Navigate  to = "/admin/StudentData" />
+          <Navigate  to = "/admin/dashboard" />
           </>
       }
       </>

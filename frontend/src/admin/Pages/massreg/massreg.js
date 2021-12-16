@@ -135,7 +135,7 @@ function MassRegistration() {
             </div> */}
 
 
-      <label class="custom-file-upload">
+      <label className="custom-file-upload">
           <input
             type="file"
             accept=".json"
@@ -143,8 +143,8 @@ function MassRegistration() {
             // onClick = {(e)=>{updatedmsg('Uploading')}}
           />
           Custom Upload
-      </label><br/>
-      <div class="message">{msg}</div>
+      </label><button className="custom-file-upload" style={{backgroundColor:"white",borderRadius:"0px",color:"black"}}><a target="_blank" style={{color:"black"}} href='https://docs.google.com/spreadsheets/d/1ykzb-h-fZYYRwrR0zV5_fk4UKEmBjeMuFvz_qxTB9zg/edit?usp=sharing'>Download Template</a></button><br/>
+      {(msg!=="")?<div className="message">{msg}</div>:<></>}
       {/* <div style={{width:"70vw", height:"60vh",overflowY:"scroll"}}><DataTable
         pagination
         highlightOnHover

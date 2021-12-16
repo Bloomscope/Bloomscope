@@ -111,8 +111,10 @@ function Dashboard() {
               <div style={{width:"44%",float:"right"}}><h3>Status</h3></div>
             {schedule.map((item,i)=>(
               <span key={i}>
-              <div style={{height:"120px"}}>
-              <div style={{padding:"10px 10px",width:"44%",float:"left"}}>{item.title}</div>
+              <div >
+              <div style={{paddingLeft:"10px",marginBottom:"30px",marginTop:"5px",width:"44%",float:"left"}}>{item.title}</div>
+              {/* <div className='div1'>{item.title}</div>
+              <div className='div2'> */}
               <div style={{width:"44%",float:"right"}}>
                 {(item.date == -1) ?
                 <><button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Yet to give </button></>
@@ -152,7 +154,8 @@ function Dashboard() {
                 </div>
             </Popup></>:<></> }
 
-              </div></div>
+              </div>
+              </div>
               </span>
             ))}
               {/*delete later from here*/}
