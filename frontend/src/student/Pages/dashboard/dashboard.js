@@ -23,12 +23,14 @@ function Dashboard() {
   const [logged] = useAuth();
   const access = getSessionState();
   const [schedule, setschedule] = useState([]);
+  const [token, settoken] = useState([]);
   const nav = useNavigate();
 
   const goToTest = (e)=>{
     e.preventDefault()
     nav('/student/Quiz');
   }
+
   const makelist = (a)=>{
     var list = []
     for (var i = 0; i < a.length; i++) {
@@ -36,6 +38,7 @@ function Dashboard() {
         'title': a[i]['name'],
         'has_attempted': a[i]['has_attempted'],
         'date': a[i]['date'],
+        'test_id': a[i]['test_id'],
         // 'start': new Date( a[i]['starts_on']),
         // 'end':  new Date(a[i]['ends_on']),
       }
@@ -57,6 +60,33 @@ function Dashboard() {
       makelist(r.data)
     })
     .catch(error => console.log(error))}, [])
+
+    
+  const createToken = (e,testId)=>{
+    console.log(testId);
+    e.preventDefault()
+    console.log("You pressed button")
+    let opts = {
+      'reason': token,
+      'test_id': testId,
+    }
+    console.log(opts)
+    authFetch('/api/create_token', {
+      method: 'post',
+      body: JSON.stringify(opts),
+    }).then(r => r.json())
+      .then(r => {
+        if(r.status == 'success')
+        console.log(r)
+        else
+        console.log(r)
+        // setannouncements(announcements)
+      })
+      .catch(error => console.log(error))
+    settoken('');
+    return false;
+  }
+
   return (
      <>
      {logged&&access.type==1?<>
@@ -102,8 +132,8 @@ function Dashboard() {
                     7. Make sure to manage your time and not miss out on questions<br/>
                     8. Keep the number of questions in mind<br/><br/>
                   </div>
-                  <button onClick={goToTest} type='submit'>SIGN UP</button>
-        </div>
+                  <button className='custom-button' onClick={goToTest} type='submit'>Start Test</button>
+                  </div>
             </Popup> </> 
                 : (item.date == 1 && item.has_attempted == 'True')? <><button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Attempted </button></> 
                 : (item.date == 1 && item.has_attempted == 'False')? <><Popup modal trigger={<button className='custom-button' style= {{backgroundColor:"#3e3e3e"}} > Missed </button>}>
@@ -115,9 +145,9 @@ function Dashboard() {
                   <br/>
                   <br/>
                   <form>
-                    <input style={{height:"200px",width:"100%"}}></input>
+                    <input value={token} onChange={(e)=>{settoken(e.target.value)}} style={{height:"200px",width:"100%"}}/>
                     <br/>
-                    <button className='custom-button'> Submit </button>
+                    <button className='custom-button' onClick={(e)=>createToken(e,item.test_id)}> Submit </button>
                   </form>
                 </div>
             </Popup></>:<></> }

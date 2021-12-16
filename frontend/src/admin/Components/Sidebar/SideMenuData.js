@@ -3,9 +3,15 @@ import * as HiIcons from 'react-icons/hi';
 import * as FiIcons from 'react-icons/fi';
 import * as BsIcons from 'react-icons/bs';
 import * as IoIcons from 'react-icons/io';
+import * as ImIcons from 'react-icons/im';
 
 export const SidebarData = [
   {
+    title: 'Dashboard',
+    path: '/admin/dashboard',
+    icon: <ImIcons.ImHome/>,
+    cName: 'nav-text'
+  },{
     title: 'StudentData',
     path: '/admin/StudentData',
     icon: <FiIcons.FiDatabase />,

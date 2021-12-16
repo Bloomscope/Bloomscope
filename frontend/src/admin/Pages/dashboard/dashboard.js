@@ -20,8 +20,6 @@ function ADashboard() {
 
 	const [logged] = useAuth();
 	const access = getSessionState();
-    const [title, settitle] = useState('');
-    const [content, setcontent] = useState('');
     const [testData, settestData] = useState([]);
     
   useEffect(()=>{
@@ -60,6 +58,10 @@ function ADashboard() {
 //       setcontent('')
 //   }
   return (
+    
+    <>
+     {logged&&access.type===3?
+      <>
       <div>
         <Navbar />
       <Holder>
@@ -92,9 +94,10 @@ function ADashboard() {
       </div>
       </Holder>
       </div>
-    // <>
-    //  {logged&&access.type===3?
-    //   <>
+      </>:
+	 <>
+     <NotLoggedIn/>
+	 </>}</>
     //   <Navbar />
     //   <Holder>
     //     <div style={{ padding: "0 0.5rem" }}>
@@ -134,9 +137,6 @@ function ADashboard() {
     //   </Holder>
     //   </>
 	//  :
-	//  <>
-    //  <NotLoggedIn/>
-	//  </>}
     // </>
   );
 }
