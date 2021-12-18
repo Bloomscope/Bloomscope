@@ -4,6 +4,7 @@ import Home from './Home/index';
 import StudentRegistration from './Register/Pages/studentRegistration';
 import ParentRegistration from './Register/Pages/parentRegistration';
 import SignIn from './Register/Pages/SignIn';
+import Payment from './Register/Pages/payment';
 import Logout from './Register/Pages/logout';
 import AdminLogin from './Register/Pages/admin';
 
@@ -38,7 +39,8 @@ return (
 	    <Route path='/logout' exact element={<Logout/>} />	
 		<Route path='/studentRegistration' element={<StudentRegistration/>} />
 		<Route path='/parentRegistration' element={<ParentRegistration/>} />
-		<Route path='/signIn' element={<SignIn/>} />		
+		<Route path='/signIn' element={<SignIn/>} />	
+		<Route path='/payment' element={<Payment/>} />		
 		<Route path='/adminLogin' exact element={<AdminLogin/>}/>
 		
 		<Route path='/admin/studentData' exact element={<StudentData/>} />

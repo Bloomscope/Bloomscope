@@ -7,7 +7,7 @@ import styled from "styled-components";
 import datas from './data.json';
 import Chart from 'chart.js/auto'
 import { Bar } from "react-chartjs-2";
-import {login, useAuth,authFetch, logout,getSessionState} from "../../../auth"
+import {useAuth,authFetch, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
   const options = {
@@ -84,7 +84,6 @@ function StudentData() {
     })
     .then(r => r.json())
     .then((r) => {
-      // console.log(r)
       if(r.data)
       setslist(r.data);
     })
@@ -92,8 +91,6 @@ function StudentData() {
 
 
     const func = (id)=>{
-    // e.preventDefault();
-    // e.stopPropagation();
       console.log("You pressed button")
       console.log(id)
       let opts = {
@@ -154,22 +151,27 @@ function StudentData() {
                 <div className = 'col4'>
                   <Popup modal trigger={<button className='custom-button'> Details </button>}>
                       <div className="popup" style = {{overflowY:'scroll'}}>
-                        Id: {val.id}<br/>
-                        Student name: {val.fname} {val.mname} {val.lname} <br/>
-                        Contact: {val.phone}/{val.email}<hr/>
+                        <div class="temp3 temp2">
+                          <b>Id : </b>{val.id}<br/>
+                          <b>Student name :</b> {val.fname} {val.mname} {val.lname} <br/>
+                          <b>Contact: </b>{val.phone} / {val.email}
+                        </div>
+                        
                         <Bar data={data} 
-                        style={{width:"20vw",height:"45vh"}} 
+                        style={{width:"20vw",height:"45vh", marginTop:"10vh"}} 
                         options={options} /> 
                         <br/>
-                        <form>
-                          <label class="input-text">
-                          Send Suggestion : <br/>Title : <br/>
-                            <input type="text" name="post" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{ height:"30px"}}/>
+                        <form class="suggestion">
+                        <span class="temp">Send Suggestion  <br/><br/></span>
+                          <label class="input-text temp2"> Title : 
+                          <input type="text" name="post" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{ height:"30px"}}/>
                           </label>
-                          <label class="input-text">
-                            Suggestion : <br/>
+                          <label class="input-text temp2">
+                            Suggestion :<br/>
                             <input type="text" name="post" value={suggestion} onChange={(e)=>{setsuggestion(e.target.value)}} style={{ height:"30px"}}/>
                           </label>
+                    
+                            
                           <button onClick={()=>func(val.id)} className='custom-button' type='button' style={{float:"right"}}>Send</button>
                         </form><br/><br/><br/>
                       </div>

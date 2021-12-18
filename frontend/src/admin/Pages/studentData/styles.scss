@@ -1,10 +1,10 @@
 .row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding-bottom: 10px;
 }
 
 .col1 { grid-area: 1 / 1 / 2 / 2; }
@@ -13,41 +13,68 @@
 .col4 { grid-area: 1 / 4 / 2 / 5; }
 
 .popup{
-    background-color: white;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    height: 500px;
-    width: 600px;
-    padding: 5%;
-    margin-bottom: 5%;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  height: 500px;
+  width: 600px;
+  padding: 5%;
+  margin-bottom: 5%;
 }
 
 .custom-button {
-    min-width: 165px;
-    width: auto;
-    height: 40px;
-    letter-spacing: 0.5px;
-    line-height: 40px;
-    padding: 0 25px 0 25px;
-    font-size: 12px;
-    background-color: black;
-    color: white;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
+  min-width: 165px;
+  width: auto;
+  height: 40px;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  padding: 0 25px 0 25px;
+  font-size: 12px;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
 
-    &:hover {
-    transition: all 0.2s ease-in-out;
-      background-color: white;
-      color: black;
-      border: 1px solid black;
-    }
+  &:hover {
+  transition: all 0.2s ease-in-out;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
   }
+}
 
-  
+
 input[type="text"] {
-    font-size: 18px;
-    margin: 15px 5px 15px 0px;
-    padding: 2px;
-    width: 100%;
-    overflow-y: scroll;
-  }
+  font-size: 18px;
+  margin: 15px 5px 15px 0px;
+  padding: 2px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.suggestion {
+  background-color: #d4efff;
+  border-radius: 2%;
+  padding: 4%;
+  padding-bottom: 10%;
+  margin-top: 5%;
+  font-size: 12px;
+}
+
+.temp {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.temp2 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.temp3 {
+  background-color: rgb(187, 186, 186);
+  margin: 20px 0px;
+  padding: 3% 2%;
+  float: right;
+  border-radius: 2%;
+}

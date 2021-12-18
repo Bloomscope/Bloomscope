@@ -145,9 +145,15 @@ function AddQuestions() {
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Add Questions</h1>
-        <div style = {{ float:"left",width:"36vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div style = {{ float:"left",width:"30vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
          <div style={{overflowY:"scroll",height:"58vh"}}>
           <form onSubmit="">  
+          <label style={{fontWeight:"bold"}}> Question Type: <br/>
+             <select  value={questionType} onChange={handleSelect2}>
+                <option value="str">String</option>
+                <option value="url">Url</option>
+            </select><br/>
+             </label> 
           <label class="input-text" style={{fontWeight:"bold"}}>
               Question: <br/> 
               <input 
@@ -155,49 +161,48 @@ function AddQuestions() {
                 name="question" 
                 value={question}
                 onChange={(e)=>{setquestion(e.target.value)}}
-                style={{width:"90%"}}
+                style={{width:"95%"}}
               /><br/>
             </label>
-            <label style={{fontWeight:"bold"}}> Question Type: <br/>
-             <select  value={questionType} onChange={handleSelect2}>
-                <option value="str">String</option>
-                <option value="url">Url</option>
-            </select><br/>
-             </label> 
+            
             <div>
-             <form>
+             <form class="optionadd"> 
              <label style={{fontWeight:"bold"}}> Option Name: <br/>
              <input 
                 type="text"
                 name="optionName"
                 value={optionName}
-                style={{width:"90%"}}
+                style={{width:"95%"}}
                 onChange = {(e)=>{setoptionName(e.target.value)}}
                 // required
                 />
              </label> <br/>
+             <div style={{width:"30%",float:'left'}}>
+              <label style={{fontWeight:"bold"}}> Content Type: <br/>
+              <select  value={contentType} onChange={handleSelect}>
+                  <option value="str">String</option>
+                  <option value="url">Url</option>
+              </select><br/>
+              </label> 
+             </div>
              
-             <label style={{fontWeight:"bold"}}> Content Type: <br/>
-             <select  value={contentType} onChange={handleSelect}>
-                <option value="str">String</option>
-                <option value="url">Url</option>
-            </select><br/>
-             </label> 
+             <div style={{width:"60%",float:'right'}}>
+              <label style={{fontWeight:"bold"}}> Content: <br/>
+              <input 
+                  type="text" 
+                  name="content" 
+                  value={content} 
+                  style={{width:"90%"}}
+                  onChange = {(e)=>{setcontent(e.target.value)}}
+              />
+              </label> <br/>
+             </div>
              
-             <label style={{fontWeight:"bold"}}> Content: <br/>
-             <input 
-                type="text" 
-                name="content" 
-                value={content} 
-                style={{width:"90%"}}
-                onChange = {(e)=>{setcontent(e.target.value)}}
-             />
-             </label> <br/>
                 
             <CustomButton 
             type="submit" 
             onClick={handleChange}
-            style={{margin:"20px 0px 20px -4px"}}>
+            style={{margin:"20px 0px 15px 0px"}}>
             Add
             </CustomButton>
              </form>
@@ -208,7 +213,7 @@ function AddQuestions() {
               type="text"  
               name="answer" 
               value = {answer}
-              style={{width:"90%"}}
+              style={{width:"95%"}}
               onChange={(e)=>{setanswer(e.target.value)}}
             />
             </label><br/>
@@ -217,17 +222,21 @@ function AddQuestions() {
               type="text"  
               name="explanation" 
               value = {explanation}
-              style={{width:"90%"}}
+              style={{width:"95%"}}
               onChange={(e)=>{setexplanation(e.target.value)}}
             /></label><br/>
-            <label class="input-text" style={{fontWeight:"bold"}}> Parameter: <br/>
-            <input 
-              type="text"  
-              name="parameter" 
-              value={parameter}
-              style={{width:"90%"}}
-              onChange={(e)=>{setparameter(e.target.value)}}
-            /></label><br/>
+            <div style={{width:"50%",float:'left'}}>
+              <label class="input-text" style={{fontWeight:"bold"}}> Parameter: <br/>
+              <input 
+                type="text"  
+                name="parameter" 
+                value={parameter}
+                style={{width:"90%"}}
+                onChange={(e)=>{setparameter(e.target.value)}}
+            /></label>
+            </div>
+            
+            <div style={{width:"50%",float:'right'}}>
             <label class="input-text" style={{fontWeight:"bold"}}> Marks: <br/>
             <input 
               type="text"  
@@ -235,11 +244,13 @@ function AddQuestions() {
               value={marks}
               style={{width:"90%"}}
               onChange={(e)=>{setmarks(e.target.value)}}
-            /></label><br/>
+            /></label>
+            </div>
+            
           </form>
           </div>
           </div>
-          <div style = {{float:"right",width:"50vh",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "20px"}}>
+          <div style = {{float:"right",width:"42vh",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "20px"}}>
           <div class="question" style={{overflowY:"scroll", overflowX:"inherit",height:"58vh"}}>
             <span><b>Question:</b> {question}</span><br/>
             <span><b>Question Type:</b> {questionType}</span><br/>
