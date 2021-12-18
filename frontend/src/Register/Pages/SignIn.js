@@ -4,8 +4,8 @@ import FormInput from '../components/form-input/form-input.component'
 import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
 import Navbar from '../../Home/components/Navbar'
-import {login, useAuth, logout,getSessionState} from "../../auth"
-import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
+import {login, useAuth, getSessionState} from "../../auth"
+import { Navigate  } from 'react-router-dom';
 import NotLoggedIn from "./notLoggedIn.jsx";
 import styled from "styled-components";
 
@@ -71,7 +71,7 @@ const SignIn = () =>{
         })
         .catch(error => console.log(error))
     }
-    // const [logged] = useAuth();
+    
 	const access = getSessionState();
     return (
       <>

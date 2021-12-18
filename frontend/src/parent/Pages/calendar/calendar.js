@@ -4,12 +4,10 @@ import "./styles.scss";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
 import styled from "styled-components";
-import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment';
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login,authFetch, useAuth, logout,getSessionState} from "../../../auth"
-// import 'react-big-calendar/lib/css/react-big-calendar.css';
+import {authFetch, useAuth, getSessionState} from "../../../auth"
 
 const localizer = momentLocalizer(moment)
 

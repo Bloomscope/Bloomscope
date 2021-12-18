@@ -1,12 +1,12 @@
-import React, {useState,useRef} from 'react';
+import React, {useState} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
-import {login, useAuth,authFetch, logout,getSessionState} from "../../../auth"
+import {useAuth,authFetch, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
-import { v4 as uuidv4 } from 'uuid';
+import template from './template.json';
 
 const Holder = styled.div`
   display: flex;
@@ -17,8 +17,6 @@ const Holder = styled.div`
 `;
 
 function AddQuestions() {
-//   const [title, settitle] = useState('');
-//   const [post, setpost] = useState('');
   const [optionName, setoptionName]=useState('');
   const [content, setcontent]=useState('');
   const [contentType, setcontentType]=useState('');
@@ -30,14 +28,30 @@ function AddQuestions() {
   const[explanation, setexplanation] = useState('');
   const[parameter, setparameter] = useState('');
   const[marks, setmarks] = useState('');
-  const [file, setFile] = useState(''); // storing the uploaded file    
-  // storing the recived file from backend
-  const [data, getFile] = useState({ name: "", path: "" });  
-  const [columns, setColumns] = useState([]);
-  // const [data, setData] = useState([]);
-  const [msg,updatedmsg] = useState('');   
-  const [progress, setProgess] = useState(0); // progess bar
-  const el = useRef(); // accesing input element
+  const[file, setFile] = useState('');
+
+  const downloadFile = ({ data, fileName, fileType }) => {
+    const blob = new Blob([data], { type: fileType })
+    const a = document.createElement('a')
+    a.download = fileName
+    a.href = window.URL.createObjectURL(blob)
+    const clickEvt = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+    })
+    a.dispatchEvent(clickEvt)
+    a.remove()
+  }
+  
+  const exportToJson = e => {
+    e.preventDefault()
+    downloadFile({
+      data: JSON.stringify(template),
+      fileName: 'users.json',
+      fileType: 'text/json',
+    })
+  }
   
  
   const handleChange = e =>{
@@ -46,7 +60,6 @@ function AddQuestions() {
     setcontentType(e.target.value)
     setcontent(e.target.value)
     let data = {
-      // 'id': uuidv4(),
       'opt': optionName,
       'value': content,
       'opt_type': contentType
@@ -57,7 +70,6 @@ function AddQuestions() {
     setoptionName('')
     setcontentType('')
     setcontent('')
-        //add form input to json
   }
 
   const handleSelect = e => {
@@ -92,7 +104,6 @@ function AddQuestions() {
         console.log(r)
       })
       .catch(error => console.log(error))
-    //send data to the db
     setList([])
     setanswer('')
     setquestion('')
@@ -105,7 +116,7 @@ function AddQuestions() {
   }
 
   const handleFileUpload = e => {
-    const file = e.target.files[0]; // accesing file
+    const file = e.target.files[0];
     console.log(file);
     setFile(file);
 
@@ -121,26 +132,6 @@ function AddQuestions() {
           console.log(r)
         })
         .catch(error => console.log(error))
-    // const file = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.onload = (evt) => {
-    //   console.log("uploaded")
-    //   authFetch('/api/add_questions', {
-    //     method: 'post',
-    //     body: file,
-    //   }).then(r => r.json())
-    //     .then(r => {
-    //       console.log(r)
-    //       // setannouncements(announcements)
-    //     })
-    //     .catch(error => console.log(error))
-    // };
-    // try{
-    //   reader.readAsBinaryString(file);
-    // }
-    // catch(e){
-    //   console.log(e)
-    // }
   }
 	const [logged] = useAuth();
 	const access = getSessionState();
@@ -277,8 +268,14 @@ function AddQuestions() {
                     accept=".json"
                     onClick={handleFileUpload}
                     style={{margin:"30px 0px 0px -4px"}}/>
-                  Custom Upload
-              </label>
+                Upload
+              </label><br/><br/>
+
+
+              <CustomButton type='button' onClick={exportToJson}>
+                Download template
+              </CustomButton>
+
           </div>
           </div>
         </div>

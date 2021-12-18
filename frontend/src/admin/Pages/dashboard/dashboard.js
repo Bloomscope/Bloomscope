@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
-import CustomButton from '../../../Register/components/custom-button/custom-button-component';
-// import data from './announcements.json'
 import styled from "styled-components";
-import {login, useAuth, authFetch, logout,getSessionState} from "../../../auth/index"
+import {useAuth, authFetch, getSessionState} from "../../../auth/index"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`

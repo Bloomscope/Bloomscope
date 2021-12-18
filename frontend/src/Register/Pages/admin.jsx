@@ -1,20 +1,15 @@
 import  React, {useState} from 'react';
 import CustomButton from '../components/custom-button/custom-button-component';
 import FormInput from '../components/form-input/form-input.component'
-// import Navbar from '../components/form-input/form-input.component'
 import Navbar from '../../Home/components/Navbar'
-// import './sign-in-styles.scss';
 import { useNavigate  } from "react-router";
-import {login, useAuth, logout,getSessionState} from "../../auth"
-import { BrowserRouter, Routes, Navigate  } from 'react-router-dom';
-// import {login} from "../../auth"
+import {login, useAuth, getSessionState} from "../../auth"
+import { Navigate  } from 'react-router-dom';
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
     const [logged] = useAuth();
-
     const nav = useNavigate();
     const onSubmitClick = (e)=>{
       e.preventDefault()

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
-import data from "./announcements.json";
-import {login, useAuth,authFetch, logout,getSessionState} from "../../../auth"
-import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
+import {useAuth,authFetch, getSessionState} from "../../../auth"
 import styled from "styled-components";
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
@@ -27,7 +25,6 @@ function Announcement() {
     })
     .then(r => r.json())
     .then((r) => {
-      // console.log(r)
       if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })

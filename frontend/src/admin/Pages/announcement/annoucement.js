@@ -3,9 +3,8 @@ import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
-// import data from './announcements.json'
 import styled from "styled-components";
-import {login, useAuth, authFetch, logout,getSessionState} from "../../../auth"
+import {useAuth, authFetch, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
@@ -30,7 +29,6 @@ function Announcement() {
     })
     .then(r => r.json())
     .then((r) => {
-      // console.log(r)
       if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })
@@ -59,6 +57,7 @@ function Announcement() {
       settitle('')
       setcontent('')
   }
+  
   return (
     <>{logged&&access.type==3?
       <>

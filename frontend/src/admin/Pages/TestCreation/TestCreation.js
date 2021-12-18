@@ -1,16 +1,11 @@
 import React,{useState} from 'react';
 import './styles.scss';
-import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
-import Parameter from '../../Components/parameters/parameter';
-import TabButton from '../../../Register/components/TabButton/TabButton';
-import {FaPlus} from "react-icons/fa";
 import styled from "styled-components";
-import data from './tests.json'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
-import {login, authFetch,useAuth, logout,getSessionState} from "../../../auth"
+import {authFetch,useAuth, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
 const Holder = styled.div`
@@ -23,8 +18,6 @@ const Holder = styled.div`
 
 
 function TestCreation() {
-  const [openbutton, setopenbutton]=useState(false);
-
 	const [logged] = useAuth();
 	const access = getSessionState();
   
@@ -35,7 +28,6 @@ function TestCreation() {
   const[start, setstart] = useState('');
   const[end, setend] = useState('');
   const[duration, setduration] = useState('');
-  // const[tests, settests] = useState([]);
   
   const handleChange = e =>{
     e.preventDefault()
@@ -92,8 +84,6 @@ function TestCreation() {
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2rem" }}>
         <h1>Test Creation</h1>
         <div style={{padding:"1.8rem",width:"30vw",height:"60vh",backgroundColor:"white",float:'left'}}>
-        {/* <div style={{overflowY:"scroll",height:"60vh"}}>
-         */}
          <div>
           <form onSubmit="">  
           <div style={{width:"47%",float:'left'}}>

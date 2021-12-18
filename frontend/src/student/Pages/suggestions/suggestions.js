@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
-import data from './suggestions.json'
 import styled from "styled-components";
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login, useAuth, authFetch,logout, getSessionState} from "../../../auth"
+import {useAuth, authFetch,getSessionState} from "../../../auth"
 
 const Holder = styled.div`
   display: flex;

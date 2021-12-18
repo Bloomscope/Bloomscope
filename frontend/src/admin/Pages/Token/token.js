@@ -5,7 +5,6 @@ import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
 import {login,authFetch, useAuth, logout,getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import tokens from "./tests.json"
 
 const Holder = styled.div`
   display: flex;
@@ -54,8 +53,6 @@ function Token() {
         'status': a[i]['status'],
         'uname': uname,
         'tname': tname
-        // 'start': new Date( a[i]['starts_on']),
-        // 'end':  new Date(a[i]['ends_on']),
       }
       list.push(opts)
   }
@@ -92,7 +89,6 @@ function Token() {
           console.log(r)
           else
           console.log(r)
-          // setannouncements(announcements)
         })
         .catch(error => console.log(error))
       return false;
@@ -116,7 +112,6 @@ function Token() {
           console.log(r)
           else
           console.log(r)
-          // setannouncements(announcements)
         })
         .catch(error => console.log(error))
       return false;

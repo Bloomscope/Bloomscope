@@ -4,11 +4,9 @@ import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import Chart from './dchart'
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
-import {login, useAuth,authFetch, logout,getSessionState} from "../../../auth"
-// import { BrowserRouter, Routes, Navigate,Link  } from 'react-router-dom';
+import {useAuth,authFetch, getSessionState} from "../../../auth"
 import styled from "styled-components";
 import Popup from 'reactjs-popup';
-// import { useHistory } from 'react-router-dom';
 import { useNavigate  } from "react-router";
 
 const Holder = styled.div`
@@ -39,13 +37,9 @@ function Dashboard() {
         'has_attempted': a[i]['has_attempted'],
         'date': a[i]['date'],
         'test_id': a[i]['test_id'],
-        // 'start': new Date( a[i]['starts_on']),
-        // 'end':  new Date(a[i]['ends_on']),
       }
-      // console.log(opts)
       list.push(opts)
   }
-  // console.log(list)
     setschedule(list);
   }
 
@@ -80,7 +74,6 @@ function Dashboard() {
         console.log(r)
         else
         console.log(r)
-        // setannouncements(announcements)
       })
       .catch(error => console.log(error))
     settoken('');
@@ -113,8 +106,6 @@ function Dashboard() {
               <span key={i}>
               <div >
               <div style={{paddingLeft:"10px",marginBottom:"30px",marginTop:"5px",width:"44%",float:"left"}}>{item.title}</div>
-              {/* <div className='div1'>{item.title}</div>
-              <div className='div2'> */}
               <div style={{width:"44%",float:"right"}}>
                 {(item.date == -1) ?
                 <><button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Yet to give </button></>
@@ -158,92 +149,13 @@ function Dashboard() {
               </div>
               </span>
             ))}
-              {/*delete later from here*/}
-              {/* <div className="parent">
-                <div className = 'div1'><h3>Test Name</h3></div>
-                <div className = 'div2'><h3>Status</h3></div>
-                <div className = 'div3' style = {{paddingTop: '7%'}}>Test 1</div>
-                <div className = 'div4'>
-                    <Popup modal trigger={<button className='custom-button'> Attempt </button>}>
-                        <div className="popup">
-                          <h3>Name: Test1</h3>
-                          <hr/>
-                          <b>Test rules:</b>
-                          <div>
-                            1. This is a multiple choice exam<br/>
-                            2. Each question may not carry the same marks<br/>
-                            3. Only one option is correct<br/>
-                            4. Avoid guessing answers<br/>
-                            5. Emphasize on Higher-Level Thinking<br/>
-                            6. Test comprehension and critical thinking, not just recall<br/>
-                            7. Make sure to manage your time and not miss out on questions<br/>
-                            8. Keep the number of questions in mind<br/><br/>
-                          </div>
-                          <Link className='custom-button' to = '/student/Quiz'> Start </Link>
-                        </div>
-                    </Popup>
-                </div>
-                <div className = 'div5' style = {{paddingTop: '7%'}}>Test 2</div>
-                <div className = 'div6'>
-                    <Popup modal trigger={<button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Attempted </button>}>
-                        <div className="popup" style = {{overflowY:'scroll'}}>
-                          <h3>Name: Test2</h3>
-                          <hr/>
-                          <b>Test rules:</b>
-                        </div>
-                    </Popup>
-                </div>
-                <div className = 'div7' style = {{paddingTop: '7%'}}>Test 3</div>
-                <div className = 'div8'>
-                    <Popup modal trigger={<button className='custom-button' style= {{backgroundColor:"#3e3e3e"}} > Missed </button>}>
-                        <div className="popup" >
-                          <h3>Name: Test3</h3>
-                          <hr/>
-                          <b>Submit a token:</b><br/>
-                          Even though you have missed the exam in the given time frame, you can attend the exam by submitting a token. This is where you need to submit a reason for missing the time frame. If the token is approved, you will be notified and another time frame will be assigned to you. 
-                          <br/>
-                          <br/>
-                          <form>
-                            <input style={{height:"200px",width:"100%"}}></input>
-                            <br/>
-                            <button className='custom-button'> Submit </button>
-                          </form>
-                        </div>
-                    </Popup>
-                </div>
-                <div className = 'div9' style = {{paddingTop: '7%'}}>Test 4</div>
-                <div className = 'div10'>
-                    <Popup modal trigger={<button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Attempted </button>}>
-                        <div className="popup" style = {{overflowY:'scroll'}}>
-                          <h3>Name: Test4</h3>
-                          <hr/>
-                          <b>Test rules:</b>
-
-                        </div>
-                    </Popup>
-                </div>
-                <div className = 'div11' style = {{paddingTop: '7%'}}>Test 5</div>
-                <div className = 'div12'>
-                    <Popup modal trigger={<button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Attempted </button>}>
-                        <div className="popup" style = {{overflowY:'scroll'}}>
-                          <h3>Name: Test5</h3>
-                          <hr/>
-                          <b>Test rules:</b>
-
-                        </div>
-                    </Popup>
-                </div>
-              </div> */}
-
-              {/*delete till here*/}
-
-            </div>
+              </div>
           </div>
         </div>
         </Holder>
      </>:<>
         <NotLoggedIn/>
-           </>}
+      </>}
    </>
   );
 }

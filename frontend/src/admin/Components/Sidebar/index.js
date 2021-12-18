@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SideMenuData';
 
 function Sidebar() {
-  // const [sidebar, setSidebar] = useState(true);
-
   return (
     <div className= "sidebar" style = {{backgroundColor: "#ffffff",paddingLeft: "12%",height:"calc(78vh)",paddingTop:"8%",boxShadow:"3px 3px 6px 5px #ccc"}}>
         <nav >
