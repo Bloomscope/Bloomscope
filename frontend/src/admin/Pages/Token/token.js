@@ -20,15 +20,57 @@ function Token() {
 	const access = getSessionState();
   const [tokens, settokens] = useState([]);
   
+  const makelist = async(a)=>{
+    var list = []
+    for (var i = 0; i < a.length; i++) {
+      
+      var uid = a[i]['user_id']
+      let p  = authFetch(`/api/get_user_info?uid=${uid}`,{
+        'methods':'GET',
+      })
+      .then(r => r.json())
+      .then((r) => {
+        return (r.fname + " " + r.lname)
+      })
+      .catch(error => console.log(error))
+      var uname = await p
+      
+      var tid = a[i]['test_id']
+      p  = authFetch(`/api/test_info?test_id=${tid}`,{
+        'methods':'GET',
+      })
+      .then(r => r.json())
+      .then((r) => {
+        return (r.name)
+      })
+      .catch(error => console.log(error))
+      var tname = await p
+
+      let opts = {
+        'user_id': a[i]['user_id'],
+        'created_on': a[i]['created_on'],
+        'reasonsss': a[i]['reason'],
+        'test_id': a[i]['test_id'],
+        'status': a[i]['status'],
+        'uname': uname,
+        'tname': tname
+        // 'start': new Date( a[i]['starts_on']),
+        // 'end':  new Date(a[i]['ends_on']),
+      }
+      list.push(opts)
+  }
+  console.log(list[0]["tname"])
+  settokens(list);
+  }
+
   useEffect(()=>{
     authFetch('/api/get_all_tokens',{
       'methods':'GET',
     })
     .then(r => r.json())
     .then((r) => {
-      // console.log(r)
       if(r.tokens !== undefined )
-      settokens(r.tokens);
+      makelist(r.tokens);
     })
     .catch(error => console.log(error))})
 
@@ -97,7 +139,7 @@ function Token() {
               {
                 (item.status == "Pending")?
                 <span key={i}>
-              <div style = {{float:"left",width:"35vw"}}><p><b>User id: {item.user_id}</b>: ({item.created_on}) <br/>Test id: {item.test_id} - {item.reason}</p> </div>
+              <div style = {{float:"left",width:"35vw"}}><p><b>{item.uname} </b> ({item.user_id}) - {item.created_on} <br/><b>{item.tname} </b> ({item.test_id}) - {item.reasonsss}</p> </div>
               <div style = {{float:"right",width:"25vw", paddingTop: "1.1rem"}}>
                 <button onClick={(e)=>approve(e,item.test_id,item.user_id)} className='custom-button'> Approve </button>
                 <button onClick={(e)=>disapprove(e,item.test_id,item.user_id)} className='custom-button'> Disapprove </button> 
