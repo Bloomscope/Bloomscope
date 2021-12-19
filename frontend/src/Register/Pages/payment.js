@@ -69,8 +69,8 @@ const Payment = () => {
                     .catch(error => console.log(error))
             },
             "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
+                "name": "Test User",
+                "email": "user@example.com",
                 "contact": "9999999999"
             },
             notes: {
@@ -87,9 +87,8 @@ const Payment = () => {
 
     return (
         <>
-        Payment
             <button className="custom-button" onClick={displayRazorpay}>
-                    Pay ₹500
+            Payment
             </button>
         </>
     );
