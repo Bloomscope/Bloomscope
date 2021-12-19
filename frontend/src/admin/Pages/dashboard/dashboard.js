@@ -10,6 +10,7 @@ import styled from "styled-components";
 import {login, useAuth, authFetch, logout,getSessionState} from "../../../auth/index"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
+
 const Holder = styled.div`
   display: flex;
   flex-direction: row;
@@ -17,6 +18,7 @@ const Holder = styled.div`
     flex-direction: column;
   }
 `;
+
 
 const options = {
   type: 'bar',
@@ -102,7 +104,7 @@ function ADashboard() {
       }
     );
 
-    var newdataset = [d];
+  var newdataset = [d];
   var dt = newdataset.flat();
   console.log(dt)
   console.log(list)
@@ -142,16 +144,25 @@ function ADashboard() {
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
         <h1>Dashboard</h1>
-        <div style = {{float:"left",width:"400px",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginRight:"10px"}}>
-          <h3>Tests log:</h3>
-            <div style={{overflowY:"scroll",height:"55vh"}}>
-            <Bar data={datas} style={{width:"60vw"}} options={options} />
+        <div style = {{float:"left", width:"42vw", height:"60vh", backgroundColor:"white", padding:"1.8rem", marginRight:"10px"}}>
+          <h3>Tests log</h3>
+          <span>This is an overview of the tests created by the admin. It is a graphical representation of the number of users registered and the number of users of users who have attempted each of the tests.</span>
+            <div style={{overflowY:"scroll",height:"55vh", marginTop:"30px"}}>
+            <Bar data={datas} style={{width:"45vw"}} options={options} />
             </div>
           
         </div>
-        <div style = {{float:"right",width:"420px",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
-          Users registered: {users_registered}<br/>
-          Tests: {tests}
+        <div class="users" style={{height:"60vh"}}>
+          <h3>Summary</h3>
+          <div class="innerdiv">
+          Users registered: <br/><br/>
+          <span class="display">{users_registered}</span><br/><br/>
+          Tests: <br/><br/>
+          <span class="display">{tests}</span><br/>
+          </div>
+          
+          <span style={{fontSize:"13px"}}>The button given below gives you direct access to the admin database. If you wish to make any changes in the database, you can do it here directly.</span><br/>
+          <button style={{marginTop:"20px", fontSize:"14px"}}><a href='http://localhost:5000/admin/' target="_blank">Admin Database</a></button>
         </div>
       </div>
       </Holder>

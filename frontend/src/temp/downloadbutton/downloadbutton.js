@@ -5,7 +5,7 @@ import './downloadbutton.scss'
 const DownloadButton = (url) => {
     
     return (
-        <button><a href={url} download='data.txt'>Download</a></button>
+        <button><a href={url}>Download</a></button>
     );
 
 };
