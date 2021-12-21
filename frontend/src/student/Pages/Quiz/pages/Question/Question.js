@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Question.module.scss';
-
 import Progress from './Progress/Progress';
 import Alternative from './Alternative/Alternative';
 
@@ -11,40 +10,48 @@ function Question({
   numCurrentQuestion,
   question,
   onAnswerSelected,
+  type
 }) {
   return (
-    <div className={styles.question}>
-      <div className={styles['quiz-title']}>{quizTitle}</div>
+    <>
+    <div>
+            
+            <div className={styles.question}>
+              <div className={styles['quiz-title']}>{quizTitle}</div>
+      
+              <Progress
+                numCurrentQuestion={numCurrentQuestion}
+                numTotalQuestions={numTotalQuestions}
+              />
+      
+              {question.img && (
+                <img
+                  alt="Current question"
+                  // src={require(`../../assets/images/questions/${question.img}`).default}
+                  src={question.img}
+                  className={styles['question-img']}
+                />
+              )}
+      
+              <div className={styles['question-text']}>
+                <strong>{question.text}</strong>
+              </div>
+              </div>
+              
+            </div>
 
-      <Progress
-        numCurrentQuestion={numCurrentQuestion}
-        numTotalQuestions={numTotalQuestions}
-      />
+        <div className={styles.alternatives}>
+          {question.alternatives.map(alternative => (
+            <Alternative
+              alternative={alternative}
+              isQuestionAnswered={question.isAnswered}
+              key={`alternative-${question.id}-${alternative.id}`}
+              onAnswerSelected={onAnswerSelected}
+            />
+          ))}
+        </div>
 
-      {question.img && (
-        <img
-          alt="Current question"
-          // src={require(`../../assets/images/questions/${question.img}`).default}
-          src={question.img}
-          className={styles['question-img']}
-        />
-      )}
-
-      <div className={styles['question-text']}>
-        <strong>{question.text}</strong>
-      </div>
-
-      <div className={styles.alternatives}>
-        {question.alternatives.map(alternative => (
-          <Alternative
-            alternative={alternative}
-            isQuestionAnswered={question.isAnswered}
-            key={`alternative-${question.id}-${alternative.id}`}
-            onAnswerSelected={onAnswerSelected}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
 

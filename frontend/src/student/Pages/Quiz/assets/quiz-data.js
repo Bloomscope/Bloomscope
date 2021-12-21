@@ -1,32 +1,37 @@
 const quizData = {
-  title: 'Quiz title',
-  description:
-    'Lorem ipsum dolor sit amet,',  questions: [
+  title: "Quiz title",
+  description: "Lorem ipsum dolor sit amet",
+  img: 'start-example.jpg',
+  questions: [
     {
       id: 1,
-      text: '600 - 544:',
+      text: "600 - 544:",
+      type: "choice",
       alternatives: [
         {
           id: 1,
-          text: '55',
+          text: "55",
           isCorrect: false,
         },
         {
           id: 2,
-          text: '56',
+          text: "56",
           isCorrect: true,
         },
         {
           id: 3,
-          text: '57',
+          text: "57",
           isCorrect: false,
         },
         {
           id: 4,
-          text: '65.5',
+          text: "65.5",
           isCorrect: false,
         },
       ],
+      explanation: "lol",
+      parameter: "2",
+      marks: 10,
     },
     {
       id: 2,
@@ -34,66 +39,66 @@ const quizData = {
       alternatives: [
         {
           id: 1,
-          text: '4220',
+          text: "4220",
           isCorrect: true,
         },
         {
           id: 2,
-          text: '4250',
+          text: "4250",
           isCorrect: false,
         },
         {
           id: 3,
-          text: '4200',
+          text: "4200",
           isCorrect: false,
         },
         {
           id: 4,
-          text: '4000',
+          text: "4000",
           isCorrect: false,
         },
       ],
     },
     {
       id: 3,
-      text: 'A, B, C or D?',
-      img: 'https://www.crossfitamatak.com/wp-content/uploads/option-1.png',
+      text: "A, B, C or D?",
+      img: "https://www.crossfitamatak.com/wp-content/uploads/option-1.png",
       alternatives: [
         {
           id: 1,
-          text: 'A',
+          text: "A",
           isCorrect: true,
         },
         {
           id: 2,
-          text: 'B',
+          text: "B",
           isCorrect: false,
         },
         {
           id: 3,
-          text: 'C',
+          text: "C",
           isCorrect: false,
         },
         {
           id: 4,
-          text: 'D',
+          text: "D",
           isCorrect: false,
         },
       ],
     },
     {
       id: 4,
-      text: 'Lorem or Ipsum?',
-      img: 'https://www.multimediaxp.com/images/article_190508124638.1557333998.jpg',
+      text: "Lorem or Ipsum?",
+      img: "https://www.multimediaxp.com/images/article_190508124638.1557333998.jpg",
       alternatives: [
         {
           id: 1,
-          text: 'Lorem',
+          text: "Lorem",
           isCorrect: false,
         },
         {
           id: 2,
-          text: 'Ipsum',
+          text: "Ipsum",
           isCorrect: true,
         },
       ],
@@ -106,9 +111,9 @@ const quizData = {
         from: 0,
         to: 2,
       },
-      title: 'You only got a few questions right.',
+      title: "You only got a few questions right.",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 2,
@@ -116,9 +121,9 @@ const quizData = {
         from: 3,
         to: 3,
       },
-      title: 'You got more than half the quiz right!',
+      title: "You got more than half the quiz right!",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
       id: 3,
@@ -126,10 +131,10 @@ const quizData = {
         from: 4,
         to: 4,
       },
-      title: 'Congratulations, you got everything right!',
+      title: "Congratulations, you got everything right!",
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      img: 'result-example.jpg',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      img: "result-example.jpg",
     },
   ],
 };
