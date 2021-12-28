@@ -1,12 +1,12 @@
 const quizData = {
-  title: "Quiz title",
+  title: "First quarterly test",
   description: "Lorem ipsum dolor sit amet",
   img: 'start-example.jpg',
+  time: 60, // Time in mins
   questions: [
     {
       id: 1,
       text: "600 - 544:",
-      type: "choice",
       alternatives: [
         {
           id: 1,
@@ -28,14 +28,30 @@ const quizData = {
           text: "65.5",
           isCorrect: false,
         },
-      ],
+      ],      
+      // alternatives: [
+      // ],
+      // answer: '56',
+      type: "text",
       explanation: "lol",
-      parameter: "2",
-      marks: 10,
+      parameters: [
+        {        
+          parameter: "Remember",
+          marks: 10
+        },
+        {        
+          parameter: "Create",
+          marks: 9
+        },
+        {        
+          parameter: "Apply",
+          marks: 4
+        },
+      ],
     },
     {
       id: 2,
-      text: "which the nearest tens of 4221?",
+      text: "Which the nearest tens of 4221?",
       alternatives: [
         {
           id: 1,
@@ -56,6 +72,23 @@ const quizData = {
           id: 4,
           text: "4000",
           isCorrect: false,
+        },
+      ],
+         
+      type: "choice",
+      explanation: "lol",
+      parameters: [
+        {        
+          parameter: "Remember",
+          marks: 10
+        },
+        {        
+          parameter: "Create",
+          marks: 9
+        },
+        {        
+          parameter: "Apply",
+          marks: 4
         },
       ],
     },
@@ -84,6 +117,22 @@ const quizData = {
           text: "D",
           isCorrect: false,
         },
+      ],   
+      type: "choice",
+      explanation: "lol",
+      parameters: [
+        {        
+          parameter: "Remember",
+          marks: 10
+        },
+        {        
+          parameter: "Create",
+          marks: 9
+        },
+        {        
+          parameter: "Apply",
+          marks: 4
+        },
       ],
     },
     {
@@ -101,42 +150,29 @@ const quizData = {
           text: "Ipsum",
           isCorrect: true,
         },
+      ],   
+      type: "choice",
+      explanation: "lol",
+      parameters: [
+        {        
+          parameter: "Remember",
+          marks: 10
+        },
+        {        
+          parameter: "Create",
+          marks: 9
+        },
+        {        
+          parameter: "Apply",
+          marks: 4
+        },
       ],
     },
   ],
-  results: [
-    {
-      id: 1,
-      range: {
-        from: 0,
-        to: 2,
-      },
-      title: "You only got a few questions right.",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 2,
-      range: {
-        from: 3,
-        to: 3,
-      },
-      title: "You got more than half the quiz right!",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 3,
-      range: {
-        from: 4,
-        to: 4,
-      },
-      title: "Congratulations, you got everything right!",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  results:
+  {    
       img: "result-example.jpg",
-    },
-  ],
+  },
 };
 
 export default quizData;

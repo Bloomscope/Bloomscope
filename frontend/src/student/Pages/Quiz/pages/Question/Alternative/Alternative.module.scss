@@ -30,13 +30,9 @@
     }
   }
 
-  &.wrong {
-    @include alternative-background-color(#ffcece);
-  }
-
-  &.correct {
-    @include alternative-background-color(#bdf8ba);
-  }
+  // &.selected {
+  //   @include alternative-background-color(#ceefff);
+  // }
 
   &.not-chosen {
     color: rgba(0, 0, 0, 0.3);

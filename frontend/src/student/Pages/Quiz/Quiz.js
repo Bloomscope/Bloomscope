@@ -7,7 +7,8 @@ import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
 import Result from './pages/Result/Result';
  import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
- import {login, useAuth, logout, getSessionState} from "../../../auth"
+ import {login, useAuth, logout, getSessionState, authFetch} from "../../../auth"
+ import { useNavigate, useLocation  } from "react-router";
 
 const paramScore = {
   Remember: 0,
@@ -29,6 +30,33 @@ const TimerClass = styled.div`
 `;
 
 function Quiz() {
+  const {state} = useLocation();
+  const test_id = state.id.test_id;
+
+  const [data, setData] = useState({});
+  authFetch('/api/quiz',{
+    method:'POST',
+    body:JSON.stringify({"test_id" : test_id})
+  })
+  .then(r => r.json())
+  .then((r) => {
+    setData(r);
+  })
+  .catch(error => console.log(error))
+
+  var loggerr = false;
+
+  if(!loggerr){
+  console.log(data.questions.questions);
+  loggerr = true;
+  }
+
+  // const questionData = data.questions.questions.map((data, i) => {
+  //   question: JSON.parse(data.data.question);
+  // });
+
+  // console.log(questionData);
+
   const quizDataInitialFormatted = {
     ...quizDataInitial,
     questions: quizDataInitial.questions.map(question => ({
@@ -42,10 +70,10 @@ function Quiz() {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
+  const [numAnswered, setnumAnswered] = useState(0);
   const [marksEarned, setMarksEarned] = useState(0);
   const [quizData, setQuizData] = useState(quizDataInitialFormatted);
-  const [time, setTime] = useState(quizDataInitialFormatted.time);
+  const [time, setTime] = useState(data.time);
 
   const Ref = useRef(null);
 
@@ -172,15 +200,7 @@ function Quiz() {
       ],
     });
 
-    if (clickedAlternative.isCorrect) {
-      setNumCorrectAnswers(numCorrectAnswers + 1);
-      setMarksEarned(marksEarned + marks);
-
-      const parameter = currentQuestion.parameters;
-      parameter.map(param => {
-        paramScore[param.parameter] += param.marks;
-      });
-    }
+    setnumAnswered(numAnswered + 1);
 
     setTimeout(() => {
       goToNextPage();
@@ -188,7 +208,7 @@ function Quiz() {
   };
 
   const restartQuiz = () => {
-    setNumCorrectAnswers(0);
+    setnumAnswered(0);
     setQuizData(quizDataInitialFormatted);
     setCurrentPage(1);
   };
@@ -234,7 +254,7 @@ function Quiz() {
             <Result
               quizTitle={quizData.title}
               currentUrl={currentUrl}
-              numCorrectAnswers={numCorrectAnswers}
+              numAnswered={numAnswered}
               numTotalQuestions={numTotalQuestions}
               results={quizData.results}
               onClickRestart={restartQuiz}

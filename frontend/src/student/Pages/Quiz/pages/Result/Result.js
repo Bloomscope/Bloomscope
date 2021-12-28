@@ -7,46 +7,42 @@ import { useNavigate  } from "react-router";
 
 function Result({
   quizTitle,
-  numCorrectAnswers,
+  numAnswered,
   numTotalQuestions,
   results,
   currentUrl,
   onClickRestart,
 }) {
-    let chosenResult = results[0];
 
-  results.map((result, i) => {
-    if (
-      numCorrectAnswers >= result.range.from &&
-      numCorrectAnswers <= result.range.to
-    ) {
-      chosenResult = results[i];
-    }
-    return false;
-  });
+  // results.map((result, i) => {
+  //   if (
+  //     numAnswered >= result.range.from &&
+  //     numAnswered <= result.range.to
+  //   ) {
+  //     chosenResult = results[i];
+  //   }
+  //   return false;
+  // });
   const nav = useNavigate();
   return (
     <div className={styles.result}>
       <div className={styles['result-header']}>
         <div className={styles.numbers}>
-          <strong>{numCorrectAnswers}</strong>
+          <div className={styles.text}>You answered </div>
+          <strong>{numAnswered}</strong>
           <span>/</span>
           <span>{numTotalQuestions}</span>
+          <div className={styles.text}> questions</div>
         </div>
 
         <img
           alt="Result"
-          src={require(`../../assets/images/results/${chosenResult.img ||
-            'default/default.jpg'}`).default}
+          src={require(`../../assets/images/results/default/default.jpg`).default}
           className={styles['result-img']}
         />
       </div>
 
-      <div className={styles.title}>
-        <strong>{chosenResult.title}</strong>
-      </div>
-
-      <div className={styles.description}>{chosenResult.description}</div>
+      <h2>Your answers have been successfully recorded.</h2>
 
       <div className={styles['restart-button-container']}>
         <Button
@@ -65,7 +61,7 @@ function Result({
 
 Result.propTypes = {
   quizTitle: PropTypes.string.isRequired,
-  numCorrectAnswers: PropTypes.number.isRequired,
+  numAnswered: PropTypes.number.isRequired,
   numTotalQuestions: PropTypes.number.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({

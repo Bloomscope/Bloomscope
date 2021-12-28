@@ -7,7 +7,7 @@ import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import {useAuth,authFetch, getSessionState} from "../../../auth"
 import styled from "styled-components";
 import Popup from 'reactjs-popup';
-import { useNavigate  } from "react-router";
+import { useNavigate, useLocation  } from "react-router";
 
 const Holder = styled.div`
   display: flex;
@@ -22,11 +22,12 @@ function Dashboard() {
   const access = getSessionState();
   const [schedule, setschedule] = useState([]);
   const [token, settoken] = useState([]);
-  const nav = useNavigate();
+  const nav = useNavigate();        
 
-  const goToTest = (e)=>{
-    e.preventDefault()
-    nav('/student/Quiz');
+  const goToTest = (i)=>{
+        // e.preventDefault();
+        console.log(schedule);
+    nav('/student/Quiz',{state:{id:schedule[i]}});
   }
 
   const makelist = (a)=>{
@@ -40,6 +41,7 @@ function Dashboard() {
       }
       list.push(opts)
   }
+  console.log(schedule);
     setschedule(list);
   }
 
@@ -125,7 +127,7 @@ function Dashboard() {
                     7. Make sure to manage your time and not miss out on questions<br/>
                     8. Keep the number of questions in mind<br/><br/>
                   </div>
-                  <button className='custom-button' onClick={goToTest} type='submit'>Start Test</button>
+                  <button className='custom-button' onClick={()=>goToTest(i)} type='submit'>Start Test</button>
                   </div>
             </Popup> </> 
                 : (item.date == 1 && item.has_attempted == 'True')? <><button className='custom-button' style= {{backgroundColor:"#D2D2D2"}}> Attempted </button></> 
