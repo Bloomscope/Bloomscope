@@ -33,6 +33,7 @@ function Quiz() {
   const {state} = useLocation();
   const test_id = state.id.test_id;
 
+  //Get the data from backend
   const [data, setData] = useState({});
   authFetch('/api/quiz',{
     method:'POST',
@@ -44,9 +45,11 @@ function Quiz() {
   })
   .catch(error => console.log(error))
 
+  //Log only once
   var loggerr = false;
 
   if(!loggerr){
+    console.log(data);
   console.log(data.questions.questions);
   loggerr = true;
   }
@@ -57,6 +60,9 @@ function Quiz() {
 
   // console.log(questionData);
 
+
+  //Todo: Change this part, this takes data from a json file (quizdata)
+  //Change to take data from the backend data (stored in data)
   const quizDataInitialFormatted = {
     ...quizDataInitial,
     questions: quizDataInitial.questions.map(question => ({
@@ -75,8 +81,11 @@ function Quiz() {
   const [quizData, setQuizData] = useState(quizDataInitialFormatted);
   const [time, setTime] = useState(data.time);
 
-  const Ref = useRef(null);
 
+
+  //Timer Start
+
+  const Ref = useRef(null);
   // The state for our timer
   const [timer, setTimer] = useState('00:00:00');
 
@@ -148,6 +157,8 @@ function Quiz() {
   const onClickReset = () => {
     clearTimer(getDeadTime());
   };
+
+  //Timer End
 
   const currentUrl = window.location.href;
 
