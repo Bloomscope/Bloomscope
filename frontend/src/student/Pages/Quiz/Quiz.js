@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import styles from './Quiz.module.scss';
 import quizDataInitial from './assets/quiz-data';
@@ -34,14 +34,15 @@ function Quiz() {
   const test_id = state.id.test_id;
 
   //Get the data from backend
-  const [data, setData] = useState({});
+  let data = {}
   authFetch('/api/quiz',{
     method:'POST',
-    body:JSON.stringify({"test_id" : test_id})
+    body:JSON.stringify({'test_id' : test_id})
   })
   .then(r => r.json())
   .then((r) => {
-    setData(r);
+    console.log(r)
+    data = r;
   })
   .catch(error => console.log(error))
 
@@ -54,11 +55,11 @@ function Quiz() {
   loggerr = true;
   }
 
-  // const questionData = data.questions.questions.map((data, i) => {
-  //   question: JSON.parse(data.data.question);
-  // });
+  const questionData = data.questions.questions.map((data, i) => {
+    question: JSON.parse(data.data.question);
+  });
 
-  // console.log(questionData);
+  console.log(questionData);
 
 
   //Todo: Change this part, this takes data from a json file (quizdata)

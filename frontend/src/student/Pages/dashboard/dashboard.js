@@ -26,7 +26,6 @@ function Dashboard() {
 
   const goToTest = (i)=>{
         // e.preventDefault();
-        console.log(schedule);
     nav('/student/Quiz',{state:{id:schedule[i]}});
   }
 
