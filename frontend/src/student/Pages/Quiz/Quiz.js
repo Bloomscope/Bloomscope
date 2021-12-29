@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import styles from './Quiz.module.scss';
-import quizDataInitial from './assets/quiz-data';
+// import quizDataInitial from './assets/quiz-data';
  import Navbar from "../../Components/Navbar";
 import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
@@ -32,9 +32,71 @@ const TimerClass = styled.div`
 function Quiz() {
   const {state} = useLocation();
   const test_id = state.id.test_id;
+  var loggerr = false;
+  // const [data, setdata] = useState({});
+
+  let data = {};
+  let q = {};
+  var t;
+
+
+  
+  const reformat = (a)=>{
+    let questionData = []
+    data = a;
+    if(!loggerr){
+    console.log(data.questions.questions);
+    loggerr = true;
+    }
+    data.questions.questions.map((d, i) => {
+      // question: JSON.parse(data.data);
+      d.data.map((e, i) => {
+        //WTFFFF won't work if question has ' in it
+        const ans = e["ans"]
+        let alt= []
+        JSON.parse(e["options"].replaceAll('\'', '"')).map((op,it)=>{
+          let option = {
+            id: it+1,
+            text: op["value"],
+            isCorrect: (op["opt"]==ans),
+            isUserAnswer: false,
+          }
+          alt.push(option)
+        })
+
+        let p= []
+        let o = {
+            parameter: e["param_id"],
+            marks: parseInt(e["marks"])
+          }
+          p.push(o)
+        let question = {
+          id: e["id"],
+          text: JSON.parse(e["question"].replaceAll('\'', '"'))["value"],
+          alternatives: alt,
+          explanation: e["explanation"],
+          type: "choice",
+          parameter: p,
+          isAnswered: false,
+        }
+        questionData.push(question);
+      });
+    });
+
+    let quizDataa = {
+      title: "First quarterly test",
+      time: data["duration"],
+      questions: questionData,
+      results:
+      {    
+      }
+    }
+    console.log(quizDataa);
+    q = quizDataa; //whatever we need
+    t = data["duration"];
+  }
 
   //Get the data from backend
-  let data = {}
   authFetch('/api/quiz',{
     method:'POST',
     body:JSON.stringify({'test_id' : test_id})
@@ -42,48 +104,45 @@ function Quiz() {
   .then(r => r.json())
   .then((r) => {
     console.log(r)
-    data = r;
+    reformat(r);
   })
   .catch(error => console.log(error))
 
   //Log only once
-  var loggerr = false;
+  // var loggerr = false;
 
-  if(!loggerr){
-    console.log(data);
-  console.log(data.questions.questions);
-  loggerr = true;
-  }
+  // if(!loggerr){
+  //   console.log(data);
+  // console.log(data.questions.questions);
+  // loggerr = true;
+  // }
 
-  const questionData = data.questions.questions.map((data, i) => {
-    question: JSON.parse(data.data.question);
-  });
+  // const questionData = data.questions.questions.map((data, i) => {
+  //   question: JSON.parse(data.data.question);
+  // });
 
-  console.log(questionData);
 
 
   //Todo: Change this part, this takes data from a json file (quizdata)
   //Change to take data from the backend data (stored in data)
-  const quizDataInitialFormatted = {
-    ...quizDataInitial,
-    questions: quizDataInitial.questions.map(question => ({
-      ...question,
-      isAnswered: false,
-      alternatives: question.alternatives.map(alternative => ({
-        ...alternative,
-        isUserAnswer: false,
-      })),
-    })),
-  };
+  // const quizDataInitialFormatted = {
+  //   ...quizDataInitial,
+  //   questions: quizDataInitial.questions.map(question => ({
+  //     ...question,
+  //     isAnswered: false,
+  //     alternatives: question.alternatives.map(alternative => ({
+  //       ...alternative,
+  //       isUserAnswer: false,
+  //     })),
+  //   })),
+  // };
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const [numAnswered, setnumAnswered] = useState(0);
   const [marksEarned, setMarksEarned] = useState(0);
-  const [quizData, setQuizData] = useState(quizDataInitialFormatted);
-  const [time, setTime] = useState(data.time);
-
-
-
+  const [quizData, setQuizData] = useState(q);
+  const [time, setTime] = useState(t);
   //Timer Start
 
   const Ref = useRef(null);
@@ -221,7 +280,7 @@ function Quiz() {
 
   const restartQuiz = () => {
     setnumAnswered(0);
-    setQuizData(quizDataInitialFormatted);
+    // setQuizData(quizDataInitialFormatted);
     setCurrentPage(1);
   };
    const access = getSessionState();
