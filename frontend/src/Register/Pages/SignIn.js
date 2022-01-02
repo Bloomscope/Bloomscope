@@ -51,7 +51,9 @@ const SignIn = () =>{
         body: JSON.stringify(opts)
       }).then(r => r.json())
         .then(token => {
-          if(token.has_parent){
+        
+          if(token.type == 2 || token.type == 3 || token.has_parent){
+
               if (token.access_token){
                 console.log(token) 
                 if(token.type == 1){

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './styles.scss';
+import './suggestions.styles.css';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
