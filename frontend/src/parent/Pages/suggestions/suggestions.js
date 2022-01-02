@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import './styles.scss';
+import './sugg.styles.css';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
@@ -11,7 +11,7 @@ const Holder = styled.div`
   flex-direction: row;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-  }
+  } 
 `;
 function Suggestions() {
 	const [logged] = useAuth();
@@ -35,12 +35,12 @@ function Suggestions() {
       <>
         <Navbar />
         <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" ,width:"75vw" }}>
-        <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Suggestions</h1>
-            <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
+        <div className='main'>
+        <h1 >Suggestions</h1>
+            <div className='sugg'>
             {suggestions.map((item,i)=>(
               <span key={i}>
               <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.suggestion_name}</b>: <br/>{item.suggestion}</p>
