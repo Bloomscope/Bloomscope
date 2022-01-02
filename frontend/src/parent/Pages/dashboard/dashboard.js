@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import './styles.scss';
+import './dash.styles.css';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import Chart from './dchart'
@@ -11,7 +11,7 @@ const Holder = styled.div`
   display: flex;
   flex-direction: row;
   @media screen and (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; 
   }
 `;
 
@@ -49,17 +49,18 @@ function Dashboard() {
       <>
         <Navbar />
         <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"70vw" }}>
+        <div className='main'>
           <h1>Dashboard</h1>
-          <div style={{backgroundColor:"white",padding:"1rem",width:"47%",height:"65vh", float:"left"}}>
+          <div className='colleft'>
             <div style={{fontWeight:"bold",fontSize:"1.2rem"}}>Progress Chart</div><br/>
             <div>Each test given is examined on the basis of 6 parameters. These parameters should be worked upon separately. To understand the areas which require work, you can check your progress. This chart analysis displays your journey by comparing your results throughout. You can choose to compare test-wise by only selecting the legends you wish to view and compare.</div><br/>
             <Chart/>
           </div>
-          <div style={{backgroundColor:"white",padding:"1rem",width:"44%",height:"65vh", float:"right"}}>
+
+          <div className='colright'>
             <div style={{fontWeight:"bold",fontSize:"1.2rem"}}>List of tests:</div><br/>
             <div>Here are all the tests you need to study. These are arranged in chronological order. Make sure to attempt all and learn. You only get a window of time to solve a test, but you can submit a token which on approval will allow you to sit for it again.</div>
             <div style={{overflowY:"scroll"}}>
@@ -76,12 +77,12 @@ function Dashboard() {
                 : (item.date == 0 && item.has_attempted == 'False')? <><button  className='custom-button' style= {{backgroundColor:"#000000"}}> Can attempt </button> </> 
                 : (item.date == 1 && item.has_attempted == 'True')? <><button className='custom-button' style= {{backgroundColor:"#000000"}}> Attempted </button></> 
                 : (item.date == 1 && item.has_attempted == 'False')? <><button className='custom-button' style= {{backgroundColor:"#000000"}}> Missed </button></>:<></> }
-
               </div></div>
               </span>
             ))}
             </div>
           </div>
+
         </div>
         </Holder>
         </>
