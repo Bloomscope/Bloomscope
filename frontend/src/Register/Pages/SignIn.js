@@ -51,7 +51,7 @@ const SignIn = () =>{
         body: JSON.stringify(opts)
       }).then(r => r.json())
         .then(token => {
-        
+        if(token.is_logged_in){
           if(token.type == 2 || token.type == 3 || token.has_parent){
 
               if (token.access_token){
@@ -68,16 +68,16 @@ const SignIn = () =>{
                     SetAuthMsg(1);
                 }       
             }
-            else {
-                console.log("Please type in correct username/password");
-                SetAuthMsg(1);
-            }
           }
           else{
             console.log(token)
             nav('/parentRegistration', {state: token});
           }
-            
+        }
+        else {
+            console.log("Please type in correct username/password");
+            SetAuthMsg(1);
+        }
         })
         .catch(error => console.log(error))
     }

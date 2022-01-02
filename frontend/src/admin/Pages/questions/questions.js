@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {useAuth,authFetch, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
-import template from './template.json';
+// import template from './template.json';
 
 const Holder = styled.div`
   display: flex;
@@ -30,28 +30,28 @@ function AddQuestions() {
   const[marks, setmarks] = useState('');
   const[file, setFile] = useState('');
 
-  const downloadFile = ({ data, fileName, fileType }) => {
-    const blob = new Blob([data], { type: fileType })
-    const a = document.createElement('a')
-    a.download = fileName
-    a.href = window.URL.createObjectURL(blob)
-    const clickEvt = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true,
-    })
-    a.dispatchEvent(clickEvt)
-    a.remove()
-  }
+  // const downloadFile = ({ data, fileName, fileType }) => {
+  //   const blob = new Blob([data], { type: fileType })
+  //   const a = document.createElement('a')
+  //   a.download = fileName
+  //   a.href = window.URL.createObjectURL(blob)
+  //   const clickEvt = new MouseEvent('click', {
+  //     view: window,
+  //     bubbles: true,
+  //     cancelable: true,
+  //   })
+  //   a.dispatchEvent(clickEvt)
+  //   a.remove()
+  // }
   
-  const exportToJson = e => {
-    e.preventDefault()
-    downloadFile({
-      data: JSON.stringify(template),
-      fileName: 'users.json',
-      fileType: 'text/json',
-    })
-  }
+  // const exportToJson = e => {
+  //   e.preventDefault()
+  //   downloadFile({
+  //     data: JSON.stringify(template),
+  //     fileName: 'users.json',
+  //     fileType: 'text/json',
+  //   })
+  // }
   
  
   const handleChange = e =>{
@@ -282,11 +282,8 @@ function AddQuestions() {
                 Upload
               </label><br/><br/>
 
-
-              <CustomButton type='button' onClick={exportToJson}>
-                Download template
-              </CustomButton>
-
+              <button className="custom-file-upload" style={{backgroundColor:"white",borderRadius:"0px",color:"black"}}><a target="_blank" style={{color:"black"}} href='https://docs.google.com/spreadsheets/d/1OVThzGBauOoMGKLfLa1cyjElcuof5zg9PuXqtxnsFns/edit?usp=sharing'>Download Template</a></button>
+             
           </div>
           </div>
         </div>

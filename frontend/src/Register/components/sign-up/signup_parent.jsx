@@ -129,7 +129,7 @@ const SignUp_parent = () =>{
             label='Confirm Password'
             required
           />
-          <CustomButton onClick={onSubmitClick} type='submit'>PAYMENT</CustomButton>
+          <CustomButton onClick={onSubmitClick} type='submit'>SIGN IN</CustomButton>
         </form>
       </div>
       </>
