@@ -28,7 +28,7 @@ function Helpline() {
           <div><Sidebar/></div>
         
         <div className='main'>
-        <h1 style = {{width:'60%', borderWidth: "0px 0px 5px 0px"}}>Helpline</h1>
+        <h1>Helpline</h1>
         <div className='helplinea'>
           <div style={{padding:"0.5rem 0 "}}><BiIcons.BiPhoneCall size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}> +91 9229929292</span></div>
           <div style={{padding:"0.5rem 0 "}}><BiIcons.BiMailSend  size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}> Mail@mail.com</span></div>

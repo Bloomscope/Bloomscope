@@ -36,15 +36,13 @@ function Suggestions() {
     {logged&&access.type==1?<>
         <Navbar />
         <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
-          <Sidebar />
-        </div>
+        <Sidebar/>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem" ,width:"75vw" }}>
         <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Suggestions</h1>
             <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
             {suggestions.map((item,i)=>(
               <span key={i}>
-              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.suggestion_name}</b>: <br/>{item.suggestion}</p>
+              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"100%" }}><b>{item.suggestion_name}</b>: <br/>{item.suggestion}</p>
               </span>
             ))}
             </div>
