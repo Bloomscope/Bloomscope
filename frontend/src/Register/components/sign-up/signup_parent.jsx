@@ -7,26 +7,23 @@ import './sign-up.styles.scss';
 
 const SignUp_parent = () =>{
 
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [middleName, setMiddleName] = useState('');
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
     const [dob, setDob] = useState('');
-    // const [childId, setchildId] = useState('');
     const [password, setPassword] = useState('');
-    // const [scontact, setSContact]=useState('');
-    // const [semail, setSEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [lineClicked, setLineClicked] = useState(0);
     const location = useLocation();
     const nav = useNavigate();
     const onSubmitClick = (e)=>{
       e.preventDefault()
-      console.log("location.state.user_id")
-      console.log(location.state.user_id)
+      console.log(location.state.uid)
       let opts = {
-        'uid': location.state.user_id,
+        'uid': location.state.uid,
         'fname': firstName,
         'mname': middleName,
         'lname': lastName,
@@ -50,6 +47,7 @@ const SignUp_parent = () =>{
         })
         .catch(error => console.log(error))
     }
+
 
 
     return (

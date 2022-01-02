@@ -8,7 +8,6 @@ const StudentRegistration = () => {
     <div style = {{backgroundColor:"white", height:"100%"}}>
       <Navbar />
       <div style={{paddingTop:"1rem"}}>
-
         <SignUp_student />
       </div>
     </div>

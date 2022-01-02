@@ -37,6 +37,7 @@ const SignIn = () =>{
     const [password, setPassword] = useState('');
     
     const nav = useNavigate();
+
     const onSubmitClick = (e)=>{
       e.preventDefault()
       console.log("You pressed button")
@@ -50,7 +51,8 @@ const SignIn = () =>{
         body: JSON.stringify(opts)
       }).then(r => r.json())
         .then(token => {
-            if (token.access_token){
+          if(token.has_parent){
+              if (token.access_token){
                 console.log(token) 
                 if(token.type == 1){
                   login(token);
@@ -61,13 +63,19 @@ const SignIn = () =>{
                   nav('/parent/dashboard', {state: token});  
                 }
                 else if (token.access_token === "Null") {
-                     SetAuthMsg(1);
+                    SetAuthMsg(1);
                 }       
             }
             else {
                 console.log("Please type in correct username/password");
                 SetAuthMsg(1);
             }
+          }
+          else{
+            console.log(token)
+            nav('/parentRegistration', {state: token});
+          }
+            
         })
         .catch(error => console.log(error))
     }
