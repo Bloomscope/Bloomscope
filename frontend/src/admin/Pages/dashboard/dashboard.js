@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './styles.scss';
+import './dashboard.styles.css';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
@@ -139,20 +139,20 @@ function ADashboard() {
       <div>
         <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
+        <div className='main'>
         <h1>Dashboard</h1>
-        <div style = {{float:"left", width:"42vw", height:"60vh", backgroundColor:"white", padding:"1.8rem", marginRight:"10px"}}>
+        <div className='c'>
           <h3>Tests log</h3>
           <span>This is an overview of the tests created by the admin. It is a graphical representation of the number of users registered and the number of users of users who have attempted each of the tests.</span>
-            <div style={{overflowY:"scroll",height:"55vh", marginTop:"30px"}}>
+            <div style={{overflowY:"scroll", marginTop:"10%"}}>
             <Bar data={datas} style={{width:"45vw"}} options={options} />
             </div>
           
         </div>
-        <div class="users" style={{height:"60vh"}}>
+        <div class="users" >
           <h3>Summary</h3>
           <div class="innerdiv">
           Users registered: <br/><br/>
@@ -162,7 +162,7 @@ function ADashboard() {
           </div>
           
           <span style={{fontSize:"13px"}}>The button given below gives you direct access to the admin database. If you wish to make any changes in the database, you can do it here directly.</span><br/>
-          <button style={{marginTop:"20px", fontSize:"14px"}}><a href='http://localhost:5000/admin/' target="_blank">Admin Database</a></button>
+          <button style={{marginTop:"10%", fontSize:"14px"}}><a href='http://localhost:5000/admin/' target="_blank">Admin Database</a></button>
         </div>
       </div>
       </Holder>

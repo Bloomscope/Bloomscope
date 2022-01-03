@@ -13,10 +13,11 @@
 .col4 { grid-area: 1 / 4 / 2 / 5; }
 
 .popup{
+  overflow-y: scroll;
   background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  height: 500px;
-  width: 600px;
+  height: 70vh;
+  width: 40vw;
   padding: 5%;
   margin-bottom: 5%;
 }
@@ -45,9 +46,9 @@
 
 
 input[type="text"] {
-  font-size: 18px;
-  margin: 15px 5px 15px 0px;
-  padding: 2px;
+  font-size: 100%;
+  margin: 5% 2% 5% 0%;
+  padding: 1%;
   width: 100%;
   overflow-y: scroll;
 }
@@ -58,22 +59,22 @@ input[type="text"] {
   padding: 4%;
   padding-bottom: 10%;
   margin-top: 5%;
-  font-size: 12px;
+  font-size: 90%;
 }
 
 .temp {
-  font-size: 20px;
+  font-size: 100%;
   font-weight: 600;
 }
 
 .temp2 {
-  font-size: 14px;
+  font-size: 95%;
   font-weight: 500;
 }
 
 .temp3 {
   background-color: rgb(187, 186, 186);
-  margin: 20px 0px;
+  margin: 5% 0px;
   padding: 3% 2%;
   float: right;
   border-radius: 2%;

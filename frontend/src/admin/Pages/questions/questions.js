@@ -140,12 +140,12 @@ function AddQuestions() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
+        <div className='main'>
         <h1>Add Questions</h1>
-        <div style = {{ float:"left",width:"30vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div className='colleft'>
          <div style={{overflowY:"scroll",height:"58vh"}}>
           <form onSubmit="">  
           <label style={{fontWeight:"bold"}}> Question Type: <br/>
@@ -250,7 +250,7 @@ function AddQuestions() {
           </form>
           </div>
           </div>
-          <div style = {{float:"right",width:"42vh",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "20px"}}>
+          <div className='colright'>
           <div class="question" style={{overflowY:"scroll", overflowX:"inherit",height:"58vh"}}>
             <span><b>Question:</b> {question}</span><br/>
             <span><b>Question Type:</b> {questionType}</span><br/>

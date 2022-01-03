@@ -63,29 +63,31 @@ function Announcement() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
+        <div className='main'>
         <h1>Announcements</h1>
-        <div style = {{float:"left",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div className='colleft'>
           <div>
           You can post announcements to your class on the class stream. Announcements are posts with no assignments. You can use them to give notices or reminders to your students. Announcements appear in chronological order. The date and time are automatically noted so to post an announcement, enter the title and the content of your announcement. 
           </div>
           <br/>
-          <form>
+         
+          <form style={{overflowY:"scroll"}}>
             <label class="input-text" style={{fontWeight:"bold"}}>
               Title : <br/>
-              <input type="text" name="title" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{height:"30px" }}/>
+              <input type="text" name="title" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{height:"12%", width:"95%" }}/>
             </label><br/>
             <label class="input-text" style={{fontWeight:"bold"}}>
               Post : <br/>
-              <input type="text" name="content" value={content} onChange={(e)=>{setcontent(e.target.value)}} style={{ height:"30px"}}/>
+              <input type="text" name="content" value={content} onChange={(e)=>{setcontent(e.target.value)}} style={{ height:"12%", width:"95%"}}/>
             </label>
             <CustomButton type='submit' onClick={onSubmitClick} style={{float:"right"}}>POST</CustomButton>
           </form>
+          
         </div>
-        <div style = {{float:"right",width:"42%",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div className='colright'>
           <b>Announcements log:</b>
             <div style={{overflowY:"scroll",height:"58vh"}}>
             {announcements.map((item,i)=>(

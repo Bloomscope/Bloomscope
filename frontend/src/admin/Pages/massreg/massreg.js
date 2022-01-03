@@ -46,7 +46,7 @@ function MassRegistration() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>

@@ -78,12 +78,12 @@ function TestCreation() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2rem" }}>
+        <div className='main'>
         <h1>Test Creation</h1>
-        <div style={{padding:"1.8rem",width:"30vw",height:"60vh",backgroundColor:"white",float:'left'}}>
+        <div className='colleft'>
          <div>
           <form onSubmit="">  
           <div style={{width:"47%",float:'left'}}>
@@ -170,7 +170,7 @@ function TestCreation() {
 
           
         </div>
-        <div style = {{float:"right",width:"30vw",height:"60vh",backgroundColor:"white", padding:"1.8rem", marginLeft: "2vw"}}>
+        <div className='colright'>
           <div>
           <span><b>Test Name:</b> {testname}</span><br/>
             <span><b>Duration:</b> {duration}</span><br/>
