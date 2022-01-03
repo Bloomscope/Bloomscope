@@ -56,19 +56,22 @@ function MyCalendar() {
     {logged&&access.type==1?<>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" , width:"60vw"}}>
+        <div className='main'>
           <h1>Calendar</h1>
+          <div className='cal'>
           <Calendar
             localizer={localizer}
             events={schedule}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: "70vh", backgroundColor:"white", padding:"2%" }}
+            style={{backgroundColor:"white", padding:"2%" }}
           />
+          </div>
         </div>
+      
       </Holder></>
       :
       <>

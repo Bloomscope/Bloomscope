@@ -27,16 +27,7 @@
 
 
 @media only screen and (min-width: 600px) {
-  .sidebar {
-    position: relative;
-    background-color: white;
-    margin: 8% 0% 0% 5%;
-    padding: 8% 2% 2% 8%;
-    box-shadow: 3px 3px 6px 5px #ccc;
-    /* height: 500px;
-    width: 250px; */
-    align-items: center;
-     }
+  
      .s {
       position: relative;
       background-color: white;

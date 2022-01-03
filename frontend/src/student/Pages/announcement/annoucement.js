@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styles.scss";
+import "./announcement.styles.css";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
 import {useAuth,authFetch, getSessionState} from "../../../auth"
@@ -34,12 +34,12 @@ function Announcement() {
     <>{logged&&access.type==1?<>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"75vw" }}>
+        <div className="main">
         <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Announcements</h1>
-            <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
+            <div className="ann">
             {announcements.map((item,i)=>(
               <span key={i}>
               <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p>
