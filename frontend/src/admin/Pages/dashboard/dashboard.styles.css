@@ -68,6 +68,7 @@
         /* float: left; */
         height:60vh;
         background-color: white;
+        margin-bottom: 3%;
     }
   
     
@@ -147,7 +148,7 @@
         background-color: white;
         text-align: center;
         padding: 3%;
-        height: 57vh;
+        height: 58vh;
         overflow-y: scroll;
     }
     
@@ -193,7 +194,7 @@
     
     .users{
         float:right;
-        
+        height: 56vh;
         width: 15vw;
         background-color: white;
         text-align: center;
@@ -213,7 +214,7 @@
         padding-top: 4%;
         width:60%;
         float: left;
-        height:60vh;
+        height: 60vh;
         background-color: white;
     }
   

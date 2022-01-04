@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import './styles.scss';
+import './studentdata.styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar';
 import Popup from 'reactjs-popup';
@@ -119,7 +119,7 @@ function StudentData() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
         <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"70vw" }}>
@@ -127,9 +127,9 @@ function StudentData() {
           <h1><b>Student Data</b></h1>
           <div style={{ backgroundColor:"white", padding:"0.8rem 2rem" }}>
           <div className = 'row'>
-                <div className = 'col1'><h3>Name</h3></div>
-                <div className = 'col2'><h3>Organisation</h3></div>
-                <div className = 'col3'><h3>Registered on</h3></div>
+                <div className = 'col1'>Name</div>
+                <div className = 'col2'>Organisation</div>
+                <div className = 'col3'>Registered on</div>
                 <div className = 'col4'><input style={{backgroundColor:"#ffffff"}} type="text" placeholder="Seach Name" onChange={e=>setSearchTerm(e.target.value)} /></div>
           </div>
           <hr/>
@@ -145,9 +145,9 @@ function StudentData() {
           }).map((val,id)=>{
             return (
               <div className = 'row'>
-                <div className = 'col1' style = {{paddingTop: '7%'}}>{val.fname} {val.mname} {val.lname}</div>
-                <div className = 'col2' style = {{paddingTop: '7%'}}>Self</div>
-                <div className = 'col3' style = {{paddingTop: '7%'}}>{val.registered_on}</div>
+                <div className = 'col1' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>{val.fname} {val.mname} {val.lname}</div>
+                <div className = 'col2' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>Self</div>
+                <div className = 'col3' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>{val.registered_on}</div>
                 <div className = 'col4'>
                   <Popup modal trigger={<button className='custom-button'> Details </button>}>
                       <div className="popup" style = {{overflowY:'scroll'}}>
