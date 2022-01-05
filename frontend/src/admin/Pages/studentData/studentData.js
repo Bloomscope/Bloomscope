@@ -52,11 +52,11 @@ function StudentData() {
       "#66bcfb",
       // "#8ccdfc",
       "#b2defd",
-      "#d9eefe"
-      // "#fde76e",
-      // "#fced86",
-      // "#ffffb7",
-      // "#fefeeb"
+      "#d9eefe",
+      "#fde76e",
+      "#fced86",
+      "#ffffb7",
+      "#fefeeb"
     ];
 
   const alltests = datas.result.map(
@@ -122,19 +122,19 @@ function StudentData() {
         <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"70vw" }}>
+        <div className='main'>
         <div>
-          <h1><b>Student Data</b></h1>
-          <div style={{ backgroundColor:"white", padding:"0.8rem 2rem" }}>
+          <h1 className='show'><b>Student Data</b></h1>
+          <div className='sd' style={{ backgroundColor:"white", padding:"0.8rem 2rem" }}>
           <div className = 'row'>
-                <div className = 'col1'>Name</div>
-                <div className = 'col2'>Organisation</div>
-                <div className = 'col3'>Registered on</div>
+                <div className = 'col1' style = {{fontWeight:'600'}}>Name</div>
+                <div className = 'col2' style = {{fontWeight:'600'}}>Organisation</div>
+                <div className = 'col3' style = {{fontWeight:'600'}}>Registered on</div>
                 <div className = 'col4'><input style={{backgroundColor:"#ffffff"}} type="text" placeholder="Seach Name" onChange={e=>setSearchTerm(e.target.value)} /></div>
           </div>
           <hr/>
 
-          <div style = {{overflowY:'scroll', height:'55vh'}}>
+          <div className='list' >
           {slist.filter((val)=>{
             if(searchTerm == ""){
               return val
@@ -145,9 +145,9 @@ function StudentData() {
           }).map((val,id)=>{
             return (
               <div className = 'row'>
-                <div className = 'col1' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>{val.fname} {val.mname} {val.lname}</div>
-                <div className = 'col2' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>Self</div>
-                <div className = 'col3' style = {{paddingTop: '7%', fontSize:'95%', fontWeight:'300'}}>{val.registered_on}</div>
+                <div className = 'col1'>{val.fname} {val.mname} {val.lname}</div>
+                <div className = 'col2'>Self</div>
+                <div className = 'col3'>{val.registered_on}</div>
                 <div className = 'col4'>
                   <Popup modal trigger={<button className='custom-button'> Details </button>}>
                       <div className="popup" style = {{overflowY:'scroll'}}>
