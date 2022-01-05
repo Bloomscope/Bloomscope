@@ -71,7 +71,9 @@
         margin-bottom: 3%;
     }
   
-    
+    .users{
+      float: left;
+    }
     .colright{
       padding-left: 3%;
       padding-right: 3%;

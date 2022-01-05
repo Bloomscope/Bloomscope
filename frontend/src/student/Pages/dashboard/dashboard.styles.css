@@ -34,7 +34,9 @@
     height: auto;
     background-color: white;
   }
-  
+  .colright{
+    float: left;
+  }
   .main{
     padding-left: 8%;
     padding-top: 4%;
