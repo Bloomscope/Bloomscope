@@ -29,56 +29,52 @@ const TimerClass = styled.div`
   border-radius: 3px;
 `;
 
-function Quiz() {
+ function Quiz(props) {
   const {state} = useLocation();
-  const test_id = state.id.test_id;
-  var loggerr = false;
-  // const [data, setdata] = useState({});
-
-  let data = {};
-  let q = {};
-  var t;
-
-
-  
-  const reformat = (a)=>{
-    let questionData = []
+  const test_id = state.data.test_id;
+  var data = {};
+  var transData = {};
+  const [transferData, setTransfer] = useState({
+    title: "",
+    time: 0,
+    results: {},
+    questions: [],
+  });
+  function reformat(a) {
+    let questionData = [];
     data = a;
-    if(!loggerr){
     console.log(data.questions.questions);
-    loggerr = true;
-    }
+
     data.questions.questions.map((d, i) => {
-      // question: JSON.parse(data.data);
       d.data.map((e, i) => {
         //WTFFFF won't work if question has ' in it
-        const ans = e["ans"]
-        let alt= []
-        JSON.parse(e["options"].replaceAll('\'', '"')).map((op,it)=>{
+        const ans = e["ans"];
+        let alt = [];
+        JSON.parse(e["options"].replaceAll("'", '"')).map((op, it) => {
           let option = {
-            id: it+1,
+            id: it + 1,
             text: op["value"],
-            isCorrect: (op["opt"]==ans),
+            isCorrect: op["opt"] == ans,
             isUserAnswer: false,
-          }
-          alt.push(option)
-        })
+          };
+          alt.push(option);
+        });
 
-        let p= []
+        let p = [];
         let o = {
-            parameter: e["param_id"],
-            marks: parseInt(e["marks"])
-          }
-          p.push(o)
+          parameter: e["param_id"],
+          marks: parseInt(e["marks"]),
+        };
+        p.push(o);
         let question = {
           id: e["id"],
-          text: JSON.parse(e["question"].replaceAll('\'', '"'))["value"],
+          text: JSON.parse(e["question"].replaceAll("'", '"'))["value"],
           alternatives: alt,
           explanation: e["explanation"],
           type: "choice",
           parameter: p,
           isAnswered: false,
-        }
+        };
         questionData.push(question);
       });
     });
@@ -87,41 +83,42 @@ function Quiz() {
       title: "First quarterly test",
       time: data["duration"],
       questions: questionData,
-      results:
-      {    
-      }
-    }
+      results: {},
+    };
     console.log(quizDataa);
-    q = quizDataa; //whatever we need
-    t = data["duration"];
+    return quizDataa;
   }
+  // const [data, setdata] = useState({});
+  // useEffect (()=>{
+    authFetch("/api/quiz", {
+      method: "POST",
+      body: JSON.stringify({ test_id: test_id }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        transData = reformat(r);
+        setTransfer({
+          title: transData.title,
+          time: transData.time,
+          results: transData.results,
+          questions: transData.questions,
+        });
+        console.log(transferData);
+      })
+      .catch((error) => console.log(error));
+    console.log(transferData);
+    
+  // },[])
+
+ const [quizData, setQuizData] = useState({});
+ var t = transferData.time;
+
+  
+
+  console.log(quizData)
 
   //Get the data from backend
-  authFetch('/api/quiz',{
-    method:'POST',
-    body:JSON.stringify({'test_id' : test_id})
-  })
-  .then(r => r.json())
-  .then((r) => {
-    console.log(r)
-    reformat(r);
-  })
-  .catch(error => console.log(error))
-
-  //Log only once
-  // var loggerr = false;
-
-  // if(!loggerr){
-  //   console.log(data);
-  // console.log(data.questions.questions);
-  // loggerr = true;
-  // }
-
-  // const questionData = data.questions.questions.map((data, i) => {
-  //   question: JSON.parse(data.data.question);
-  // });
-
-
+  
 
   //Todo: Change this part, this takes data from a json file (quizdata)
   //Change to take data from the backend data (stored in data)
@@ -141,7 +138,6 @@ function Quiz() {
   const [currentPage, setCurrentPage] = useState(1);
   const [numAnswered, setnumAnswered] = useState(0);
   const [marksEarned, setMarksEarned] = useState(0);
-  const [quizData, setQuizData] = useState(q);
   const [time, setTime] = useState(t);
   //Timer Start
 
@@ -258,18 +254,18 @@ function Quiz() {
 
     alternativesCopy[alternativeIndex] = updatedAlternative;
 
-    setQuizData({
-      ...quizData,
-      questions: [
-        ...quizData.questions.slice(0, currentQuestionIndex),
-        {
-          ...currentQuestion,
-          alternatives: alternativesCopy,
-          isAnswered: true,
-        },
-        ...quizData.questions.slice(currentQuestionIndex + 1),
-      ],
-    });
+    // setQuizData({
+    //   ...quizData,
+    //   questions: [
+    //     ...quizData.questions.slice(0, currentQuestionIndex),
+    //     {
+    //       ...currentQuestion,
+    //       alternatives: alternativesCopy,
+    //       isAnswered: true,
+    //     },
+    //     ...quizData.questions.slice(currentQuestionIndex + 1),
+    //   ],
+    // });
 
     setnumAnswered(numAnswered + 1);
 
@@ -286,7 +282,7 @@ function Quiz() {
    const access = getSessionState();
 
    const [logged] = useAuth();
-  return (
+   return (
     <>
       {logged&&access.type==1?<>
     <Navbar />
