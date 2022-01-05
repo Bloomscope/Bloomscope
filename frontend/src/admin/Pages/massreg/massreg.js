@@ -49,9 +49,9 @@ function MassRegistration() {
         <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" }}>
+        <div className='main'>
 			<h1>Mass Registration</h1>
-      <div style={{ backgroundColor:"white",padding: "1rem 1rem" , width:"70vw", height:"65vh" }}>
+      <div className='massreg'>
       <label className="custom-file-upload">
           <input
             type="file"

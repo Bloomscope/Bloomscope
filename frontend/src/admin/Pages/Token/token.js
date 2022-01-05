@@ -56,7 +56,7 @@ function Token() {
       }
       list.push(opts)
   }
-  console.log(list[0]["tname"])
+  console.log(list)
   settokens(list);
   }
 
@@ -122,12 +122,12 @@ function Token() {
       <>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div>
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",paddingRight:"2.2rem" }}>
+        <div className='main'>
         <h1>Token Verification</h1>
-        <div style = {{float:"left",width:"67vw",height:"60vh",backgroundColor:"white", padding:"1.8rem"}}>
+        <div className='token'>
         <div style={{overflowY:"scroll",height:"58vh"}}>
             {tokens.map((item,i)=>(
               <>
