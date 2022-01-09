@@ -29,12 +29,96 @@ const TimerClass = styled.div`
   border-radius: 3px;
 `;
 
-const Quiz = () => {
+ function QuizCopy(props) {
+  const {state} = useLocation();
+  const test_id = state.data.test_id;
+  var data = {};
+  var transData = {};
+  const [transferData, setTransfer] = useState({
+    title: "",
+    time: 0,
+    results: {},
+    questions: [],
+  });
+  function reformat(a) {
+    let questionData = [];
+    data = a;
+    console.log(data.questions.questions);
 
-const {state} = useLocation();
-let quizData = state.data;
-console.log(quizData);
- var t = 60; // transferData.time;
+    data.questions.questions.map((d, i) => {
+      d.data.map((e, i) => {
+        //WTFFFF won't work if question has ' in it
+        const ans = e["ans"];
+        let alt = [];
+        JSON.parse(e["options"].replaceAll("'", '"')).map((op, it) => {
+          let option = {
+            id: it + 1,
+            text: op["value"],
+            isCorrect: op["opt"] == ans,
+            isUserAnswer: false,
+          };
+          alt.push(option);
+        });
+
+        let p = [];
+        let o = {
+          parameter: e["param_id"],
+          marks: parseInt(e["marks"]),
+        };
+        p.push(o);
+        let question = {
+          id: e["id"],
+          text: JSON.parse(e["question"].replaceAll("'", '"'))["value"],
+          alternatives: alt,
+          explanation: e["explanation"],
+          type: "choice",
+          parameter: p,
+          isAnswered: false,
+        };
+        questionData.push(question);
+      });
+    });
+
+    let quizDataa = {
+      title: "First quarterly test",
+      time: data["duration"],
+      questions: questionData,
+      results: {},
+    };
+    console.log(quizDataa);
+    return quizDataa;
+  }
+  // const [data, setdata] = useState({});
+  // useEffect (()=>{
+    authFetch("/api/quiz", {
+      method: "POST",
+      body: JSON.stringify({ test_id: test_id }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        transData = reformat(r);
+        setTransfer({
+          title: transData.title,
+          time: transData.time,
+          results: transData.results,
+          questions: transData.questions,
+        });
+        console.log(transferData);
+      })
+      .catch((error) => console.log(error));
+    console.log(transferData);
+    
+  // },[])
+
+ const [quizData, setQuizData] = useState({});
+ var t = transferData.time;
+
+  
+
+  console.log(quizData)
+
+  //Get the data from backend
+  
 
   //Todo: Change this part, this takes data from a json file (quizdata)
   //Change to take data from the backend data (stored in data)
@@ -254,4 +338,4 @@ console.log(quizData);
    /*:*/);
 }
 
-export default Quiz;
+export default QuizCopy;

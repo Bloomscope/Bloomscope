@@ -25,17 +25,15 @@ function Dashboard() {
   const [token, settoken] = useState([]);
   const nav = useNavigate();
 
-  
+  // const [transferData, setTransfer] = useState({
+  //   title: "",
+  //   time: 0,
+  //   results: {},
+  //   questions: [],
+  // });  
 
- 
-
-  function goToTest(e, i) {
-    e.preventDefault();
-    const test_id = schedule[i].test_id;
-
-    
-    nav("/student/Quiz", { state: { data: test_id }});
-  }
+  var data = {};
+  var transData = {};
 
   const makelist = (a) => {
     var list = [];
@@ -86,6 +84,79 @@ function Dashboard() {
     settoken("");
     return false;
   };
+
+
+  
+ 
+  function reformat(a) {
+    let questionData = [];
+    data = a;
+    console.log(data.questions.questions);
+
+    data.questions.questions.map((d, i) => {
+      d.data.map((e, i) => {
+        //WTFFFF won't work if question has ' in it
+        const ans = e["ans"];
+        let alt = [];
+        JSON.parse(e["options"].replaceAll("'", '"')).map((op, it) => {
+          let option = {
+            id: it + 1,
+            text: op["value"],
+            isCorrect: op["opt"] == ans,
+            isUserAnswer: false,
+          };
+          alt.push(option);
+        });
+
+        let p = [];
+        let o = {
+          parameter: e["param_id"],
+          marks: parseInt(e["marks"]),
+        };
+        p.push(o);
+        let question = {
+          id: e["id"],
+          text: JSON.parse(e["question"].replaceAll("'", '"'))["value"],
+          alternatives: alt,
+          explanation: e["explanation"],
+          type: "choice",
+          parameter: p,
+          isAnswered: false,
+        };
+        questionData.push(question);
+      });
+    });
+
+    let quizDataa = {
+      title: "First quarterly test",
+      time: data["duration"],
+      questions: questionData,
+      results: {},
+    };
+    console.log(quizDataa);
+    return quizDataa;
+  }
+
+  function goToTest(e, i) {
+    e.preventDefault();
+    const test_id = schedule[i].test_id;
+
+    authFetch("/api/quiz", {
+      method: "POST",
+      body: JSON.stringify({ test_id: test_id }),
+    })
+      .then((r) => r.json())
+      .then((r) => {
+        console.log(r)
+        transData = reformat(r);
+        console.log(transData);        
+    nav("/student/Quiz", { state: { data: transData }});
+
+      })
+      .catch((error) => console.log(error));
+
+    
+  }
 
   return (
     <>
