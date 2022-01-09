@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import './styles.scss';
+import './token.styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
@@ -134,11 +134,14 @@ function Token() {
               {
                 (item.status == "Pending")?
                 <span key={i}>
-              <div style = {{float:"left",width:"35vw"}}><p><b>{item.uname} </b> ({item.user_id}) - {item.created_on} <br/><b>{item.tname} </b> ({item.test_id}) - {item.reasonsss}</p> </div>
-              <div style = {{float:"right",width:"25vw", paddingTop: "1.1rem"}}>
-                <button onClick={(e)=>approve(e,item.test_id,item.user_id)} className='custom-button'> Approve </button>
-                <button onClick={(e)=>disapprove(e,item.test_id,item.user_id)} className='custom-button'> Disapprove </button> 
+              <div className='innertoken'>
+                <div ><p><b>{item.uname} </b> ({item.user_id}) - {item.created_on} <br/><b>{item.tname} </b> ({item.test_id}) - {item.reasonsss}</p> </div>
+                <div >
+                  <button onClick={(e)=>approve(e,item.test_id,item.user_id)} className='custom-button' style={{width:"10%"}}> Approve </button>
+                  <button onClick={(e)=>disapprove(e,item.test_id,item.user_id)} className='custom-button' style={{width:"10%"}}> Disapprove </button> 
+                </div>
               </div>
+              
               </span>
                 :<></>
               }
