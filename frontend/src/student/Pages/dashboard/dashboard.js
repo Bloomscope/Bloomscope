@@ -25,13 +25,6 @@ function Dashboard() {
   const [token, settoken] = useState([]);
   const nav = useNavigate();
 
-  // const [transferData, setTransfer] = useState({
-  //   title: "",
-  //   time: 0,
-  //   results: {},
-  //   questions: [],
-  // });  
-
   var data = {};
   var transData = {};
 
@@ -56,6 +49,12 @@ function Dashboard() {
     })
       .then((r) => r.json())
       .then((r) => {
+        try{
+          if(r.msg.includes("expire")){
+            alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
+            // nav("/signIn")
+          }
+        }catch(e){}
         console.log(r);
         if (r.data) makelist(r.data);
       })
@@ -104,6 +103,7 @@ function Dashboard() {
             text: op["value"],
             isCorrect: op["opt"] == ans,
             isUserAnswer: false,
+            opt_type: op["opt_type"]
           };
           alt.push(option);
         });
@@ -147,6 +147,12 @@ function Dashboard() {
     })
       .then((r) => r.json())
       .then((r) => {
+        try{
+          if(r.msg.includes("expire")){
+            alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
+            // nav("/signIn")
+          }
+        }catch(e){}
         console.log(r)
         transData = reformat(r);
         console.log(transData);        

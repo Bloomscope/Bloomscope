@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import styles from './Quiz.module.scss';
-// import quizDataInitial from './assets/quiz-data';
  import Navbar from "../../Components/Navbar";
 import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
@@ -10,14 +9,7 @@ import Result from './pages/Result/Result';
  import {login, useAuth, logout, getSessionState, authFetch} from "../../../auth"
  import { useNavigate, useLocation  } from "react-router";
 
-const paramScore = {
-  Remember: 0,
-  Understand: 0,
-  Apply: 0,
-  Analyze: 0,
-  Evaluate: 0,
-  Create: 0,
-};
+let selectedOpts = [];
 
 const TimerClass = styled.div`
   background-color: #fffcf5;
@@ -33,23 +25,7 @@ const Quiz = () => {
 
 const {state} = useLocation();
 let quizData = state.data;
-console.log(quizData);
- var t = 60; // transferData.time;
-
-  //Todo: Change this part, this takes data from a json file (quizdata)
-  //Change to take data from the backend data (stored in data)
-  // const quizDataInitialFormatted = {
-  //   ...quizDataInitial,
-  //   questions: quizDataInitial.questions.map(question => ({
-  //     ...question,
-  //     isAnswered: false,
-  //     alternatives: question.alternatives.map(alternative => ({
-  //       ...alternative,
-  //       isUserAnswer: false,
-  //     })),
-  //   })),
-  // };
-
+ var t = quizData.time; 
 
   const [currentPage, setCurrentPage] = useState(1);
   const [numAnswered, setnumAnswered] = useState(0);
@@ -147,12 +123,11 @@ console.log(quizData);
     setCurrentPage(currentPage + 1);
   };
 
-  const onAnswerSelected = clickedAlternative => {
+  const onAnswerSelected = (clickedAlternative, quesId) => {
     const currentQuestionIndex = quizData.questions.findIndex(
       question => question.id === currentQuestion.id,
     );
 
-    const marks = currentQuestion['marks'];
     const alternativesCopy = [...currentQuestion.alternatives];
 
     const foundAlternative = alternativesCopy.find(
@@ -169,22 +144,16 @@ console.log(quizData);
     );
 
     alternativesCopy[alternativeIndex] = updatedAlternative;
-
-    // setQuizData({
-    //   ...quizData,
-    //   questions: [
-    //     ...quizData.questions.slice(0, currentQuestionIndex),
-    //     {
-    //       ...currentQuestion,
-    //       alternatives: alternativesCopy,
-    //       isAnswered: true,
-    //     },
-    //     ...quizData.questions.slice(currentQuestionIndex + 1),
-    //   ],
-    // });
-
     setnumAnswered(numAnswered + 1);
 
+    let formatted = {
+      questionId : quesId,
+      optionId: clickedAlternative.id,
+    }
+
+    selectedOpts.push(formatted)
+
+    console.log(selectedOpts)
     setTimeout(() => {
       goToNextPage();
     }, 500);
@@ -192,11 +161,10 @@ console.log(quizData);
 
   const restartQuiz = () => {
     setnumAnswered(0);
-    // setQuizData(quizDataInitialFormatted);
     setCurrentPage(1);
   };
-   const access = getSessionState();
 
+   const access = getSessionState();
    const [logged] = useAuth();
    return (
     <>

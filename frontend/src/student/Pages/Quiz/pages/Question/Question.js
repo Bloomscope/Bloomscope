@@ -27,7 +27,6 @@ function Question({
               {question.img && (
                 <img
                   alt="Current question"
-                  // src={require(`../../assets/images/questions/${question.img}`).default}
                   src={question.img}
                   className={styles['question-img']}
                 />
@@ -47,6 +46,7 @@ function Question({
               isQuestionAnswered={question.isAnswered}
               key={`alternative-${question.id}-${alternative.id}`}
               onAnswerSelected={onAnswerSelected}
+              quesId = {question.id}
             />
           ))}
         </div>
