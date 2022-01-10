@@ -12,6 +12,7 @@ function Result({
   results,
   currentUrl,
   onClickRestart,
+  data
 }) {
 
   // results.map((result, i) => {
@@ -24,6 +25,7 @@ function Result({
   //   return false;
   // });
   const nav = useNavigate();
+  console.log(data)
   return (
     <div className={styles.result}>
       <div className={styles['result-header']}>

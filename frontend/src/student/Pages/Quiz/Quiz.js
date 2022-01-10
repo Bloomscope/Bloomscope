@@ -210,6 +210,7 @@ let quizData = state.data;
               results={quizData.results}
               onClickRestart={restartQuiz}
               totalMarks={marksEarned}
+              data = {selectedOpts}
             />
           </div>
         )}
