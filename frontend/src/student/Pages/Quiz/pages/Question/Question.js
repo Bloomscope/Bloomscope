@@ -10,8 +10,11 @@ function Question({
   numCurrentQuestion,
   question,
   onAnswerSelected,
+  goBack,
+  goForward,
   type
 }) {
+  // console.log(question.isAnswered)
   return (
     <>
     <div>
@@ -50,6 +53,9 @@ function Question({
             />
           ))}
         </div>
+
+        <button className="btn btn-primary" onClick={goBack}>Previous</button>
+        <button className="btn btn-primary" onClick={goForward}>Next</button>
 
     </>
   );

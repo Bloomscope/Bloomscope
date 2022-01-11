@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import styles from './Alternative.module.scss';
 
 function Alternative({ alternative, isQuestionAnswered, onAnswerSelected, quesId }) {
-  const isNotChosen =
-    isQuestionAnswered && !alternative.isCorrect && !alternative.isUserAnswer;
-
+  // const isNotChosen =
+  //   isQuestionAnswered && !alternative.isCorrect && !alternative.isUserAnswer;
+  const userAnswer = alternative.isUserAnswer;
+let clicked = false;
   return (
     <div
-      onClick={() => {onAnswerSelected(alternative, quesId);}}
-      onKeyPress={() => onAnswerSelected(alternative, quesId)}
+      onClick={() => {onAnswerSelected(alternative, quesId);clicked = true}}
+      // onKeyPress={() => onAnswerSelected(alternative, quesId)}
       role="button"
       tabIndex={0}
       className={[
         styles.alternative,
-        isNotChosen ? styles['not-chosen'] : '',
+        userAnswer||clicked ? styles.selected : "",
+        // isNotChosen ? styles['not-chosen'] : '',
         isQuestionAnswered ? styles['current-question-answered'] : '',
       ].join(' ')}
     >

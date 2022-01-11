@@ -5,6 +5,7 @@ import styles from './Quiz.module.scss';
 import Start from './pages/Start/Start';
 import Question from './pages/Question/Question';
 import Result from './pages/Result/Result';
+import Confirm from './pages/Confirm/Confirm'
  import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
  import {login, useAuth, logout, getSessionState, authFetch} from "../../../auth"
  import { useNavigate, useLocation  } from "react-router";
@@ -23,13 +24,14 @@ const TimerClass = styled.div`
 
 const Quiz = () => {
 
-const {state} = useLocation();
-let quizData = state.data;
- var t = quizData.time; 
+  const [currQues, setCurrInd] = useState(0);
+  const [prevQues, setPrevInd] = useState(1);
+  const {state} = useLocation();
+  let quizData = state.data;
+  var t = quizData.time; 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [numAnswered, setnumAnswered] = useState(0);
-  const [marksEarned, setMarksEarned] = useState(0);
+  // const [numAnswered, setnumAnswered] = useState(0);
   const [time, setTime] = useState(t);
   //Timer Start
 
@@ -108,16 +110,17 @@ let quizData = state.data;
 
   //Timer End
 
-  const currentUrl = window.location.href;
 
   const numTotalQuestions = quizData.questions.length;
   
   const numCurrentQuestion = currentPage - 1;
 
   const isStartPage = currentPage === 1;
-  const isResultPage = currentPage >= numTotalQuestions + 2;
+  const isConfirmPage = currentPage >= numTotalQuestions + 2
+  const isResultPage = currentPage >= numTotalQuestions + 3;
 
   const currentQuestion = quizData.questions[currentPage - 2];
+  // console.log(currentQuestion);
 
   const goToNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -125,42 +128,74 @@ let quizData = state.data;
 
   const onAnswerSelected = (clickedAlternative, quesId) => {
     const currentQuestionIndex = quizData.questions.findIndex(
-      question => question.id === currentQuestion.id,
-    );
+      question => question.id === quesId,
+    ) ;
 
-    const alternativesCopy = [...currentQuestion.alternatives];
+    quizData.questions[currentQuestionIndex].alternatives.map(
+      ans => ans.isUserAnswer ? false : false
+    )
 
-    const foundAlternative = alternativesCopy.find(
-      alternative => alternative.id === clickedAlternative.id,
-    );
+    console.log(quizData.questions[currentQuestionIndex].alternatives);
+        
+    clickedAlternative.isUserAnswer = true;
+    // const alternativesCopy = [...currentQuestion.alternatives];
 
-    const updatedAlternative = {
-      ...foundAlternative,
-      isUserAnswer: true,
-    };
+    // const foundAlternative = alternativesCopy.find(
+    //   alternative => alternative.id === clickedAlternative.id,
+    // );
 
-    const alternativeIndex = alternativesCopy.findIndex(
-      alternative => alternative.id === updatedAlternative.id,
-    );
+    // const updatedAlternative = {
+    //   ...foundAlternative,
+    //   isUserAnswer: true,
+    // };
 
-    alternativesCopy[alternativeIndex] = updatedAlternative;
-    setnumAnswered(numAnswered + 1);
+    // const alternativeIndex = alternativesCopy.findIndex(
+    //   alternative => alternative.id === updatedAlternative.id,
+    // );
+
+    // alternativesCopy[alternativeIndex] = updatedAlternative;
+    // console.log(alternativesCopy[alternativeIndex])
+
+    quizData.questions[currentQuestionIndex].isAnswered = true
+    console.log(quizData.questions[currentQuestionIndex].isAnswered);
 
     let formatted = {
       questionId : quesId,
       optionId: clickedAlternative.id,
     }
 
-    selectedOpts.push(formatted)
+    if(currQues === prevQues){
+      console.log( currQues, prevQues)
+      selectedOpts.pop()
+      selectedOpts.push(formatted)
+    }
+
+    else{      
+      console.log( currQues, prevQues)     
+      selectedOpts.push(formatted)
+      setPrevInd(quesId)
+      setCurrInd(quesId)
+    }
 
     console.log(selectedOpts)
-    setTimeout(() => {
+    setTimeout(() => {      
+      console.log( currQues, prevQues)      
+      // setnumAnswered(numAnswered + 1);
+      setCurrInd(1)
       goToNextPage();
     }, 500);
   };
 
+  const goToPrevPage = () =>{
+    if(currentPage > 2)
+    setCurrentPage(currentPage - 1);    
+  }
+
+  const submitResponse = () => {
+    setCurrentPage(currentPage + 1);
+  }
+
   const restartQuiz = () => {
-    setnumAnswered(0);
     setCurrentPage(1);
   };
 
@@ -187,7 +222,7 @@ let quizData = state.data;
             />
           </div>
         )}
-        {!isStartPage && !isResultPage && (
+        {!isStartPage && !isResultPage && !isConfirmPage &&(
           <div className={styles.page}>
             <Question
               numCurrentQuestion={numCurrentQuestion}
@@ -195,21 +230,30 @@ let quizData = state.data;
               onAnswerSelected={onAnswerSelected}
               question={currentQuestion}
               quizTitle={quizData.title}
+              goBack = {goToPrevPage}
+              goForward = {goToNextPage}
               type={currentQuestion.type}
             />
           </div>
         )}
 
-        {isResultPage && (
+        {isConfirmPage && (
+          <div className={styles.page}>
+          <Confirm
+          goBack = {goToPrevPage}
+          confirmSubmission = {submitResponse}
+          />
+        </div>
+        )}
+
+        {!isConfirmPage && isResultPage && (
           <div className={styles.page}>
             <Result
               quizTitle={quizData.title}
-              currentUrl={currentUrl}
-              numAnswered={numAnswered}
+              // numAnswered={numAnswered}
               numTotalQuestions={numTotalQuestions}
               results={quizData.results}
               onClickRestart={restartQuiz}
-              totalMarks={marksEarned}
               data = {selectedOpts}
             />
           </div>

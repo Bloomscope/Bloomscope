@@ -7,34 +7,24 @@ import { useNavigate  } from "react-router";
 
 function Result({
   quizTitle,
-  numAnswered,
+  // numAnswered,
   numTotalQuestions,
   results,
-  currentUrl,
   onClickRestart,
   data
 }) {
 
-  // results.map((result, i) => {
-  //   if (
-  //     numAnswered >= result.range.from &&
-  //     numAnswered <= result.range.to
-  //   ) {
-  //     chosenResult = results[i];
-  //   }
-  //   return false;
-  // });
   const nav = useNavigate();
   console.log(data)
   return (
     <div className={styles.result}>
       <div className={styles['result-header']}>
         <div className={styles.numbers}>
-          <div className={styles.text}>You answered </div>
-          <strong>{numAnswered}</strong>
+          <div className={styles.text}>Test Complete </div>
+          {/* <strong>{numAnswered}</strong>
           <span>/</span>
           <span>{numTotalQuestions}</span>
-          <div className={styles.text}> questions</div>
+          <div className={styles.text}> questions</div> */}
         </div>
 
         <img
@@ -77,7 +67,6 @@ Result.propTypes = {
       img: PropTypes.string,
     }).isRequired,
   ).isRequired,
-  currentUrl: PropTypes.string.isRequired,
   onClickRestart: PropTypes.func.isRequired,
 };
 
