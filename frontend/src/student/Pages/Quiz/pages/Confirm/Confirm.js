@@ -2,12 +2,14 @@ import React from "react";
 import styles from "./Confirm.module.scss";
 import Button from "../../common/Button/Button";
 
-function Confirm({ goBack, confirmSubmission }) {
+function Confirm({ goBack, confirmSubmission, numAnswered,numTotalQuestions }) {
   return (
     <div className={styles.confirm}>
       <div className={styles["confirm-header"]}>
         <div className={styles.numbers}>
-          <div className={styles.text}>Are you sure you want to submit? </div>
+          <div className={styles.text}>Are you sure you want to submit?</div><br/> 
+          <div className={styles.text}>You have answered <span>{numAnswered}</span> <span>/</span><span>{numTotalQuestions} </span> Questions</div>
+          
         </div>
 
         <img

@@ -21,10 +21,6 @@ function Result({
       <div className={styles['result-header']}>
         <div className={styles.numbers}>
           <div className={styles.text}>Test Complete </div>
-          {/* <strong>{numAnswered}</strong>
-          <span>/</span>
-          <span>{numTotalQuestions}</span>
-          <div className={styles.text}> questions</div> */}
         </div>
 
         <img

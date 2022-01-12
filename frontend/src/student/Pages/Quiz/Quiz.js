@@ -20,15 +20,23 @@ const TimerClass = styled.div`
   font-size: 1.25rem;
   border: 2px black solid;
   border-radius: 3px;
+  display: ${(props) => (props.isActive ? "block" : "none")};
 `;
-
 const Quiz = () => {
 
+  const nav = useNavigate()
   const [currQues, setCurrInd] = useState(0);
   const [prevQues, setPrevInd] = useState(1);
   const {state} = useLocation();
+  const [timerActive, setTimeAct] = useState(true);
+  if(!state)
+  {
+    alert("There has been an error, Please login again")
+    nav("/student/dashboard")
+  }
   let quizData = state.data;
   var t = quizData.time; 
+  // let autoNext = false;
 
   const [currentPage, setCurrentPage] = useState(1);
   // const [numAnswered, setnumAnswered] = useState(0);
@@ -43,6 +51,8 @@ const Quiz = () => {
     const total = Date.parse(e) - Date.parse(new Date());
     if (total <= 0) {
       setCurrentPage(currentPage + numTotalQuestions + 5);
+      setTime('00:00:00')
+      setTimeAct(false)
     }
 
     const seconds = Math.floor((total / 1000) % 60);
@@ -126,12 +136,11 @@ const Quiz = () => {
   };
 
   const onAnswerSelected = (clickedAlternative, quesId) => {
-    const currentQuestionIndex = quizData.questions.findIndex(
-      question => question.id === quesId,
-    ) ;
+
+    const currentQuestionIndex = currentPage - 2;
 
     quizData.questions[currentQuestionIndex].alternatives.map(
-      ans => ans.isUserAnswer ? false : false
+      ans => ans.isUserAnswer ? ans.isUserAnswer=false : ans.isUserAnswer=false
     )
 
     console.log(quizData.questions[currentQuestionIndex].alternatives);
@@ -156,33 +165,36 @@ const Quiz = () => {
     // console.log(alternativesCopy[alternativeIndex])
 
     quizData.questions[currentQuestionIndex].isAnswered = true
-    console.log(quizData.questions[currentQuestionIndex].isAnswered);
-
+    let paramList = [];
+    paramList.push(quizData.questions[currentQuestionIndex].parameter.map(para_id => para_id.parameter))
+    console.log(paramList)
     let formatted = {
-      questionId : quesId,
-      optionId: clickedAlternative.id,
+      question_id : quesId,
+      param_id : 1,
+      param_name: "Remember",
+      user_choice: clickedAlternative.id,
     }
 
-    if(currQues === prevQues){
-      console.log( currQues, prevQues)
-      selectedOpts.pop()
-      selectedOpts.push(formatted)
+    function quesInd(value, index, array)
+    {
+      return value.question_id === quesId
     }
 
-    else{      
-      console.log( currQues, prevQues)     
-      selectedOpts.push(formatted)
-      setPrevInd(quesId)
-      setCurrInd(quesId)
+    let currInd = selectedOpts.findIndex(quesInd)
+    console.log(currInd);
+
+    if(currInd == -1){
+       selectedOpts.push(formatted)
+    }
+    else{
+      selectedOpts[currentQuestionIndex].user_choice =  clickedAlternative.id
     }
 
     console.log(selectedOpts)
-    setTimeout(() => {      
-      console.log( currQues, prevQues)      
-      // setnumAnswered(numAnswered + 1);
-      setCurrInd(1)
-      goToNextPage();
-    }, 500);
+    // setTimeout(() => {      
+    //   setCurrInd(1)
+    //   goToNextPage();
+    // }, 500);
   };
 
   const goToPrevPage = () =>{
@@ -193,7 +205,8 @@ const Quiz = () => {
 
   const submitResponse = () => {
     setCurrentPage(currentPage + 1);
-
+    setTimeAct(false)
+    console.log(timerActive);
   }
 
   const restartQuiz = () => {
@@ -207,7 +220,8 @@ const Quiz = () => {
       {logged&&access.type==1?<>
     <Navbar />
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <TimerClass>Time left: {timer}</TimerClass>
+        
+        <TimerClass isActive = {timerActive}>Time left: {timer}</TimerClass>
       </div>
       <div className={styles.quiz}>
         {isStartPage && (
@@ -242,7 +256,9 @@ const Quiz = () => {
           <div className={styles.page}>
           <Confirm
           goBack = {goToPrevPage}
-          confirmSubmission = {submitResponse}
+          confirmSubmission = {submitResponse}          
+          numAnswered={selectedOpts.length}          
+          numTotalQuestions={numTotalQuestions} 
           />
         </div>
         )}
@@ -251,7 +267,6 @@ const Quiz = () => {
           <div className={styles.page}>
             <Result
               quizTitle={quizData.title}
-              // numAnswered={numAnswered}
               numTotalQuestions={numTotalQuestions}
               results={quizData.results}
               onClickRestart={restartQuiz}
