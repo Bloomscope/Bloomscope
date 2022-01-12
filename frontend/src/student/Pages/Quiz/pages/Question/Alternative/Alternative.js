@@ -1,36 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Alternative.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./Alternative.module.scss";
 
-function Alternative({ alternative, isQuestionAnswered, onAnswerSelected, quesId }) {
-  // const isNotChosen =
-  //   isQuestionAnswered && !alternative.isCorrect && !alternative.isUserAnswer;
+function Alternative({
+  alternative,
+  isQuestionAnswered,
+  onAnswerSelected,
+  quesId,
+}) {
   const userAnswer = alternative.isUserAnswer;
-let clicked = false;
+  let clicked = false;
   return (
     <div
-      onClick={() => {onAnswerSelected(alternative, quesId);clicked = true}}
-      // onKeyPress={() => onAnswerSelected(alternative, quesId)}
+      onClick={() => {
+        onAnswerSelected(alternative, quesId);
+        clicked = true;
+      }}
       role="button"
       tabIndex={0}
       className={[
         styles.alternative,
-        userAnswer||clicked ? styles.selected : "",
-        // isNotChosen ? styles['not-chosen'] : '',
-        isQuestionAnswered ? styles['current-question-answered'] : '',
-      ].join(' ')}
+        userAnswer || clicked ? styles.selected : "",
+        // isQuestionAnswered ? styles["current-question-answered"] : "",
+      ].join(" ")}
     >
-      {alternative.opt_type == "img" ?
-                <img
-                  alt="Option"
-                  src={alternative.text}
-                  className={styles['question-img']}
-                />
-              :
-              <>
-      {alternative.text}
-      </>
-      }
+      {alternative.opt_type == "img" ? (
+        <img
+          alt="Option"
+          src={alternative.text}
+          className={styles["question-img"]}
+        />
+      ) : (
+        <>{alternative.text}</>
+      )}
     </div>
   );
 }

@@ -42,7 +42,7 @@ const Quiz = () => {
   const getTimeRemaining = e => {
     const total = Date.parse(e) - Date.parse(new Date());
     if (total <= 0) {
-      setCurrentPage(currentPage * 10);
+      setCurrentPage(currentPage + numTotalQuestions + 5);
     }
 
     const seconds = Math.floor((total / 1000) % 60);
@@ -116,11 +116,10 @@ const Quiz = () => {
   const numCurrentQuestion = currentPage - 1;
 
   const isStartPage = currentPage === 1;
-  const isConfirmPage = currentPage >= numTotalQuestions + 2
+  const isConfirmPage = currentPage === numTotalQuestions + 2
   const isResultPage = currentPage >= numTotalQuestions + 3;
 
   const currentQuestion = quizData.questions[currentPage - 2];
-  // console.log(currentQuestion);
 
   const goToNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -187,12 +186,14 @@ const Quiz = () => {
   };
 
   const goToPrevPage = () =>{
-    if(currentPage > 2)
-    setCurrentPage(currentPage - 1);    
+    if(currentPage > 2){
+    setCurrentPage(currentPage - 1);
+        }
   }
 
   const submitResponse = () => {
     setCurrentPage(currentPage + 1);
+
   }
 
   const restartQuiz = () => {
@@ -246,7 +247,7 @@ const Quiz = () => {
         </div>
         )}
 
-        {!isConfirmPage && isResultPage && (
+        {isResultPage && (
           <div className={styles.page}>
             <Result
               quizTitle={quizData.title}
