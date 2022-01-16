@@ -198,7 +198,7 @@ const SignUp_student = () =>{
             label='Confirm Password'
             required
           />
-          <CustomButton onClick={displayRazorpay} type='submit'>PAYMENT</CustomButton>
+          <CustomButton onClick={register} type='submit'>PAYMENT</CustomButton>
         {/* <CustomButton type='submit'>PAYMENT</CustomButton> */}
         </form>
       </div>

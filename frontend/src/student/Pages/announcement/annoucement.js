@@ -5,6 +5,7 @@ import Navbar from "../../Components/Navbar";
 import {useAuth,authFetch, getSessionState} from "../../../auth"
 import styled from "styled-components";
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import a from "./test"
 
 const Holder = styled.div`
   display: flex;
@@ -25,10 +26,17 @@ function Announcement() {
     })
     .then(r => r.json())
     .then((r) => {
+      try{
+        if(r.msg.includes("expire")){
+          alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
+          // nav("/signIn")
+        }
+      }catch(e){}
+      console.log(r);
       if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })
-    .catch(error => console.log(error))})
+    .catch(error => console.log(error))}, []);
 
   return (
     <>{logged&&access.type==1?<>

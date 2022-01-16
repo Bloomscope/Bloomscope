@@ -20,9 +20,10 @@ function Token() {
   const [tokens, settokens] = useState([]);
   
   const makelist = async(a)=>{
+    console.log(a)
     var list = []
     for (var i = 0; i < a.length; i++) {
-      
+      if(a[i]['status'] != "approved"){
       var uid = a[i]['user_id']
       let p  = authFetch(`/api/get_user_info?uid=${uid}`,{
         'methods':'GET',
@@ -58,6 +59,7 @@ function Token() {
   }
   console.log(list)
   settokens(list);
+}
   }
 
   useEffect(()=>{
@@ -69,7 +71,7 @@ function Token() {
       if(r.tokens !== undefined )
       makelist(r.tokens);
     })
-    .catch(error => console.log(error))})
+    .catch(error => console.log(error))}, []);
 
     const approve = (e,test_id,user_id)=>{
       e.preventDefault()

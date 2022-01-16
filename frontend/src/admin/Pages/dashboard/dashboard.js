@@ -129,7 +129,7 @@ function ADashboard() {
         if(r.tests !== undefined )
         settests(r.tests);
       })
-      .catch(error => console.log(error))})
+      .catch(error => console.log(error))}, []);
 
   return (
     

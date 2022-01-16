@@ -87,7 +87,7 @@ function StudentData() {
       if(r.data)
       setslist(r.data);
     })
-    .catch(error => console.log(error))})
+    .catch(error => console.log(error))}, []);
 
 
     const func = (id)=>{

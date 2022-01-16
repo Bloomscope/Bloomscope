@@ -30,7 +30,8 @@ function Suggestions() {
       if(r.suggestions !== undefined )
       setsuggestions(r.suggestions);
     })
-    .catch(error => console.log(error))})
+    .catch(error => console.log(error))}, []);
+
   return (
     <>
     {logged&&access.type==1?<>

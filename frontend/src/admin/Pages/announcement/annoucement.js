@@ -32,7 +32,7 @@ function Announcement() {
       if(r.announcements !== undefined )
       setannouncements(r.announcements);
     })
-    .catch(error => console.log(error))})
+    .catch(error => console.log(error))}, []);
 
   const onSubmitClick = (e)=>{
     e.preventDefault()
