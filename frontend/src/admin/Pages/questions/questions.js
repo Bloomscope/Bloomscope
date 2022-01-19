@@ -7,6 +7,8 @@ import {useAuth,authFetch, getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 // import template from './template.json';
+import { CSVReader } from 'react-papaparse';
+
 
 const Holder = styled.div`
   display: flex;
@@ -15,6 +17,8 @@ const Holder = styled.div`
     flex-direction: column;
   }
 `;
+
+const buttonRef = React.createRef();
 
 function AddQuestions() {
   const [optionName, setoptionName]=useState('');
@@ -30,30 +34,63 @@ function AddQuestions() {
   const[marks, setmarks] = useState('');
   const[file, setFile] = useState('');
 
-  // const downloadFile = ({ data, fileName, fileType }) => {
-  //   const blob = new Blob([data], { type: fileType })
-  //   const a = document.createElement('a')
-  //   a.download = fileName
-  //   a.href = window.URL.createObjectURL(blob)
-  //   const clickEvt = new MouseEvent('click', {
-  //     view: window,
-  //     bubbles: true,
-  //     cancelable: true,
-  //   })
-  //   a.dispatchEvent(clickEvt)
-  //   a.remove()
-  // }
-  
-  // const exportToJson = e => {
-  //   e.preventDefault()
-  //   downloadFile({
-  //     data: JSON.stringify(template),
-  //     fileName: 'users.json',
-  //     fileType: 'text/json',
-  //   })
-  // }
-  
- 
+
+  const handleOpenDialog = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.open(e);
+    }
+  };
+
+  const handleOnFileLoad = (fullData) => {
+    console.log(fullData);
+    var questions = []
+    for(var i = 1; i < fullData.length ; i++){
+      var data = fullData[i]["data"];
+      var options = []
+      for(var j = 7 ; j < data.length ; j+=3){
+        if(data[j] == "")
+        continue;
+        let opt = {
+          "opt": data[j], 
+          "value": data[j+1],  
+          "opt_type": data[j+2] 
+        };
+        options.push(opt)
+      }
+      let ques = {
+        // "grade": data[i][0],
+        "question": {
+         "value": data[1],
+         "question_type": data[2]
+        },
+        "options": options,
+        "ans": data[3],
+        "explanation": data[4],
+        "param_id": parseInt(data[5]),
+        "marks": parseInt(data[6])
+      }
+      questions.push(ques)
+    }
+    var d = {
+      "data": questions
+    }
+    console.log(d);
+    authFetch('/api/add_questions', {
+      method: 'post',
+      body: JSON.stringify(d),
+    }).then(r => r.json())
+      .then(r => {
+        console.log(r)
+      })
+      .catch(error => console.log(error))
+  };
+
+  const handleOnError = (err, file, inputElem, reason) => {
+    console.log(err);
+    alert(err)
+  };
+
   const handleChange = e =>{
     e.preventDefault()
     setoptionName(e.target.value)
@@ -273,14 +310,33 @@ function AddQuestions() {
             </CustomButton><br/><br/>
             
 
-            <label class="custom-file-upload">
-                  <input
-                    type="file"
-                    accept=".json"
-                    onClick={handleFileUpload}
-                    style={{margin:"30px 0px 0px -4px"}}/>
-                Upload
-              </label><br/><br/>
+            <CSVReader
+                ref={buttonRef}
+                onFileLoad={handleOnFileLoad}
+                onError={handleOnError}
+                noClick
+                noDrag
+              >
+                {({ file }) => (
+                  <aside
+                    style={{
+                      color: 'blue',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      marginBottom: 10,
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={handleOpenDialog}
+                      className="custom-file-upload"
+                    >
+                      Browse file
+                    </button>
+                  </aside>
+                )}
+              </CSVReader>
+              <br/><br/>
 
               <button className="custom-file-upload" style={{backgroundColor:"white",borderRadius:"0px",color:"black"}}><a target="_blank" style={{color:"black"}} href='https://docs.google.com/spreadsheets/d/1OVThzGBauOoMGKLfLa1cyjElcuof5zg9PuXqtxnsFns/edit?usp=sharing'>Download Template</a></button>
              
