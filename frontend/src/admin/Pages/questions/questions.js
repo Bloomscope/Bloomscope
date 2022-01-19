@@ -72,10 +72,9 @@ function AddQuestions() {
       }
       questions.push(ques)
     }
-    var d = {
+    var d = JSON.stringify({
       "data": questions
-    }
-    console.log(d);
+    })
     authFetch('/api/add_questions', {
       method: 'post',
       body: JSON.stringify(d),
