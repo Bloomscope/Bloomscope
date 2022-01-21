@@ -10,8 +10,8 @@ function Start({ title, description, img = '', onClickStart }) {
       {img && (
         <img
           alt="Quiz start"
-          // src={require(`../../assets/images/start/${img}`).default}
-          src = {img}
+          src={require(`../../assets/images/start/Landing.png`).default }//|| {img}.default}
+          // src = {img}
           className={styles['header-img']}
         />
       )}
@@ -30,12 +30,5 @@ function Start({ title, description, img = '', onClickStart }) {
     </div>
   );
 }
-
-Start.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  img: PropTypes.string,
-  onClickStart: PropTypes.func.isRequired,
-};
 
 export default Start;

@@ -24,6 +24,14 @@ const TimerClass = styled.div`
 `;
 const Quiz = () => {
 
+  let paramMapping = {
+    1: "Remember",
+    2: "Understand", 
+3: "Apply",
+4: "Analyze",
+5: "Evaluate", 
+6: "Create"
+  }
   const nav = useNavigate()
   const [currQues, setCurrInd] = useState(0);
   const [prevQues, setPrevInd] = useState(1);
@@ -35,6 +43,7 @@ const Quiz = () => {
     nav("/student/dashboard")
   }
   let quizData = state.data;
+  console.log(quizData.test_id)
   var t = quizData.time; 
   // let autoNext = false;
 
@@ -120,7 +129,6 @@ const Quiz = () => {
 
   //Timer End
 
-
   const numTotalQuestions = quizData.questions.length;
   
   const numCurrentQuestion = currentPage - 1;
@@ -164,16 +172,18 @@ const Quiz = () => {
     // alternativesCopy[alternativeIndex] = updatedAlternative;
     // console.log(alternativesCopy[alternativeIndex])
 
+
     quizData.questions[currentQuestionIndex].isAnswered = true
-    let paramList = [];
-    paramList.push(quizData.questions[currentQuestionIndex].parameter.map(para_id => para_id.parameter))
-    console.log(paramList)
+    let param = 0;
+    param = quizData.questions[currentQuestionIndex].parameter.map(para_id => para_id.parameter)
+    console.log(param)
     let formatted = {
       question_id : quesId,
-      param_id : 1,
-      param_name: "Remember",
+      param_id : param[0],
+      param_name: paramMapping[param[0]],
       user_choice: clickedAlternative.id,
     }
+    console.log(formatted)
 
     function quesInd(value, index, array)
     {
@@ -271,6 +281,7 @@ const Quiz = () => {
               results={quizData.results}
               onClickRestart={restartQuiz}
               data = {selectedOpts}
+              test_id = {quizData.test_id}
             />
           </div>
         )}

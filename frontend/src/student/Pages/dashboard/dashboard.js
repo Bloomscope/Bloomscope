@@ -39,7 +39,6 @@ function Dashboard() {
       };
       list.push(opts);
     }
-    console.log(schedule);
     setschedule(list);
   };
 
@@ -87,7 +86,7 @@ function Dashboard() {
 
   
  
-  function reformat(a) {
+  function reformat(a, title) {
     let questionData = [];
     data = a;
     console.log(data.questions.questions);
@@ -128,7 +127,8 @@ function Dashboard() {
     });
 
     let quizDataa = {
-      title: "First quarterly test",
+      test_id: a.test_id,
+      title: title,
       time: data["duration"],
       questions: questionData,
       results: {},
@@ -140,6 +140,7 @@ function Dashboard() {
   function goToTest(e, i) {
     e.preventDefault();
     const test_id = schedule[i].test_id;
+    console.log(schedule[i])
 
     authFetch("/api/quiz", {
       method: "POST",
@@ -153,8 +154,8 @@ function Dashboard() {
             // nav("/signIn")
           }
         }catch(e){}
-        console.log(r)
-        transData = reformat(r);
+        let title = schedule[i].title
+        transData = reformat(r, title);
         console.log(transData);        
     nav("/student/Quiz", { state: { data: transData }});
 

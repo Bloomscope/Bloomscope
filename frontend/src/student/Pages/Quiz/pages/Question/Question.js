@@ -14,7 +14,6 @@ function Question({
   goForward,
   type,
 }) {
-  // console.log(question.isAnswered)
   return (
     <>
       <div>
@@ -24,6 +23,7 @@ function Question({
           <Progress
             numCurrentQuestion={numCurrentQuestion}
             numTotalQuestions={numTotalQuestions}
+            visited = {true}
           />
 
           {question.img && (
@@ -34,6 +34,12 @@ function Question({
             />
           )}
 
+<button className="btn btn-primary" onClick={goBack}>
+        Previous
+      </button>
+      <button className="btn btn-primary" onClick={goForward}>
+        Next
+      </button>
           <div className={styles["question-text"]}>
             <strong>{question.text}</strong>
           </div>
