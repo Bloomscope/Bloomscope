@@ -339,7 +339,7 @@ function AddQuestions() {
                       onClick={handleOpenDialog}
                       className="custom-file-upload"
                     >
-                      Browse file
+                      Upload file
                     </button>
                   </aside>
                 )}
