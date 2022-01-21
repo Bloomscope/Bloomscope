@@ -74,7 +74,7 @@ function Announcement() {
           </div>
           <br/>
          
-          <form style={{overflowY:"scroll"}}>
+          <form >
             <label class="input-text" style={{fontWeight:"bold"}}>
               Title : <br/>
               <input type="text" name="title" value={title} onChange={(e)=>{settitle(e.target.value)}} style={{height:"12%", width:"95%" }}/>
@@ -89,7 +89,7 @@ function Announcement() {
         </div>
         <div className='colright'>
           <b>Announcements log:</b>
-            <div style={{overflowY:"scroll",height:"58vh"}}>
+            <div style={{height:"58vh"}}>
             {announcements.map((item,i)=>(
               <span key={i}>
               <p><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p> 
