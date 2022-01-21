@@ -106,6 +106,19 @@ function MassRegistration() {
         <div className='main'>
 			<h1>Mass Registration</h1>
       <div className='massreg'>
+      <div>
+        <div  style={{fontWeight:"bold"}}>Instructions:</div>
+        <div>1. Download or use a copy of this sheet to use.</div>
+        <div>2. Fill in the columns in the same order.</div>
+        <div>3. Each row represents a question.</div>
+        <div>4. Note that the number of columns for every row depends on the number of options in a question.</div>
+        <div>5. Use the first row as column headers to understand.</div>
+        <div>6. If the option or question is an image, you will have to host it online and add it's URL link.</div>
+        <div>7. For an image the type is "img" and for text is "str"</div>
+        <div>8. For the question/option type you can only input "str" or "img".</div>
+        <div>9. Avoid using single or double quotes in the question or options.</div>
+        <div>10. On completing the sheet, download it as CSV. (Option will be given while downloading)</div>
+      </div>
       <label className="custom-file-upload">
           <input
             type="file"
@@ -143,6 +156,7 @@ function MassRegistration() {
       <button className="custom-file-upload" style={{backgroundColor:"white",borderRadius:"0px",color:"black"}}><a target="_blank" style={{color:"black"}} href='https://docs.google.com/spreadsheets/d/1ykzb-h-fZYYRwrR0zV5_fk4UKEmBjeMuFvz_qxTB9zg/edit?usp=sharing'>Download Template</a></button><br/>
       {(msg!=="")?<div className="message">{msg}</div>:<></>}
 		</div></div>
+    
     </Holder>
     </>
 	:

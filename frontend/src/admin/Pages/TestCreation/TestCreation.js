@@ -135,9 +135,18 @@ function TestCreation() {
             </label></div>
 
             <div>
+              <h4>Add Parameters</h4>
+              <div style={{backgroundColor: "#d4efff", paddingLeft:"4%", paddingRight:"4%", paddingTop:"7%", borderRadius:"2%"}}>
+              <div  style={{fontWeight:"bold"}}>List of parameter IDs</div>
+              <div >1. Remember</div>
+              <div>2. Understand</div>
+              <div>3. Apply</div>
+              <div>4. Analyze</div>
+              <div>5. Evaluate</div>
+              <div>6. Create</div><br/>
              <form>
              <div style={{width:"47%",float:'left'}}>
-             <label style={{fontWeight:"bold"}}> Parameter No: <br/>
+             <label style={{fontWeight:"bold"}}> Parameter ID: <br/>
              <input 
                 type="text"
                 name="parameterNo"
@@ -146,7 +155,7 @@ function TestCreation() {
                 onChange = {(e)=>{setparameterNo(e.target.value)}}
                 // required
                 />
-             </label></div> <br/> 
+             </label></div> 
              <div style={{width:"47%",float:'right'}}>            
              <label style={{fontWeight:"bold"}}> No. of questions: <br/>
              <input 
@@ -165,7 +174,7 @@ function TestCreation() {
             Add
             </CustomButton>
              </form>
-            </div>
+            </div></div>
           </form></div>
 
           
@@ -188,7 +197,7 @@ function TestCreation() {
             type="submit" 
             onClick={handleSubmit} 
             style={{margin:"30px 0px 0px -4px"}}>
-            ADD QUESTION
+            ADD TEST
             </CustomButton>
         </div>
       </div>

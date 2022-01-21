@@ -19,7 +19,7 @@ const AdminLogin = () => {
         'password': password,
       }
       console.log(opts)
-      fetch('api/admin_login', {
+      fetch('/api/admin_login', {
         method: 'post',
         body: JSON.stringify(opts)
       }).then(r => r.json())

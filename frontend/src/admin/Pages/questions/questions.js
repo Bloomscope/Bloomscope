@@ -182,7 +182,7 @@ function AddQuestions() {
         <div className='main'>
         <h1>Add Questions</h1>
         <div className='colleft'>
-         <div style={{overflowY:"scroll",height:"58vh"}}>
+         <div style={{height:"58vh"}}>
           <form onSubmit="">  
           <label style={{fontWeight:"bold"}}> Question Type: <br/>
              <select  value={questionType} onChange={handleSelect2}>
@@ -244,6 +244,7 @@ function AddQuestions() {
              </form>
                 
             </div>
+            <div style={{width:"47%",float:'left'}}>
             <label class="input-text" style={{fontWeight:"bold"}}> Answer: <br/>
             <input 
               type="text"  
@@ -252,27 +253,9 @@ function AddQuestions() {
               style={{width:"95%"}}
               onChange={(e)=>{setanswer(e.target.value)}}
             />
-            </label><br/>
-            <label class="input-text" style={{fontWeight:"bold"}}> Explanation: <br/>
-            <input 
-              type="text"  
-              name="explanation" 
-              value = {explanation}
-              style={{width:"95%"}}
-              onChange={(e)=>{setexplanation(e.target.value)}}
-            /></label><br/>
-            <div style={{width:"50%",float:'left'}}>
-              <label class="input-text" style={{fontWeight:"bold"}}> Parameter: <br/>
-              <input 
-                type="text"  
-                name="parameter" 
-                value={parameter}
-                style={{width:"90%"}}
-                onChange={(e)=>{setparameter(e.target.value)}}
-            /></label>
+            </label>
             </div>
-            
-            <div style={{width:"50%",float:'right'}}>
+            <div style={{width:"47%",float:'right'}}>
             <label class="input-text" style={{fontWeight:"bold"}}> Marks: <br/>
             <input 
               type="text"  
@@ -282,12 +265,38 @@ function AddQuestions() {
               onChange={(e)=>{setmarks(e.target.value)}}
             /></label>
             </div>
+            <br/>
+            <label class="input-text" style={{fontWeight:"bold"}}> Explanation: <br/>
+            <input 
+              type="text"  
+              name="explanation" 
+              value = {explanation}
+              style={{width:"95%"}}
+              onChange={(e)=>{setexplanation(e.target.value)}}
+            /></label><br/>
+              <div style={{backgroundColor: "#d4efff", paddingLeft:"4%", paddingRight:"4%", paddingTop:"7%",  paddingBottom:"7%", borderRadius:"2%"}}>
+              <div  style={{fontWeight:"bold"}}>List of parameter IDs</div>
+              <div >1. Remember</div>
+              <div>2. Understand</div>
+              <div>3. Apply</div>
+              <div>4. Analyze</div>
+              <div>5. Evaluate</div>
+              <div>6. Create</div><br/>
+              <label class="input-text" style={{fontWeight:"bold"}}> Parameter ID: <br/>
+              <input 
+                type="text"  
+                name="parameter" 
+                value={parameter}
+                style={{width:"90%"}}
+                onChange={(e)=>{setparameter(e.target.value)}}
+            /></label>
+            </div><br/><br/>
             
           </form>
           </div>
           </div>
           <div className='colright'>
-          <div class="question" style={{overflowY:"scroll", overflowX:"inherit",height:"58vh"}}>
+          <div class="question" style={{ overflowX:"inherit",height:"58vh"}}>
             <span><b>Question:</b> {question}</span><br/>
             <span><b>Question Type:</b> {questionType}</span><br/>
             <span><b> Options: </b><br/>
@@ -330,7 +339,7 @@ function AddQuestions() {
                       onClick={handleOpenDialog}
                       className="custom-file-upload"
                     >
-                      Browse file
+                      Upload file
                     </button>
                   </aside>
                 )}
