@@ -18,7 +18,7 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Suggestions',
+    title: 'Personal suggestions',
     path: '/student/suggestions',
     icon: <BsIcons.BsFillPenFill />,
     cName: 'nav-text'
