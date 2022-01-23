@@ -37,7 +37,7 @@ const Navbar = () => {
 return (
 	<>
 	<Nav>
-  <img src={logo} style={{width:"30%", height:"90%"}} alt="Logo" />
+  <img src={logo} style={{width:"20%", height:"90%"}} alt="Logo" />
 		<Bars />
 
 		<NavMenu>

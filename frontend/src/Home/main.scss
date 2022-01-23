@@ -1,0 +1,30 @@
+.alt2{
+    background: url('./components/Navbar/helps-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 8% 10%;
+}
+.alt1{
+  background-color: #f5f4f4;
+  min-height: 30%;
+  display: flex;
+  align-items: center;
+  padding: 5% 15%;
+
+}
+
+.inner{
+    background-color: #f1faff;
+    padding: 3% 5%; 
+    border-radius: 3%;
+}
+
+.heading{
+    font-size: 180%;
+    font-weight: 700;
+    text-align: center;
+}
+
+.text{
+    font-size: 90%;
+    text-align: center;
+}

@@ -36,7 +36,11 @@
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
-    "xlsx": "^0.17.4"
+    "xlsx": "^0.17.4",
+    "@mui/material": "latest",
+    "@mui/icons-material": "latest",
+    "@emotion/styled": "latest",
+    "@emotion/react": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
