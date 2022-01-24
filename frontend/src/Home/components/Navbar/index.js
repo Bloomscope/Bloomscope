@@ -4,6 +4,7 @@
 // import { Nav, NavLink, Bars, NavMenu, NavDrop } from "./NavbarElements";
 import logo from './logo.PNG';
 import {logout} from "../../../auth"
+import './logo.scss';
 
 // const Navbar = () => {
 //   const [NavMobile, SetNavMobile] = useState(0);
@@ -37,7 +38,7 @@ const Navbar = () => {
 return (
 	<>
 	<Nav>
-  <img src={logo} style={{width:"20%", height:"90%"}} alt="Logo" />
+  <img src={logo} className='logo' alt="Logo" />
 		<Bars />
 
 		<NavMenu>
