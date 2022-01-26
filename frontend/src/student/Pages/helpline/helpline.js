@@ -30,10 +30,9 @@ function Helpline() {
         <div className='main'>
         <h1>Helpline</h1>
         <div className='helplinea'>
-          <div style={{padding:"0.5rem 0 "}}><BiIcons.BiPhoneCall size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}> +91 9229929292</span></div>
-          <div style={{padding:"0.5rem 0 "}}><BiIcons.BiMailSend  size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}> Mail@mail.com</span></div>
-          <div style={{padding:"0.5rem 0 "}}><BiIcons.BiLocationPlus size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}>#2, Lorem street, Mumbai, India</span></div>
-        
+        <div style={{padding:"0.5rem 0 "}}><BiIcons.BiMailSend  size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}>  connect@bloomscope.org </span></div>
+          <div style={{padding:"0.5rem 0 "}}><BiIcons.BiLocationPlus size={30} style={{paddingRight:"2%"}}/><span style={{fontFamily:'roboto',fontSize:"1.1rem"}}>Prof. Snehal Awate, #208, SJMSOM building, IIT Bombay, Powai Mumbai 400076</span></div>
+
         </div>     
       </div>
       </Holder>

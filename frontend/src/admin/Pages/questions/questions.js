@@ -25,6 +25,7 @@ function AddQuestions() {
   const [content, setcontent]=useState('');
   const [contentType, setcontentType]=useState('');
   const [questionType, setquestionType] = useState('');
+  const [grade, setgrade] = useState('');
   
   const [list, setList] = useState([]);
   const[question, setquestion] = useState('');
@@ -43,7 +44,7 @@ function AddQuestions() {
   };
 
   const handleOnFileLoad = (fullData) => {
-    console.log(fullData);
+    // console.log(fullData);
     var questions = []
     for(var i = 1; i < fullData.length ; i++){
       var data = fullData[i]["data"];
@@ -59,7 +60,7 @@ function AddQuestions() {
         options.push(opt)
       }
       let ques = {
-        // "grade": data[i][0],
+        "grade": data[0],
         "question": {
          "value": data[1],
          "question_type": data[2]
@@ -75,6 +76,7 @@ function AddQuestions() {
     var d = JSON.stringify({
       "data": questions
     })
+    console.log(d)
     authFetch('/api/add_questions', {
       method: 'post',
       body: JSON.stringify(d),
@@ -123,8 +125,13 @@ function AddQuestions() {
     e.preventDefault()
     console.log("You pressed button")
     let opts = {
-      'question': question,
-      'question_type': questionType,
+      'grade' : parseInt(grade),
+      // 'question': question,
+      // 'question_type': questionType,
+      "question": {
+        "value": question,
+        "question_type": questionType
+       },
       'options': list,
       'ans': answer,
       'explanation': explanation,
@@ -149,6 +156,7 @@ function AddQuestions() {
     setparameter('')
     setexplanation('')
     setmarks('')
+    setgrade('')
   }
 
   const handleFileUpload = e => {
@@ -184,6 +192,16 @@ function AddQuestions() {
         <div className='colleft'>
          <div style={{height:"58vh"}}>
           <form onSubmit="">  
+          <label class="input-text" style={{fontWeight:"bold"}}>
+              Grade (1,2,3..): <br/> 
+              <input 
+                type="text" 
+                name="question" 
+                value={grade}
+                onChange={(e)=>{setgrade(e.target.value)}}
+                style={{width:"95%"}}
+              /><br/>
+            </label>
           <label style={{fontWeight:"bold"}}> Question Type: <br/>
              <select  value={questionType} onChange={handleSelect2}>
                 <option value="str">String</option>
@@ -297,7 +315,8 @@ function AddQuestions() {
           </div>
           <div className='colright'>
           <div class="question" style={{ overflowX:"inherit",height:"58vh"}}>
-            <span><b>Question:</b> {question}</span><br/>
+          <span><b>Grade (1,2,3...):</b> {grade}</span><br/>
+          <span><b>Question:</b> {question}</span><br/>
             <span><b>Question Type:</b> {questionType}</span><br/>
             <span><b> Options: </b><br/>
             {list.map((item,i)=>(

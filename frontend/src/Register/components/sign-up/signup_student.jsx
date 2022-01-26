@@ -13,6 +13,7 @@ const SignUp_student = () =>{
     const [dob, setDob] = useState('');
     const [contact, setContact] = useState('');
     const [password, setPassword] = useState('');
+    const [grade, setgrade] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [lineClicked, setLineClicked] = useState(0);
     
@@ -21,6 +22,7 @@ const SignUp_student = () =>{
         // e.preventDefault()
         console.log("You pressed button")
         let opts = {
+          'grades_id' : grade,
           'fname': firstName,
           'mname': middleName,
           'lname': lastName,
@@ -28,7 +30,7 @@ const SignUp_student = () =>{
           'email': email,
           'phone': contact,
           'password': password,
-          'user_type_id': 1 //check later
+          'user_type_id': 3 //check later
         }
         // nav('/payment', {state: opts});
         console.log(opts)
@@ -102,16 +104,16 @@ const SignUp_student = () =>{
                 };
                 console.log(data)
                 register(); //remove when verify is there
-                fetch('/verify', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                  }).then(r => r.json())
-                    .then(r => {
-                      console.log(r)    
-                      //check if success
-                      register();
-                    })
-                    .catch(error => console.log(error))
+                // fetch('/verify', {
+                //     method: 'POST',
+                //     body: JSON.stringify(data),
+                //   }).then(r => r.json())
+                //     .then(r => {
+                //       console.log(r)    
+                //       //check if success
+                //       register();
+                //     })
+                //     .catch(error => console.log(error))
             },
             "prefill": {
                 "name": "Test User",
@@ -158,6 +160,14 @@ const SignUp_student = () =>{
             label='Last Name'
             required
           />
+          <FormInput
+            type='text'
+            name='grade'
+            value={grade}
+            onChange={(e)=>{setgrade(e.target.value)}}
+            label='Grade (1,2,3...)'
+            required
+          />
           <FormInput onMouseEnter = {()=>{setLineClicked(1)}} onMouseLeave = {()=>{setLineClicked(0)}}
             type={lineClicked ? 'date' : 'text'}
             name='dob'
@@ -198,7 +208,7 @@ const SignUp_student = () =>{
             label='Confirm Password'
             required
           />
-          <CustomButton onClick={register} type='submit'>PAYMENT</CustomButton>
+          <CustomButton onClick={displayRazorpay} type='submit'>PAYMENT</CustomButton>
         {/* <CustomButton type='submit'>PAYMENT</CustomButton> */}
         </form>
       </div>

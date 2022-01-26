@@ -23,6 +23,7 @@ function TestCreation() {
   
   const [list, setList] = useState([]);
   const[parameterNo, setparameterNo] = useState('');
+  const[grade, setgrade] = useState('');
   const[qParameter, setqParameter] = useState('');
   const[testname, settestname] = useState('');
   const[start, setstart] = useState('');
@@ -48,6 +49,7 @@ function TestCreation() {
     e.preventDefault()
     console.log("You pressed button")
     let opts = {
+      'grade': parseInt(grade),
       'test_name': testname,
       'parameters': list,
       'conducted_on': start,
@@ -71,6 +73,7 @@ function TestCreation() {
     setstart('')
     setend('')
     setduration('')
+    setgrade('')
   }
 
   return (
@@ -86,6 +89,16 @@ function TestCreation() {
         <div className='colleft'>
          <div>
           <form onSubmit="">  
+          <label class="input-text" style={{fontWeight:"bold"}}>
+              Grade (1,2,3..): <br/> 
+              <input 
+                type="text" 
+                name="question" 
+                value={grade}
+                onChange={(e)=>{setgrade(e.target.value)}}
+                style={{width:"95%"}}
+              /><br/>
+            </label>
           <div style={{width:"47%",float:'left'}}>
           <label class="input-text" style={{fontWeight:"bold"}}>
               Test Name: <br/> 
@@ -181,6 +194,7 @@ function TestCreation() {
         </div>
         <div className='colright'>
           <div>
+          <span><b>Grade:</b> {grade}</span><br/>
           <span><b>Test Name:</b> {testname}</span><br/>
             <span><b>Duration:</b> {duration}</span><br/>
           <span><b>Starts on:</b> {start}</span><br/>

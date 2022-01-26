@@ -84,6 +84,7 @@ function StudentData() {
     })
     .then(r => r.json())
     .then((r) => {
+      console.log(r)
       if(r.data)
       setslist(r.data);
     })
@@ -146,7 +147,7 @@ function StudentData() {
             return (
               <div className = 'row'>
                 <div className = 'col1'>{val.fname} {val.mname} {val.lname}</div>
-                <div className = 'col2'>Self</div>
+                <div className = 'col2'>{val.grades_id}</div>
                 <div className = 'col3'>{val.registered_on}</div>
                 <div className = 'col4'>
                   <Popup modal trigger={<button className='custom-button'> Details </button>}>

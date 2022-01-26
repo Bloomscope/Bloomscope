@@ -116,12 +116,14 @@ function Dashboard() {
         let question = {
           id: e["id"],
           text: JSON.parse(e["question"].replaceAll("'", '"'))["value"],
+          // text: e["question"],
           alternatives: alt,
           explanation: e["explanation"],
           type: "choice",
           parameter: p,
           isAnswered: false,
         };
+        console.log(question)
         questionData.push(question);
       });
     });
