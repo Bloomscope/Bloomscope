@@ -30,7 +30,7 @@ const SignUp_student = () =>{
           'email': email,
           'phone': contact,
           'password': password,
-          'user_type_id': 3 //check later
+          'user_type_id': 1 //check later
         }
         // nav('/payment', {state: opts});
         console.log(opts)

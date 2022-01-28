@@ -3,6 +3,7 @@ import './token.styles.scss';
 import Sidebar from '../../Components/Sidebar'
 import Navbar from '../../Components/Navbar'
 import styled from "styled-components";
+import CustomButton from '../../../Register/components/custom-button/custom-button-component';
 import {login,authFetch, useAuth, logout,getSessionState} from "../../../auth"
 import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
 
@@ -95,6 +96,27 @@ function Token() {
         .catch(error => console.log(error))
       return false;
     }
+    
+    const all = (e)=>{
+      e.preventDefault()
+      console.log("You pressed button")
+      let opts = {
+        'action': "accepted"
+      }
+      console.log(opts)
+      authFetch('/api/update_all', {
+        method: 'post',
+        body: JSON.stringify(opts),
+      }).then(r => r.json())
+        .then(r => {
+          if(r.status == 'success')
+          console.log(r)
+          else
+          console.log(r)
+        })
+        .catch(error => console.log(error))
+      return false;
+    }
 
     const disapprove = (e,test_id,user_id)=>{
       e.preventDefault()
@@ -130,7 +152,13 @@ function Token() {
         <div className='main'>
         <h1>Token Verification</h1>
         <div className='token'>
-        <div style={{overflowY:"scroll",height:"58vh"}}>
+        <div style={{overflowY:"scroll",height:"58vh"}}>          
+        <CustomButton 
+            type="submit" 
+            onClick={all}
+            style={{margin:"20px 0px 20px -4px"}}>
+            Approve all
+            </CustomButton>
             {tokens.map((item,i)=>(
               <>
               {

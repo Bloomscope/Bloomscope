@@ -129,7 +129,7 @@ function StudentData() {
           <div className='sd' style={{ backgroundColor:"white", padding:"0.8rem 2rem" }}>
           <div className = 'row'>
                 <div className = 'col1' style = {{fontWeight:'600'}}>Name</div>
-                <div className = 'col2' style = {{fontWeight:'600'}}>Organisation</div>
+                <div className = 'col2' style = {{fontWeight:'600'}}>Grade</div>
                 <div className = 'col3' style = {{fontWeight:'600'}}>Registered on</div>
                 <div className = 'col4'><input style={{backgroundColor:"#ffffff"}} type="text" placeholder="Seach Name" onChange={e=>setSearchTerm(e.target.value)} /></div>
           </div>
