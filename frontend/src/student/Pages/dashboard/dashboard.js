@@ -179,7 +179,7 @@ function Dashboard() {
             <div
               style={{ paddingLeft: "6rem", paddingTop: "1rem", width: "70vw" }}
             >
-              <h1>Dashboard</h1>
+              <h1>Cognition Quotient Report (CQR)</h1>
               <div
                 style={{
                   backgroundColor: "white",

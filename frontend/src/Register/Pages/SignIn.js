@@ -84,45 +84,19 @@ const SignIn = () =>{
     
     const forgot = (e)=>{
       e.preventDefault()
-      // console.log("You pressed button")
-      // let opts = {
-      //   'email': email
-      // }
-      // console.log(opts)
-      // fetch('api/login', {
-      //   method: 'post',
-      //   body: JSON.stringify(opts)
-      // }).then(r => r.json())
-      //   .then(token => {
-      //   if(token.is_logged_in){
-      //     if(token.type == 2 || token.type == 3 || token.has_parent){
-
-      //         if (token.access_token){
-      //           console.log(token) 
-      //           if(token.type == 1){
-      //             login(token);
-      //             nav('/student/dashboard', {state: token});
-      //           }
-      //           else if(token.type == 2){
-      //             login(token);
-      //             nav('/parent/dashboard', {state: token});  
-      //           }
-      //           else if (token.access_token === "Null") {
-      //               SetAuthMsg(1);
-      //           }       
-      //       }
-      //     }
-      //     else{
-      //       console.log(token)
-      //       nav('/parentRegistration', {state: token});
-      //     }
-      //   }
-      //   else {
-      //       console.log("Please type in correct username/password");
-      //       SetAuthMsg(1);
-      //   }
-      //   })
-      //   .catch(error => console.log(error))
+      console.log("You pressed button")
+      let opts = {
+        'email': email
+      }
+      console.log(opts)
+      fetch('api/forgot_password', {
+        method: 'post',
+        body: JSON.stringify(opts)
+      }).then(r => r.json())
+        .then(token => {
+          SetAuthMsg(token)
+        })
+        .catch(error => console.log(error))
     }
 
 	const access = getSessionState();

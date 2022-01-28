@@ -143,7 +143,7 @@ function ADashboard() {
           <Sidebar />
         </div>
         <div className='main'>
-        <h1>Dashboard</h1>
+        <h1>Cognition Quotient Report (CQR)</h1>
         <div className='c'>
           <h3>Tests log</h3>
           <span>This is an overview of the tests created by the admin. It is a graphical representation of the number of users registered and the number of users of users who have attempted each of the tests.</span>
@@ -160,10 +160,7 @@ function ADashboard() {
           Tests: <br/><br/>
           <span class="display">{tests}</span><br/>
           </div>
-          
-          <span style={{fontSize:"13px"}}>The button given below gives you direct access to the admin database. If you wish to make any changes in the database, you can do it here directly.</span><br/>
-          <button style={{marginTop:"10%", fontSize:"14px"}}><a href='http://localhost:5000/admin/' target="_blank">Admin Database</a></button>
-        </div>
+          </div>
       </div>
       </Holder>
       </div>

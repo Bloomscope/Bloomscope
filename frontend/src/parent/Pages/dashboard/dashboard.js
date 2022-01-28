@@ -53,7 +53,7 @@ function Dashboard() {
           <Sidebar />
         </div>
         <div className='main'>
-          <h1>Dashboard</h1>
+          <h1>Cognition Quotient Report (CQR)</h1>
           <div className='colleft'>
             <div style={{fontWeight:"bold",fontSize:"1.2rem"}}>Progress Chart</div><br/>
             <div>Each test given is examined on the basis of 6 parameters. These parameters should be worked upon separately. To understand the areas which require work, you can check your progress. This chart analysis displays your journey by comparing your results throughout. You can choose to compare test-wise by only selecting the legends you wish to view and compare.</div><br/>
