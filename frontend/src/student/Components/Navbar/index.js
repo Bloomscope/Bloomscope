@@ -1,7 +1,8 @@
 // import React, { useState } from "react";
 // import { Nav, NavLink, Bars, NavMenu, NavDrop } from "./NavbarElements";
 import logo from './logo.PNG';
-import {logout} from "../../../auth"
+import {logout} from "../../../auth";
+import './logo.scss';
 
 // const Navbar = () => {
 //   const [NavMobile, SetNavMobile] = useState(0);
@@ -35,7 +36,7 @@ const Navbar = () => {
 return (
 	<>
 	<Nav>
-  <img src={logo} style={{width:"30%", height:"80%"}} alt="Logo" />
+  <img src={logo} className='logo' alt="Logo" />
 		<Bars />
 
 		<NavMenu>
