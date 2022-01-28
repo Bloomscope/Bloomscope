@@ -73,17 +73,41 @@ function MassRegistration() {
 
 
   const handleFileUpload = e => {
-    updatedmsg('')
-    const file = e.target.files[0]; 
-    console.log(file);
-    setFile(file);
+    // updatedmsg('')
+    // const file = e.target.files[0]; 
+    // console.log(file);
+    // setFile(file);
 
-    const formData = new FormData();        
-    formData.append('file', file);
-
+    let formData = {
+      "users": [
+        {
+            "fname": "required",
+            "mname": "optional",
+            "lname": "required",
+            "dob": "2222-02-02" ,
+            "grades_id":1,
+            "email": "required",
+            "password":"required" ,
+            "phone": "7406177090"
+        },
+        {
+            "fname": "required",
+            "mname": "optional",
+            "lname": "required",
+            "grades_id":1,
+            "dob": "2222-02-02" ,
+            "email": "rfasdfequired",
+            "password":"required" ,
+            "phone": "7406177090"
+        }
+    
+    ]
+    };    
+    // const formData = new FormData();        
+    // formData.append('file', file);
     authFetch('/api/mass_register',{
           method:'post',
-          body: formData,
+          body: JSON.stringify(formData),
         })
         .then(r => r.json())
         .then((r) => {
@@ -119,14 +143,10 @@ function MassRegistration() {
         <div>9. Avoid using single or double quotes in the question or options.</div>
         <div>10. On completing the sheet, download it as CSV. (Option will be given while downloading)</div>
       </div>
-      <label className="custom-file-upload">
-          <input
-            type="file"
-            accept=".csv"
-            onChange={handleFileUpload}
-          />
-          Custom Upload
-      </label>
+       <button className="custom-file-upload"
+            onClick={handleFileUpload}
+          >
+          Custom Upload</button>
       {/* <CSVReader
           ref={buttonRef}
           onFileLoad={handleOnFileLoad}
