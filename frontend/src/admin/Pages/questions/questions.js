@@ -159,24 +159,24 @@ function AddQuestions() {
     setgrade('')
   }
 
-  const handleFileUpload = e => {
-    const file = e.target.files[0];
-    console.log(file);
-    setFile(file);
+  // const handleFileUpload = e => {
+  //   const file = e.target.files[0];
+  //   console.log(file);
+  //   setFile(file);
 
-    const formData = new FormData();        
-    formData.append('file', file);
+  //   const formData = new FormData();        
+  //   formData.append('file', file);
 
-    authFetch('/api/add_questions',{
-          method:'post',
-          body: formData,
-        })
-        .then(r => r.json())
-        .then((r) => {
-          console.log(r)
-        })
-        .catch(error => console.log(error))
-  }
+  //   authFetch('/api/add_questions',{
+  //         method:'post',
+  //         body: formData,
+  //       })
+  //       .then(r => r.json())
+  //       .then((r) => {
+  //         console.log(r)
+  //       })
+  //       .catch(error => console.log(error))
+  // }
 	const [logged] = useAuth();
 	const access = getSessionState();
   return (

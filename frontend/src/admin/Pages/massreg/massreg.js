@@ -15,107 +15,98 @@ const Holder = styled.div`
   }
 `;
 
-// const buttonRef = React.createRef();
+const buttonRef = React.createRef();
 
 function MassRegistration() {
+  const [grade, setgrade]=useState('');
   const [file, setFile] = useState(''); 
   const [msg,updatedmsg] = useState('');   
 
-  // const handleOpenDialog = (e) => {
-  //   // Note that the ref is set async, so it might be null at some point
-  //   if (buttonRef.current) {
-  //     buttonRef.current.open(e);
-  //   }
-  // };
 
-  // const handleOnFileLoad = (data) => {
-  //   updatedmsg("")
-  //   console.log(data);
-  //   updatedmsg("Uploaded")
-  //   var questions = []
-  //   for(var i = 1; i < data.length ; i++){
-  //     var options = []
-  //     for(var j = 7 ; j < data[i].length ; j+=3){
-  //       if(data[i][j] == "")
-  //       continue;
-  //       let opt = {
-  //         "opt": data[i][j], 
-  //         "value": data[i][j+1],  
-  //         "opt_type": data[i][j+2] 
-  //       };
-  //       options.push(opt)
-  //     }
-  //     let ques = {
-  //       // "grade": data[i][0],
-  //       "question": {
-  //        "value": data[i][1],
-  //        "question_type": data[i][2]
-  //       },
-  //       "options": options,
-  //       "ans": data[i][3],
-  //       "explanation": data[i][4],
-  //       "param_id": data[i][5],
-  //       "marks": data[i][6]
-  //     }
-  //     questions.push(ques)
-  //   }
-  //   var d = {
-  //     "data": questions
-  //   }
-  //   console.log(d);
+  const handleOpenDialog = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.open(e);
+    }
+  };
 
-  // };
-
-  // const handleOnError = (err, file, inputElem, reason) => {
-  //   console.log(err);
-  //   updatedmsg(err)
-  // };
-
-
-  const handleFileUpload = e => {
-    // updatedmsg('')
-    // const file = e.target.files[0]; 
-    // console.log(file);
-    // setFile(file);
-
-    let formData = {
-      "users": [
-        {
-            "fname": "required",
-            "mname": "optional",
-            "lname": "required",
-            "dob": "2222-02-02" ,
-            "grades_id":1,
-            "email": "required",
-            "password":"required" ,
-            "phone": "7406177090"
-        },
-        {
-            "fname": "required",
-            "mname": "optional",
-            "lname": "required",
-            "grades_id":1,
-            "dob": "2222-02-02" ,
-            "email": "rfasdfequired",
-            "password":"required" ,
-            "phone": "7406177090"
-        }
-    
-    ]
-    };    
-    // const formData = new FormData();        
-    // formData.append('file', file);
+  const handleOnFileLoad = (fullData) => {
+    // console.log(fullData);
+    var questions = []
+    for(var i = 1; i < fullData.length ; i++){
+      var data = fullData[i]["data"];
+      let opts = {
+        "fname": data[0],
+        "mname": data[1],
+        "lname": data[2],
+        "dob": data[3] ,
+        "grades_id": parseInt(grade),
+        "email":  data[4],
+        // "password":  "asdf",
+        "phone":  data[5] 
+    }
+      questions.push(opts)
+    }
+    var d = {
+      "users": questions
+    }
+    console.log(d)
     authFetch('/api/mass_register',{
-          method:'post',
-          body: JSON.stringify(formData),
-        })
-        .then(r => r.json())
-        .then((r) => {
-          console.log(r)
-          updatedmsg(r.msg)
-        })
-        .catch(error => console.log(error))
-  }
+      method:'post',
+      body: JSON.stringify(d),
+    })
+    .then(r => r.json())
+    .then((r) => {
+      console.log(r)
+      updatedmsg(r.msg)
+    })
+    .catch(error => console.log(error))
+}
+
+  const handleOnError = (err, file, inputElem, reason) => {
+    console.log(err);
+    alert(err)
+  };
+
+  // const handleFileUpload = e => {
+
+    // let formData = {
+    //   "users": [
+    //     {
+    //         "fname": "required",
+    //         "mname": "optional",
+    //         "lname": "required",
+    //         "dob": "2222-02-02" ,
+    //         "grades_id":1,
+    //         "email": "required",
+    //         "password":"required" ,
+    //         "phone": "7406177090"
+    //     },
+    //     {
+    //         "fname": "required",
+    //         "mname": "optional",
+    //         "lname": "required",
+    //         "grades_id":1,
+    //         "dob": "2222-02-02" ,
+    //         "email": "rfasdfequired",
+    //         "password":"required" ,
+    //         "phone": "7406177090"
+    //     }
+    
+    // ]
+    // };    
+    
+    // authFetch('/api/mass_register',{
+    //       method:'post',
+    //       body: JSON.stringify(formData),
+    //     })
+    //     .then(r => r.json())
+    //     .then((r) => {
+    //       console.log(r)
+    //       updatedmsg(r.msg)
+    //     })
+    //     .catch(error => console.log(error))
+  // }/
 	const [logged] = useAuth();
 	const access = getSessionState();
 
@@ -143,36 +134,49 @@ function MassRegistration() {
         <div>9. Avoid using single or double quotes in the question or options.</div>
         <div>10. On completing the sheet, download it as CSV. (Option will be given while downloading)</div>
       </div>
-       <button className="custom-file-upload"
+       {/* <button className="custom-file-upload"
             onClick={handleFileUpload}
           >
-          Custom Upload</button>
-      {/* <CSVReader
-          ref={buttonRef}
-          onFileLoad={handleOnFileLoad}
-          onError={handleOnError}
-          noClick
-          noDrag
-        >
-          {({ file }) => (
-            <aside
-              style={{
-                color: 'blue',
-                display: 'flex',
-                flexDirection: 'row',
-                marginBottom: 10,
-              }}
-            >
-              <button
-                type="button"
-                onClick={handleOpenDialog}
-                className="custom-file-upload"
+          Custom Upload</button> */}
+          <label class="input-text" style={{fontWeight:"bold"}}>
+              Grade (1,2,3..): <br/> 
+              <input 
+                type="text" 
+                name="question" 
+                value={grade}
+                onChange={(e)=>{setgrade(e.target.value)}}
+                style={{width:"95%"}}
+              /><br/>
+            </label>
+
+
+            <CSVReader
+                ref={buttonRef}
+                onFileLoad={handleOnFileLoad}
+                onError={handleOnError}
+                noClick
+                noDrag
               >
-                Browse file
-              </button>
-            </aside>
-          )}
-        </CSVReader> */}
+                {({ file }) => (
+                  <aside
+                    style={{
+                      color: 'blue',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      marginBottom: 10,
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={handleOpenDialog}
+                      className="custom-file-upload"
+                    >
+                      Upload file
+                    </button>
+                  </aside>
+                )}
+              </CSVReader>
+
       <button className="custom-file-upload" style={{backgroundColor:"white",borderRadius:"0px",color:"black"}}><a target="_blank" style={{color:"black"}} href='https://docs.google.com/spreadsheets/d/1ykzb-h-fZYYRwrR0zV5_fk4UKEmBjeMuFvz_qxTB9zg/edit?usp=sharing'>Download Template</a></button><br/>
       {(msg!=="")?<div className="message">{msg}</div>:<></>}
 		</div></div>
