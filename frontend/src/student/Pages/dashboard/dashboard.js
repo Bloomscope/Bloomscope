@@ -8,7 +8,6 @@ import { useAuth, authFetch, getSessionState } from "../../../auth";
 import styled from "styled-components";
 import Popup from "reactjs-popup";
 import { useNavigate, useLocation } from "react-router";
-import { Link } from "react-router-dom";
 
 const Holder = styled.div`
   display: flex;
@@ -48,13 +47,13 @@ function Dashboard() {
     })
       .then((r) => r.json())
       .then((r) => {
+        console.log(r);
         try{
           if(r.msg.includes("expire")){
             alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
             // nav("/signIn")
           }
         }catch(e){}
-        console.log(r);
         if (r.data) makelist(r.data);
       })
       .catch((error) => console.log(error));
@@ -82,8 +81,6 @@ function Dashboard() {
     settoken("");
     return false;
   };
-
-
   
  
   function reformat(a, title) {
@@ -93,12 +90,13 @@ function Dashboard() {
 
     data.questions.questions.map((d, i) => {
       d.data.map((e, i) => {
-        //WTFFFF won't work if question has ' in it
+        try{
         const ans = e["ans"];
         let alt = [];
+        const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         JSON.parse(e["options"].replaceAll("'", '"')).map((op, it) => {
           let option = {
-            id: it + 1,
+            id: it <= 26 ? alphabet[it] : alphabet[it] + (alphabet[it]),
             text: op["value"],
             isCorrect: op["opt"] == ans,
             isUserAnswer: false,
@@ -116,7 +114,6 @@ function Dashboard() {
         let question = {
           id: e["id"],
           text: JSON.parse(e["question"].replaceAll("'", '"'))["value"],
-          // text: e["question"],
           alternatives: alt,
           explanation: e["explanation"],
           type: "choice",
@@ -125,6 +122,7 @@ function Dashboard() {
         };
         console.log(question)
         questionData.push(question);
+      }catch(e){console.log("Explanation might be empty")}
       });
     });
 
@@ -150,6 +148,7 @@ function Dashboard() {
     })
       .then((r) => r.json())
       .then((r) => {
+        console.log(r)
         try{
           if(r.msg.includes("expire")){
             alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
@@ -162,9 +161,7 @@ function Dashboard() {
     nav("/student/Quiz", { state: { data: transData }});
 
       })
-      .catch((error) => console.log(error));
-
-    
+      .catch((error) => console.log(error));    
   }
 
   return (
@@ -179,7 +176,7 @@ function Dashboard() {
             <div
               style={{ paddingLeft: "6rem", paddingTop: "1rem", width: "70vw" }}
             >
-              <h1>Cognition Quotient Report (CQR)</h1>
+              <h1>Dashboard</h1>
               <div
                 style={{
                   backgroundColor: "white",

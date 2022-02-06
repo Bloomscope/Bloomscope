@@ -42,24 +42,4 @@ function Confirm({ goBack, confirmSubmission, numAnswered,numTotalQuestions }) {
     </div>
   );
 }
-
-// Result.propTypes = {
-//   quizTitle: PropTypes.string.isRequired,
-//   numAnswered: PropTypes.number.isRequired,
-//   numTotalQuestions: PropTypes.number.isRequired,
-//   results: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       range: PropTypes.shape({
-//         from: PropTypes.number.isRequired,
-//         to: PropTypes.number.isRequired,
-//       }),
-//       title: PropTypes.string.isRequired,
-//       description: PropTypes.string.isRequired,
-//       img: PropTypes.string,
-//     }).isRequired,
-//   ).isRequired,
-//   onClickRestart: PropTypes.func.isRequired,
-// };
-
 export default Confirm;

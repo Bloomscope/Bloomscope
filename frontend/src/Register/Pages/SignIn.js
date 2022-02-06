@@ -124,12 +124,13 @@ const SignIn = () =>{
                   label='Password'
                   required
                 />
+                
+                <div className='buttons'>
+                      <CustomButton onClick= {onSubmitClick} type='submit'> Sign in </CustomButton>
+                  </div>
                 <div className='buttons'>
                     <CustomButton onClick= {forgot} type='submit'> Forgot Password </CustomButton>
                 </div>
-                  <div className='buttons'>
-                      <CustomButton onClick= {onSubmitClick} type='submit'> Sign in </CustomButton>
-                  </div>
               </form>
           </div>
           <ErrorCont ContentView={authMsg}>

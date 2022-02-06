@@ -32,7 +32,7 @@ const MyChart = () => {
   const dt = newdataset.flat();
 
   const data = {
-    labels: ["Parameter 1", "Parameter 2", "Parameter 3"],
+    labels: ["Remember", "Understand", "Apply","Analyse","Evaluate","Create"],
     datasets: dt
   };
 

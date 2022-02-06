@@ -43,7 +43,6 @@ const Quiz = () => {
     nav("/student/dashboard")
   }
   let quizData = state.data;
-  console.log(quizData.test_id)
   var t = quizData.time; 
   // let autoNext = false;
 
@@ -154,24 +153,6 @@ const Quiz = () => {
     console.log(quizData.questions[currentQuestionIndex].alternatives);
         
     clickedAlternative.isUserAnswer = true;
-    // const alternativesCopy = [...currentQuestion.alternatives];
-
-    // const foundAlternative = alternativesCopy.find(
-    //   alternative => alternative.id === clickedAlternative.id,
-    // );
-
-    // const updatedAlternative = {
-    //   ...foundAlternative,
-    //   isUserAnswer: true,
-    // };
-
-    // const alternativeIndex = alternativesCopy.findIndex(
-    //   alternative => alternative.id === updatedAlternative.id,
-    // );
-
-    // alternativesCopy[alternativeIndex] = updatedAlternative;
-    // console.log(alternativesCopy[alternativeIndex])
-
 
     quizData.questions[currentQuestionIndex].isAnswered = true
     let param = 0;
@@ -225,6 +206,7 @@ const Quiz = () => {
 
    const access = getSessionState();
    const [logged] = useAuth();
+   var callCount = 0;
    return (
     <>
       {logged&&access.type==1?<>
@@ -278,7 +260,7 @@ const Quiz = () => {
             <Result
               quizTitle={quizData.title}
               numTotalQuestions={numTotalQuestions}
-              results={quizData.results}
+              count = {callCount}
               onClickRestart={restartQuiz}
               data = {selectedOpts}
               test_id = {quizData.test_id}

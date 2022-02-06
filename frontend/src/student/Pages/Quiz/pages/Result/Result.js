@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Result.module.scss';
 import Button from '../../common/Button/Button';
@@ -10,7 +10,7 @@ function Result({
   quizTitle,
   // numAnswered,
   numTotalQuestions,
-  results,
+  count,
   onClickRestart,
   data,
   test_id
@@ -23,12 +23,14 @@ function Result({
     has_negative_marks: "false",
     quiz_data: data
   }
-
+  useEffect(() => {
   authFetch("/api/eval_test", {
     method: "POST",
     body: JSON.stringify(dts),
   })
     .then((r) => r.json())
+    // count = 1;
+},[count])
 
   return (
     <div className={styles.result}>
