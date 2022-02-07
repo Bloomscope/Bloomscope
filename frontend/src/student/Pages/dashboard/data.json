@@ -4,14 +4,6 @@
       {
         "label": "Sample Test1",
         "data": [56, 23, 55]
-      },
-      {
-        "label": "Sample Test2",
-        "data": [22, 17, 100]
-      },
-      {
-        "label": "Sample Test3",
-        "data": [46, 73, 25]
       }
     ]
 }
