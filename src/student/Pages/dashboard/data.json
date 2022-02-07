@@ -1,0 +1,21 @@
+{
+    "labels": ["Parameter 1", "Parameter 2", "Parameter 3", "Parameter 4", "Parameter 5", "Parameter 6"],
+    "result": [
+      {
+        "label": "Test1",
+        "data": [56, 23, 55, 56, 57, 50]
+      },
+      {
+        "label": "Test2",
+        "data": [22, 17, 32, 47, 62, 48]
+      },
+      {
+        "label": "Test3",
+        "data": [46, 73, 25, 76, 27, 55]
+      },
+      {
+        "label": "Test4",
+        "data": [26, 40, 80, 50, 62, 58]
+      }
+    ]
+}
