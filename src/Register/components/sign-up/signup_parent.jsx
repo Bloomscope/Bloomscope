@@ -1,11 +1,12 @@
 import React, {useState}from 'react';
- 
+import {useLocation,useNavigate} from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button-component';
 
 import './sign-up.styles.scss';
 
-const SignUp_parent = ({view}) =>{
+const SignUp_parent = () =>{
+
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -13,16 +14,45 @@ const SignUp_parent = ({view}) =>{
     const [email, setEmail] = useState('');
     const [contact, setContact] = useState('');
     const [dob, setDob] = useState('');
-    const [childName, setchildName] = useState('');
     const [password, setPassword] = useState('');
-    const [scontact, setSContact]=useState('');
-    const [semail, setSEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [lineClicked, setLineClicked] = useState(0);
-    
+    const location = useLocation();
+    const nav = useNavigate();
+    const onSubmitClick = (e)=>{
+      e.preventDefault()
+      console.log(location.state.uid)
+      let opts = {
+        'uid': location.state.uid,
+        'fname': firstName,
+        'mname': middleName,
+        'lname': lastName,
+        'dob': dob,
+        'email': email,
+        'phone': contact,
+        'password': password,
+        'user_type_id': '2' //check later
+      }
+      console.log(opts)
+      fetch('api/register_parent', {
+        method: 'post',
+        body: JSON.stringify(opts)
+      }).then(r => r.json())
+        .then(r => {
+          console.log(r)
+          if(r.status == 'success'){
+            //payment gateway
+            nav('/signIn');
+          }
+        })
+        .catch(error => console.log(error))
+    }
+
+
+
     return (
       <>
-      <div className='sign-up' style={view ? {display:'block'} : {display:'none'}}>
+      <div className='sign-up' >
         <h2 className='title'>Parent Registration</h2>
         <form className='sign-up-form'>
           <FormInput
@@ -66,40 +96,23 @@ const SignUp_parent = ({view}) =>{
             label='Contact no.'
             required
           />
-          <FormInput
-            type='text'
-            name='childName'
-            value={childName}
-            onChange={(e)=>{setchildName(e.target.value)}}
-            label='Child Name'
-            required
-          />
-          
-      
           <FormInput onMouseEnter = {()=>{setLineClicked(1)}} onMouseLeave = {()=>{setLineClicked(0)}}
             type={lineClicked ? 'date' : 'text'}
             name='dob'
             value={dob}
             onChange={(e)=>{setDob(e.target.value)}}
-            label={lineClicked ? '' : 'Child Date of Birth'}
+            label={lineClicked ? '' : 'Date of Birth'}
             required
           />
-          <FormInput
-            type='email'
-            name='semail'
-            value={semail}
-            onChange={(e)=>{setSEmail(e.target.value)}}
-            label='Child Email'
-            required
-          />
-          <FormInput
+          {/* <FormInput
             type='text'
-            name='scontact'
-            value={scontact}
-            onChange={(e)=>{setSContact(e.target.value)}}
-            label='Child Contact no.'
-            required
-          />
+            name='childId'
+            value={childId}
+            onChange={(e)=>{setchildId(e.target.value)}}
+            label='Child ID'
+            required */}
+          {/* /> */}
+          
           <FormInput
             type='password'
             name='password'
@@ -116,8 +129,7 @@ const SignUp_parent = ({view}) =>{
             label='Confirm Password'
             required
           />
-          <CustomButton type='submit'>SIGN UP</CustomButton>
-          <CustomButton type='submit'>PAYMENT</CustomButton>
+          <CustomButton onClick={onSubmitClick} type='submit'>SIGN IN</CustomButton>
         </form>
       </div>
       </>

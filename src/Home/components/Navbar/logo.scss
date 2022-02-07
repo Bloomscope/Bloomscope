@@ -1,0 +1,40 @@
+
+
+
+@media only screen and (max-width: 600px) {
+    .logo{
+        width: 50%;
+        height: 90%;
+    }
+  }
+  
+  
+  @media only screen and (min-width: 600px) {
+    .logo{
+        width: 35%;
+        height: 90%;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .logo{
+        width: 30%;
+        height: 90%;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) {
+    .logo{
+        width: 25%;
+        height: 90%;
+    }
+  
+  }
+  
+  @media only screen and (min-width: 1200px) {
+  
+    .logo{
+        width: 20%;
+        height: 90%;
+    }
+  }
