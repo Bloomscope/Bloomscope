@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
-import "./styles.scss";
+import "./calendar.styles.css";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
 import styled from "styled-components";
-import events from './events';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment';
-// import 'react-big-calendar/lib/css/react-big-calendar.css';
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import {authFetch, useAuth, getSessionState} from "../../../auth"
 
 const localizer = momentLocalizer(moment)
 
@@ -20,24 +20,64 @@ const Holder = styled.div`
 `;
 
 function MyCalendar() {
+  const [logged] = useAuth();
+  const access = getSessionState();
+  const [schedule, setschedule] = useState([]);
+
+
+  const makelist = (a)=>{
+    var list = []
+    for (var i = 0; i < a.length; i++) {
+      let opts = {
+        'title': a[i]['name'],
+        'start': new Date( a[i]['starts_on']),
+        'end':  new Date(a[i]['ends_on']),
+      }
+      console.log(opts)
+      list.push(opts)
+  }
+  console.log(list)
+    setschedule(list);
+  }
+
+  useEffect(()=>{
+    authFetch('/api/get_child_tests',{
+      'methods':'GET',
+    })
+    .then(r => r.json())
+    .then((r) => {
+      console.log(r.data)
+      if(r.data)
+      makelist(r.data)
+    })
+    .catch(error => console.log(error))}, [])
+
+
   return (
     <>
+    {logged&&access.type==2?<>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem" , width:"60vw"}}>
+        <div className='main'>
           <h1>Calendar</h1>
+          <div className='cal'>
           <Calendar
             localizer={localizer}
-            events={events}
+            events={schedule}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: "70vh", backgroundColor:"white", padding:"2%" }}
+            style={{backgroundColor:"white", padding:"2%" }}
           />
+          </div>
         </div>
-      </Holder>
+      </Holder></>
+      :
+      <>
+      <NotLoggedIn/>
+      </>}
     </>
   );
 }

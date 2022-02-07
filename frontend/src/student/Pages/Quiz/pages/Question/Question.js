@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Question.module.scss';
-
-import Progress from './Progress/Progress';
-import Alternative from './Alternative/Alternative';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./Question.module.scss";
+import Progress from "./Progress/Progress";
+import Alternative from "./Alternative/Alternative";
 
 function Question({
   quizTitle,
@@ -11,39 +10,61 @@ function Question({
   numCurrentQuestion,
   question,
   onAnswerSelected,
+  goBack,
+  goForward,
+  type,
 }) {
   return (
-    <div className={styles.question}>
-      <div className={styles['quiz-title']}>{quizTitle}</div>
+    <>
+      <div>
+        <div className={styles.question}>
+          <div className={styles["quiz-title"]}>{quizTitle}</div>
 
-      <Progress
-        numCurrentQuestion={numCurrentQuestion}
-        numTotalQuestions={numTotalQuestions}
-      />
+          <Progress
+            numCurrentQuestion={numCurrentQuestion}
+            numTotalQuestions={numTotalQuestions}
+            visited = {true}
+          />
 
-      {question.img && (
-        <img
-          alt="Current question"
-          src={require(`../../assets/images/questions/${question.img}`)}
-          className={styles['question-img']}
-        />
-      )}
+          {question.img && (
+            <img
+              alt="Current question"
+              src={question.img}
+              className={styles["question-img"]}
+            />
+          )}
 
-      <div className={styles['question-text']}>
-        <strong>{question.text}</strong>
+<button className="btn btn-primary" onClick={goBack}>
+        Previous
+      </button>
+      <button className="btn btn-primary" onClick={goForward}>
+        Next
+      </button>
+          <div className={styles["question-text"]}>
+            <strong>{question.text}</strong>
+          </div>
+        </div>
       </div>
 
       <div className={styles.alternatives}>
-        {question.alternatives.map(alternative => (
+        {question.alternatives.map((alternative) => (
           <Alternative
             alternative={alternative}
             isQuestionAnswered={question.isAnswered}
             key={`alternative-${question.id}-${alternative.id}`}
             onAnswerSelected={onAnswerSelected}
+            quesId={question.id}
           />
         ))}
       </div>
-    </div>
+
+      <button className="btn btn-primary" onClick={goBack}>
+        Previous
+      </button>
+      <button className="btn btn-primary" onClick={goForward}>
+        Next
+      </button>
+    </>
   );
 }
 
@@ -61,7 +82,7 @@ Question.propTypes = {
         id: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         img: PropTypes.string,
-      }).isRequired,
+      }).isRequired
     ).isRequired,
   }).isRequired,
   onAnswerSelected: PropTypes.func.isRequired,

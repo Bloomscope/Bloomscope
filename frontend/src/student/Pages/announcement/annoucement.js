@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import "./styles.scss";
+import React, { useState, useEffect } from "react";
+import "./announcement.styles.css";
 import Sidebar from "../../Components/Sidebar";
 import Navbar from "../../Components/Navbar";
-import data from "./announcements.json";
+import {useAuth,authFetch, getSessionState} from "../../../auth"
 import styled from "styled-components";
+import NotLoggedIn from "../../../Register/Pages/notLoggedIn.jsx"
+import a from "./test"
 
 const Holder = styled.div`
   display: flex;
@@ -14,25 +16,49 @@ const Holder = styled.div`
 `;
 
 function Announcement() {
+  const [logged] = useAuth();
+  const access = getSessionState();
+  const [announcements, setannouncements] = useState([]);
+  
+  useEffect(()=>{
+    authFetch('/api/user_get_announcements',{
+      'methods':'GET',
+    })
+    .then(r => r.json())
+    .then((r) => {
+      try{
+        if(r.msg.includes("expire")){
+          alert("Access has been revoked due to inactivity. Please login again to access the dashboard")
+          // nav("/signIn")
+        }
+      }catch(e){}
+      console.log(r);
+      if(r.announcements !== undefined )
+      setannouncements(r.announcements);
+    })
+    .catch(error => console.log(error))}, []);
+
   return (
-    <>
+    <>{logged&&access.type==1?<>
       <Navbar />
       <Holder>
-        <div style={{ padding: "0 0.5rem" }}>
+        <div >
           <Sidebar />
         </div>
-        <div style={{ paddingLeft: "6rem", paddingTop: "1rem",width:"75vw" }}>
+        <div className="main">
         <h1 style = {{width:'80%', borderWidth: "0px 0px 5px 0px"}}>Announcements</h1>
-            <div style={{ marginRight:"1rem",padding: "0.2rem 2rem",height:"70vh",overflowY:"scroll",backgroundColor:"white"}}>
-            {data.map((item,i)=>(
+            <div className="ann">
+            {announcements.map((item,i)=>(
               <span key={i}>
-              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.time}) <br/>{item.post}</p>
+              <p style={{ borderStyle:"solid", border:"2px black", paddingTop: "15px 10px",fontSize:"1.1rem" }}><b>{item.title}</b>: ({item.announced_on}) <br/>{item.content}</p>
               </span>
             ))}
             </div>
       </div>
         </Holder>
-    </>
+    </>:<>
+    <NotLoggedIn/>
+          </>}</>
   );
 }
 

@@ -8,13 +8,14 @@
 }
 
 .alternative {
+  margin: 1em;
   padding: 10px;
   font-size: 16px;
   line-height: 130%;
   background-color: #f6f6f6;
   border-radius: 5px;
   cursor: pointer;
-  outline: none;
+  border-color: rgb(36, 36, 36);
 
   &:not(:last-of-type) {
     margin-bottom: 10px;
@@ -30,12 +31,8 @@
     }
   }
 
-  &.wrong {
-    @include alternative-background-color(#ffcece);
-  }
-
-  &.correct {
-    @include alternative-background-color(#bdf8ba);
+  &.selected {
+    @include alternative-background-color(#d4ebff);
   }
 
   &.not-chosen {

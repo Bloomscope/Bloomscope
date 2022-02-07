@@ -1,0 +1,284 @@
+
+
+
+@media only screen and (max-width: 600px) {
+  .token{
+    padding-left: 4%;
+    padding-top: 4%;
+    margin-right: 1%;
+    width:300px;
+    height:40vh;
+    background-color: white;
+    overflow-y: scroll;
+
+    
+  }
+  .innertoken{
+    background-color: #d4efff;
+    padding: 3%;
+    margin: 2%;
+  }
+  
+  
+  .main{
+    padding-left: 8%;
+    padding-top: 4%;
+  }
+  .side {
+    padding-right: 9%;
+  }
+  .custom-button {
+    min-width: 165px;
+    width: auto;
+    height: 40px;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    padding: 0 25px 0 25px;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+    transition: all 0.2s ease-in-out;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  
+  
+  input[type="text"] {
+    font-size: 18px;
+    margin: 15px 5px 15px 0px;
+    padding: 2px;
+    width: 100%;
+    
+  }
+
+}
+
+@media only screen and (min-width: 600px) {
+  .token{
+    padding-left: 4%;
+    padding-top: 4%;
+    margin-right: 1%;
+    width:75vw;
+    height:40vh;
+    background-color: white;
+    overflow-y: scroll;
+
+    
+  }
+  .innertoken{
+    background-color: #d4efff;
+    padding: 3%;
+    margin: 2%;
+  }
+  
+  
+  .main{
+    padding-left: 8%;
+    padding-top: 4%;
+  }
+  .side {
+    padding-right: 9%;
+  }
+  .custom-button {
+    min-width: 165px;
+    width: auto;
+    height: 40px;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    padding: 0 25px 0 25px;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+    transition: all 0.2s ease-in-out;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  
+  
+  input[type="text"] {
+    font-size: 18px;
+    margin: 15px 5px 15px 0px;
+    padding: 2px;
+    width: 100%;
+    
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+  .token{
+    padding-left: 4%;
+    padding-top: 4%;
+    margin-right: 1%;
+    width:56vw;
+    height:40vh;
+    background-color: white;
+    overflow: scroll;
+  }
+
+  .innertoken{
+    background-color: #d4efff;
+    padding: 2%;
+    margin: 2%;
+  }
+  
+  .main{
+    padding-left: 8%;
+    padding-top: 4%;
+  }
+  .side {
+    padding-right: 9%;
+  }
+  .custom-button {
+    min-width: 165px;
+    width: auto;
+    height: 40px;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    padding: 0 25px 0 25px;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+    transition: all 0.2s ease-in-out;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  
+  
+  input[type="text"] {
+    font-size: 18px;
+    margin: 15px 5px 15px 0px;
+    padding: 2px;
+    width: 100%;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .token{
+    padding-left: 4%;
+    padding-top: 1%;
+    width:62vw;
+    height:60vh;
+    background-color: white;
+    overflow-y: scroll;
+  }
+  .main{
+    padding-left: 8%;
+    padding-top: 1%;
+  }
+  .custom-button {
+    min-width: 165px;
+    width: auto;
+    height: 40px;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    padding: 0 25px 0 25px;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+    transition: all 0.2s ease-in-out;
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  
+  
+  input[type="text"] {
+    font-size: 18px;
+    margin: 15px 5px 15px 0px;
+    padding: 2px;
+    width: 100%;
+    overflow-y: scroll;
+  }
+  .innertoken{
+    background-color: #d4efff;
+    padding: 2%;
+    margin: 2%;
+  }
+  
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+.token{
+  padding-left: 3%;
+  /* margin: 2%; */
+  padding-top: 4%;
+  width:62vw;
+  height:60vh;
+  background-color: white;
+  overflow-y: scroll;
+ 
+  
+}
+.innertoken{
+  background-color: #d4efff;
+  padding: 2%;
+  margin: 2%;
+}
+
+.main{
+  padding-left: 8%;
+  padding-top: 1%;
+}
+.custom-button {
+  min-width: 165px;
+  width: auto;
+  height: 40px;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  padding: 0 25px 0 25px;
+  font-size: 12px;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+  transition: all 0.2s ease-in-out;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+
+input[type="text"] {
+  font-size: 18px;
+  margin: 15px 5px 15px 0px;
+  padding: 2px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+}
