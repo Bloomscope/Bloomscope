@@ -120,6 +120,7 @@ function ADashboard() {
         'methods':'GET',
       })
       .then(r => r.json())
+      
       .then((r) => {
         if(r.test_data !== undefined )
         chartdata(r.test_data);
