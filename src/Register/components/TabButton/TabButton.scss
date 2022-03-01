@@ -1,0 +1,40 @@
+.TabButton {
+    content: 'fa-user-graduate';
+    margin: 10px;
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 12px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+
+    .FaUserGraduate{
+        margin: 0 0.5rem;
+    }
+  
+    &:hover {
+
+  transition: all 0.2s ease-in-out; 
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  
+    &.google-sign-in {
+      background-color: #4285f4;
+      color: white;
+  
+      &:hover {
+        background-color: #357ae8;
+        border: none;
+      }
+    }
+  }
+  

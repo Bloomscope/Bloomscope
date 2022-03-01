@@ -1,0 +1,50 @@
+.confirm {
+  text-align: center;
+
+  .confirm-header {
+    position: relative;
+    max-width: 620px;
+    display: flex;
+    .text{
+      font-size:36px;
+      letter-spacing: 0em;
+    }
+
+    .numbers {
+      position: absolute;
+      width:100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
+      letter-spacing: 0.2em;
+      color: #FFFFFF;
+
+      strong {
+        font-size: 66px;
+      }
+    }
+
+    .confirm-img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .title {
+    margin: 20px 20px 0;
+    font-size: 22px;
+  }
+
+  .description {
+    margin: 10px 20px 0;
+    font-size: 16px;
+  }
+
+  .confirm-button-container {
+    margin: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

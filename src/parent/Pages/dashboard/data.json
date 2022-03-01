@@ -1,0 +1,17 @@
+{
+  "labels": ["Remember", "Understand", "Apply", "Analyze", "Evaluate", "Create"],
+  "result": [
+    {
+      "label": "Sample Test1",
+      "data": [56, 23, 55, 11, 23, 2]
+    },
+    {
+      "label": "Sample Test2",
+      "data": [22, 17, 100, 50, 43, 20]
+    },
+    {
+      "label": "Sample Test3",
+      "data": [46, 73, 25, 100, 80, 72]
+    }
+  ]
+}
