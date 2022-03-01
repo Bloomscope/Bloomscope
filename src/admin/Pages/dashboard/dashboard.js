@@ -120,6 +120,7 @@ function ADashboard() {
         'methods':'GET',
       })
       .then(r => r.json())
+      
       .then((r) => {
         console.log(r)
         // if(r.test_data !== undefined )
